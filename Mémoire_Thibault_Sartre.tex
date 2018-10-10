@@ -1,0 +1,70 @@
+\documentclass[a4paper,twoside,12pt,openright]{report}
+
+%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} 
+\usepackage{hyperref}
+
+%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} 
+
+%% Math Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{fullpage}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+
+    \textsc{\LARGE MASTER MIAGE 2ème année \linebreak Université Paris Nanterre}\\[2cm]
+
+    \textsc{\Large Mémoire de fin d’études présenté pour l’obtention du grade de master}\\[1.5cm]
+
+    \HRule \\[0.4cm]
+    { \huge \bfseries Comment les flots de contrôle peuvent-ils nous permettre de faire du refactoring de code en Java. \\[0.4cm] }
+
+    \HRule \\[2cm]
+    \includegraphics[scale=0.40]{univ.jpg}
+    \hspace{2cm}
+    
+    \vfill
+  \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        \textsc{Présenté par Thibault Sartre}\\
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+        \emph{Tuteur :}\\ \textsc{...}\\
+      \end{flushright}
+    \end{minipage}
+    \vfill
+    {\large Septembre 2018 — Juillet 2019}
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents{}
+\chapter{Introduction}
+\section{Présentation}
+Le refactoring est une activité d'ingénierie logiciel consistant à modifier le code source d'une application de manière à améliorer sa qualité sans altérer son comportement vis-à-vis des utilisateurs.
+L'objectif du refactoring est de réduire les coûts de maintenance et de pérenniser les investissements tout au long du cycle de vie du logiciel en se concentrant sur la maintenabilité et l'évolutivité.\cite{ref1}\\
+Le refactoring permet donc de passer d'un code possédant de mauvaise base à un code propre.\\
+"With refactoring you can take a bad design,chaos even, and rework it into well-designed code."\cite{ref2}
+Un bon refactoring doit pouvoir améliorer la qualité d'un code tout en gardant son fonctionnement du point de vue de l'utilisateur. Concernant la partie des tests, tout les tests qui fonctionnaient avant le refactoring se doivent d'être fonctionnels après.\\
+Dans ce mémoire, nous allons analyser différentes techniques de refactoring. Puis nous allons étudier le principe des flots de contrôle.\\ Enfin je vous proposerais et évaluerais une solution pour faire du refactoring de code en utilisant les flots de contrôle pour le langage Java.\cite{ref3}\cite{ref4}
+\bibliographystyle{plain}
+\bibliography{bibli}
+\end{document}
