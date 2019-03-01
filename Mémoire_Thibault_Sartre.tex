@@ -6,6 +6,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern} 
 \usepackage{hyperref}
+\usepackage{tabto}
 
 %% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} 
@@ -47,7 +48,7 @@
     \end{minipage}
     \begin{minipage}{0.4\textwidth}
       \begin{flushright} \large
-        \textsc{Tuteur :}\\ \textsc{Emmanuel Hyon}\\
+        \textsc{Tuteur :}\\ \textsc{Mcf. Emmanuel Hyon}\\
       \end{flushright}
     \end{minipage}
     \vfill
@@ -64,23 +65,25 @@ L'objectif du refactoring est de réduire les coûts de maintenance et de péren
 "With refactoring you can take a bad design, chaos even, and rework it into well-designed code."\cite{ref2}\\
 Le refactoring permet donc de passer d'un code possédant de mauvaise base à un code propre.\\
 Un bon refactoring doit pouvoir améliorer la qualité d'un code tout en gardant son fonctionnement du point de vue de l'utilisateur. Concernant la partie des tests, tout les tests qui fonctionnaient avant le refactoring se doivent d'être fonctionnels après.\\
-Dans ce mémoire, nous allons analyser différentes techniques de refactoring. Puis nous allons étudier le principe des flots de contrôle.\\ Enfin je vous proposerais et évaluerais une solution pour faire du refactoring de code en utilisant les flots de contrôle pour le langage Java.\\
+Dans ce mémoire, nous allons analyser différentes techniques de refactoring. Puis nous allons étudier rapidement le principe des flots de contrôle.\\ Enfin on étudiera s'il est possible de faire du refactoring à l'aide des flots de contrôle pour le langage Java.\\
 Ce sujet est intéressant et actuel car il faut commencer à ce soucier du code que l'on produit car plus l'on avance dans le temps plus les programmes sont lourds et contiennent de lignes de code. Avec la puissance des ordinateurs actuels, la plus part des développeurs ne prennent plus le temps d'écrire des codes de qualité car la machine sera de toute façon assez rapide pour compenser un code de mauvaise qualité.\cite{ref4}\\
 Avec le temps, la relecture et la modification de code sera difficile avec les programmes qui deviennent de plus en plus gros.\cite{ref4}\\
 Pour essayer de diminuer cette quantité de travail à l'avenir, il faut commencer à produire du code de qualité et bien structuré. Concernant les codes déjà existant il faudra donc faire du refactoring de code. Or le refactoring peut-être long selon la qualité des projets que l'on traite. Il serait donc intéressant et très utile d'avoir un programme permettant d'automatiser des parties de refactoring pour permettre de gagner du temps précieux. 
 Ce mémoire a pour but de fournir une solution qui permettrais de faire du refactoring de code facilement pour gagner du temps tout en produisant du code de qualité.\cite{ref3}
 
-\chapter{Le refactoring}
-\section{Composed Method Pattern}
+\chapter{Les différents type de refactoring}
+\section{Pattern de méthode composée}
 L'un des grands ennemie des développeurs est de faire des méthodes trop longue qui sont difficilement compréhensible.
 Une grande partie du refactoring est donc consacrée à la composition correcte des méthodes.\cite{ref5}\\
 
-L'objectif de cette méthode de refactoring est de :\\
+L'objectif de ce type de refactoring est de :\\
 - rendre les méthodes facilement compréhensible.\\
 - simplifier les méthodes en les brisants en plusieurs méthodes plus petites.\\
 - supprimer la duplication de code.\\
 - nommer proprement les variables, méthodes et paramètres pour comprendre leurs utilités au premier coup d'œil.\\
-- pouvoir faire des tests plus facilement car les morceaux de méthodes peuvent être testés individuellement.\cite{ref6}\\
+- pouvoir faire des tests plus facilement car les morceaux de méthodes peuvent être testés individuellement.\cite{ref6}
+
+\newpage
 
 \subsection{Extraction de méthode}
 \paragraph{Présentation :} 
@@ -155,10 +158,12 @@ Au dessus, nous pouvons voir que l'addition des deux paramètre est stocké dans
 Le code est plus compréhensible grâce au nom de la méthode qui est explicite.\\
 Si j'ai besoin plus tard dans mon code de faire une addition, j'ai une méthode que je peux réutiliser.
 
+\newpage
+
 \subsection{Diviser les variables temporaires}
 \paragraph{Présentation :}
-Parfois dans nos code, nous déclarons une variable temporaire où nous stockons un résultat quelconque. Puis plus tard, nous réutilisons cette même variable pour stocker un autre résultat n'ayant aucun rapport.
-Cette technique a pour but de ne plus utiliser la même variable temporaire pour faire différentes choses.
+Parfois dans notre code, nous déclarons une variable temporaire où nous stockons un résultat quelconque. Puis plus tard, nous réutilisons cette même variable pour stocker un tout autre résultat n'ayant aucun rapport.
+Cette technique a pour but de ne plus utiliser la même variable temporaire pour faire différentes choses et de nommer proprement chaque variable temporaire.
 
 \begin{center}
 \includegraphics[scale=1]{Image/Diviser_Temp.png}\\
@@ -174,159 +179,213 @@ On peut voir au dessus que je réutilise la variable temp pour faire à la fois 
 \end{center}
 
 \paragraph{Bénéfices :}
-Le fait d'avoir chaque variable,méthode ou n'importe quelle composant qui a un unique but permet de faciliter grandement la maintenance du code. Puisque on peut modifier des parties du code sans que ça affecte une autre partie.\\
+Le fait d'avoir chaque variable, méthode ou n'importe quelle composant qui a un unique but ou une responsabilité permet de faciliter grandement la maintenance du code. Puisque on peut modifier des parties du code sans que ça affecte une autre partie.\\
 Cela permet aussi une meilleure relecture du code car on supprime les variables nommées temp ou value pour donner des noms facilement compréhensible.
 
-\subsection{Remove Assignments to Parameters}
-s
-\subsection{Replace Method with Method Object}
-s
-\subsection{Substitute Algorithm}
-s
+\subsection{Supprimer les assignations aux paramètres}
+\paragraph{Présentation :}
+Ici le problème est semblable à celui de la division des variables temporaires, si on a un paramètre, on ne doit pas lui affecter d'autre valeur car cela modifie ce que représente le paramètre et on peut se perdre dans le code car on ne sait plus ce que contient ce paramètre.\\
+Il vaut donc mieux déclarer une variable local plutôt que de modifier le paramètre.
 
+\paragraph{Bénéfices :}
+Comme dit plus haut, chaque éléments à une unique responsabilité et la maintenance du code est plus simple.  
 
+\subsection{Remplacement de méthode par des objets}
+\paragraph{Présentation :}
+Il nous arrive d'écrire des méthodes très longues qui possèdent beaucoup de variable qui sont extrêmement liées entre elles. On peut avec le refactoring créer une nouvelle classe qui va contenir la méthode ainsi que les anciennes variables locales en variable de classe.
+
+\begin{center}
+\includegraphics[scale=1]{Image/MethodeToObjet.png}\\
+\itshape{Avant remplacement par l'objet \cite{ref5}}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=1]{Image/MethodeToObjet2.png}\\
+\itshape{Après remplacement par l'objet \cite{ref5}}
+\end{center}
+
+\paragraph{Bénéfices :}
+L'isolation d'une méthode longue dans sa propre classe permet d'empêcher le fait prenne de l'ampleur.\\
+On peut aussi scinder cette méthode en sous-méthode sans "polluer" la classe d'origine avec des méthodes utilitaires.
+
+\paragraph{Inconvénient :}
+Cette méthode de refactoring nous fait créer une nouvelle classe et cela augmente la complexité global du programme.
 
 \newpage
-\section{Déplacement des fonctionnalités entre les objets}
-s
-\subsection{Move Method}
-s
-\subsection{Move Field}
-s
-\subsection{Extract Class}
-s
-\subsection{Inline Class}
-s
-\subsection{Hide Delegate}
-s
-\subsection{Remove Middle Man}
-s
-\subsection{Introduce Foreign Method}
-s
-\subsection{Introduce Local Extension}
-s
 
+\section{Déplacement des fonctionnalités entre les objets}
+Lorsque l'on code beaucoup de fonctionnalités dans un même programme, il arrive qu'au bout d'un moment, on se rendent compte que , par exemple, on a placé une fonctionnalités dans la mauvaise classe et qu'on ne sache pas comment faire pour la déplacer sans risquer de casser tout le code.\\
+Or les méthodes de refactoring qui vont suivre seront du type à permettre le déplacement de fonctionnalités entre des classes en toute sécurité.
+
+
+\subsection{Déplacement de méthode}
+\paragraph{Présentation :}
+Il se peut qu'à un instant t, vous vouliez déplacer une méthode dans un autre classe car cela vous arrange ou car cela aurait plus de sens. Dans ce cas la, on peut utiliser le refactoring pour déplacer cette méthode vers l'autre classe en toute sécurité.
+
+\paragraph{Comment faire :}
+Il faut commencer par regarder toutes les variables qui sont présente dans la classe et que la méthode utilise. Si c'est variable ne sont utilisé que par la méthode à déplacer, il faut les déplacer dans la nouvelle classe aussi.\\
+En revanche si ces variables sont utilisées par d'autre méthode il est conseillé de déplacer aussi ces méthodes vers la nouvelle classe.
+Ensuite, il faut s'assurer que toutes ces méthodes ne soit pas déclarer dans une classe mère ou fille.\\
+Si toutes ces conditions sont réunis, on peut déclarer la ou les méthodes dans la nouvelle classe puis définir une méthode dans l'ancienne classe qui va appeler la nouvelle méthode.
+
+\paragraph{Bénéfices :}
+Cette méthode de refactoring nous permet d'obtenir une meilleure cohérence interne dans les classes.
+
+\subsection{Déplacement de variable}
+s
+\subsection{Extraction de classe}
+s
+\subsection{Cacher la délégation}
+s
+\subsection{Ajout de méthode étrangère}
+s
 
 
 \newpage
 \section{Organiser ses données}
+Ce type de refactoring va permettre de mieux gérer les données des classes en dissociant les associations de classe pour les rendre plus portable et réutilisables.
+
+
+\subsection{Auto Encapsulation des champs}
 s
-\subsection{Self Encapsulate Field}
+\subsection{Remplacer les données par des objets}
 s
-\subsection{Replace Data Value with Object}
+\subsection{Passer du stockage par valeur en référence}
 s
-\subsection{Change Value to Reference}
+\subsection{Remplacer les tableaux par des objets}
 s
-\subsection{Change Reference to Value}
+\subsection{Changer une association unidirectionnelle en bidirectionnelle}
 s
-\subsection{Replace Array with Object}
+\subsection{Remplacer les numéro magiques en constantes}
 s
-\subsection{Duplicate Observed Data}
+\subsection{Encapsulation des champs}
 s
-\subsection{Change Unidirectional Association to Bidirectional}
+\subsection{Encapsulation de collection}
 s
-\subsection{Change Bidirectional Association to Unidirectional}
+\subsection{Remplacer les type code par une classe}
 s
-\subsection{Replace Magic Number with Symbolic Constant}
-s
-\subsection{Encapsulate Field}
-s
-\subsection{Encapsulate Collection}
-s
-\subsection{Replace Type Code with Class}
-s
-\subsection{Replace Type Code with Subclasses}
-s
-\subsection{Replace Type Code with State/Strategy}
-s
-\subsection{Replace Subclass with Fields}
+\subsection{Remplacer des sous-classes par des champs}
 s
 
 
 
 \newpage
-\section{Simplifier les expressions de condition}
-s
-\subsection{Decompose Conditional}
-s
-\subsection{Consolidate Conditional Expression}
-s
-\subsection{Consolidate Duplicate and Conditional Fragments}
-s
-\subsection{Remove Control Flag}
-s
-\subsection{Replace Nested Conditional with Guard Clauses}
-s
-\subsection{Replace Conditional with Polymorphism}
-s
-\subsection{Introduce Null Object}
-s
-\subsection{Introduce Assertion}
-s
+\section{Simplifier les expressions conditionnels}
+Dans les programmes, il n'est pas rare de trouver des expressions conditionnels qui possèdent une logique compliquées avec beaucoup de condition. Ce type de refactoring va permettre de simplifier toutes ces expressions.
 
 
+
+\subsection{Décomposer les expressions conditionnels}
+s
+\subsection{Consolider les expressions conditionnels}
+s
+\subsection{Consolider les duplications des fragments conditionnels}
+s
+\subsection{Remplacer les conditions imbriquées par des clauses de garde}
+s
+\subsection{Remplacer les conditions imbriquées avec du polymorphisme}
+s
 
 
 \newpage
 \section{Simplifier les appels de méthode}
+Ces techniques de refactoring on pour but de simplifier l'appel de méthode ainsi que de le rendre plus facile à comprendre.
+
+
+
+
+\subsection{Renommer une méthode}
 s
-\subsection{Rename Method}
+\subsection{Ajout de paramètre}
 s
-\subsection{Add Parameter}
+\subsection{Suppression de paramètre}
 s
-\subsection{Remove Parameter}
+\subsection{Séparer les fonctionnalités d'une même méthode}
 s
-\subsection{Separate Query from Modifier}
+\subsection{Méthode de paramétrage}
 s
-\subsection{Parameterize Method}
+\subsection{Remplacer les paramètres avec des méthodes explicites}
 s
-\subsection{Replace Parameter with Explicit Methods}
+\subsection{Conserver l'objet entier}
 s
-\subsection{Preserve Whole Object}
+\subsection{Remplacer les paramètres avec des appels de méthodes}
 s
-\subsection{Replace Parameter with Method Call}
+\subsection{Ajouter des objets en paramètre}
 s
-\subsection{Introduce Parameter Object}
+\subsection{Cacher les méthodes}
 s
-\subsection{Remove Setting Method}
+\subsection{Remplacer les codes d'erreurs par des exceptions}
 s
-\subsection{Hide Method}
-s
-\subsection{Replace Constructor with Factory Method}
-s
-\subsection{Replace Error Code with Exception}
-s
-\subsection{Replace Exception with Test}
+\subsection{Remplacer les exceptions par des tests}
 s
 
 
 \newpage
 \section{Faire face à la généralisation}
+Dans cette partie, nous allons étudier des techniques permettant de déplacer des fonctionnalités dans la hiérarchie d'héritage de classes, à la création de nouvelles classes et d'interfaces.
+
+
+
+\subsection{Remonter les champs}
 s
-\subsection{Pull Up Field}
+\subsection{Remonter les méthodes}
 s
-\subsection{Pull Up Method}
+\subsection{Remonter le corps du constructeur}
 s
-\subsection{Pull Up Constructor Body}
+\subsection{Extraire une sous classe}
 s
-\subsection{Push Down Method}
+\subsection{Extraire une super classe}
 s
-\subsection{Push Down Field}
+\subsection{Extraire une interface}
 s
-\subsection{Extract Subclass}
+\subsection{Supprimer une sous classe}
 s
-\subsection{Extract Superclass}
+\subsection{Créer des template méthodes}
 s
-\subsection{Extract Interface}
+
+\chapter{Outils de refactoring}
+\section{Fonctionnalités d'IDE}
+Dans cette partie, je vais vous présenter les fonctionnalités de refactoring que l'IDE Eclipse propose à ces utilisateurs.
+
+
+\section{AutoRefactor}
+\subsection{Présentation du projet}
+Le projet AutoRefactor a été lancé par Jean-Noël Rouvignac. Il a décidé de se lancer dans se projet car il était fatigué de devoir prendre trop de temps pour appliquer les mêmes nettoyages de code encore et encore. L'objectif de ce projet est de faciliter la maintenance, moderniser le code, rendre le code plus léger et compacte et augmenter les performances des programmes. Il a commencé à travailler sur les expressions rationnelles pour retravailler toute la base du code, mais les faux positifs étaient trop nombreux.\cite{ref7} Il a ensuite créé un greffon Eclipse (AutoRefactor) qui utilise  l'API des Java Development Tools (Eclipse JDT) qui est l'API que eclipse utilise pour faire du refactoring.\\
+Une première release du produit est sortie le 22 mars 2015 et plus récemment la version 1.2 est sortie (30 juin 2018).
+
+\subsection{Fonctionnement du programme}
+Je vais maintenant vous présenter un algorithme simplifié de comment fonctionne AutoRefactor.
+
+Le développeur choisi les règles de refactoring à appliquer puis le greffon prend la liste des refactorings.
+
+1) Le fichier Java à analyser est parsé et produit un arbre syntaxique abstrait.\\
+
+2) Pour chaque refactoring :\\
+\tabto{0.8cm} 1) Cherche des opportunités de refactoring en visitant l'abre syntaxique abstrait.\\
+\tabto{0.8cm} 2) Génère les réécritures de code lorsqu'une  opportunité de refactoring a été identifiée.\\
+
+3) Lorsque tout l'arbre syntaxique abstrait a été visité, si des réécriture de code ont été générées :\\
+\tabto{0.8cm} 1) Alors, toutes les réécritures de code générées sont appliquées sur le fichier.\\
+\tabto{0.8cm} 2) Le fichier est sauvegardé.\\
+\tabto{0.8cm} 3) Boucle vers 1.\\
+\tabto{0.8cm} 4) Sinon, fin : il n'y a plus de refactoring possibles sur ce fichier.\\
+
+Actuellement, tous les refactorings implémentés font du filtrage par motif et travaillent fichiers par fichiers.
+\subsection{Fonctionnalités}
 s
-\subsection{Collapse Hierarchy}
-s
-\subsection{Form Template Method}
-s
-\subsection{Replace Inheritance with Delegation}
-s
-\subsection{Replace Delegation with Inheritance}
-s
+
+\subsection{Objectif futur}
+Jean-Noël Rouvignac a pour objectif futur de réussir à construire des graphes de flot de contrôle pour pouvoir les analyser. Ceci lui permettrait d'écrire des refactorings comprenant les chemins d'exécution du code, comme le ferait un développeur qui lirait du code. En particulier, il deviendrait possible de réduire la portée des variables, comprendre quels chemins d'exécution du code sont morts (impossibles à atteindre).\cite{ref7}\\
+Il aimerait développer une fonctionnalité d'extraction automatique de méthode pour simplifier les longues méthodes.
+
+
+
+\section{Les graphes de flots de contrôle}
+Actuellement, les flots de contrôle ne sont pas utilisés pour faire du refactoring.
+
+
+
+
 
 \bibliographystyle{plain}
 \bibliography{bibliographie}
