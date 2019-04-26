@@ -231,14 +231,56 @@ Si toutes ces conditions sont réunis, on peut déclarer la ou les méthodes dan
 \paragraph{Bénéfices :}
 Cette méthode de refactoring nous permet d'obtenir une meilleure cohérence interne dans les classes.
 
-\subsection{Déplacement de variable}
-s
 \subsection{Extraction de classe}
-s
+\paragraph{Présentation :}
+Il est possible, lorsque l'on développe quelque chose, de créer un classe qui en réalité fait le travail de deux classes. Il vaut mieux changer ça rapidement car cela risque d'empirer et d'obtenir une classe illisible. On peut alors appliquer une technique de refactoring pour extraire une classe d'une autre.
+
+\begin{center}
+\includegraphics[scale=1]{Image/Extraction_Classe.png}\\
+\itshape{Avant extraction de la classe}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=1]{Image/Extraction_Classe2.png}\\
+\itshape{Après extraction de la classe}
+\end{center}
+
+\paragraph{Comment faire :}
+Il faut d'abord créer la nouvelle classe ainsi qu'une relation entre l'ancienne et la nouvelle classe.\\
+Ensuite, il faut utiliser les méthodes de refactoring "Déplacement de méthode" et "Déplacement de variable" pour toutes les variables et méthodes à déplacer.
+
+\paragraph{Bénéfices :}
+Cette méthode de refactoring permet de respecter le principe de responsabilité unique.
+Les classes respectant ce principe sont plus fiable et tolérante aux changements puisque si une classe peut faire plusieurs choses, la modification d'une fonctionnalité de la classe peut casser une autre fonctionnalité.
+
+\paragraph{Technique inverse :}
+La technique inverse consiste à supprimer les classes qui ont peut d'utilités. Cela permet de libérer de la mémoire.
+
 \subsection{Cacher la délégation}
-s
-\subsection{Ajout de méthode étrangère}
-s
+\paragraph{Présentation :}
+Nous sommes dans le cas où une structure permet à un client d'appeler une méthode d'un objet A qui lui renvoie un objet B pour ensuite appeler une méthode de l'objet B pour obtenir l'information souhaitées. On obtient une chaîne d'appel or si l'on veut changer quelque chose à la relation entre A et B, cela aura pour conséquence de changer la chaîne d'appel côté client.\\
+Pour éviter ça, il est préférable de cacher la délégation au yeux du client à l'aide de refactoring.
+
+\begin{center}
+\includegraphics[scale=0.7]{Image/Cacher_Delegation.png}\\
+\itshape{Avant/Après le refactoring \cite{ref5}}
+\end{center}
+
+\paragraph{Comment faire :}
+Il faut commencer par créer dans la classe serveur (la classe dont le client à un access direct) les mêmes méthodes qui sont dans la classe déléguer (la classe qui contient les informations dont le client à besoin).\\
+Ensuite, il faut changer le code client pour qu'il appel la méthode de la classe serveur.\\
+Si cela permet au client de ne plus avoir à utiliser la classe déléguer, on peut supprimer la méthode de la classe serveur qui renvoyait la classe déléguer.
+
+\paragraph{Bénéfices :}
+Le fait de cacher la délégation au client permet de lui cacher les relations entre les classes ce qui nous permet de changer le code de nos programmes plus simplement.
+
+\paragraph{Inconvénient :}
+A chaque fois, qu'une nouvelle fonctionnalité est ajoutées à la classe délégué, il faut alors créer une nouvelle méthode dans la classe serveur. Si ces changements arrivent souvent cela peut rapidement devenir pénible.
+
+\paragraph{Technique inverse :}
+Il existe donc une technique pour les cas où la classe délégué possède beaucoup trop de méthode.
+La technique de suppression du "Middle Man".
+Cette technique consiste simplement à créer une méthode qui renvoie la classe délégué pour éviter de devoir changer la classe serveur à chaque fois qu'une nouvelle fonctionnalité est ajouté à la classe délégué.
 
 
 \newpage
@@ -247,17 +289,40 @@ Ce type de refactoring va permettre de mieux gérer les données des classes en 
 
 
 \subsection{Auto Encapsulation des champs}
-s
-\subsection{Remplacer les données par des objets}
-s
+\paragraph{Présentation :}
+Dans le cas d'une classe contenant des variables privées, il est préférable d'utiliser des getters et setters à l'intérieure même de la classe pour accéder aux variables.
+
+\paragraph{Bénéfices :}
+En accédant indirectement aux variables, on opte pour une approche plus flexible, cela nous permet par exemple de produire des opérations quand une variable est "set" ou "get". Cela peut être fait très facilement en modifiant simplement le getter et setter de la variable en question.
+Utiliser les gettes et setters nous permet aussi de les redéfinir dans les sous-classes si un changement doit être fait dans les opérations de vérifications.
+
 \subsection{Passer du stockage par valeur en référence}
-s
-\subsection{Remplacer les tableaux par des objets}
-s
-\subsection{Changer une association unidirectionnelle en bidirectionnelle}
-s
-\subsection{Remplacer les numéro magiques en constantes}
-s
+\paragraph{Présentation :}
+Nous pouvons stocker des objets par valeur ou par référence. Le premier nous permet d'avoir une image de l'objet à l'instant où il est sauvegardé et le deuxième stocke un "lien" qui nous permet d'accéder à l'objet et non pas une image.
+Si lorsque nous créons un programme, nous stockons un objet qui ne change pas ou très peu dans le temps nous pouvons le stocker par valeur en revanche si à l'avenir cette objet vient à se modifier plus souvent, il sera nécessaire de le stoker par référence.
+
+\paragraph{Bénéfices :}
+Utiliser les références permet de posséder les informations les plus récentes à propos d'un objet. C'est à dire que si un objet est modifié à un moment, si quelqu'un possède une référence sur l'objet, il aura accès immédiatement au changement.
+
+\paragraph{Inconvénient :}
+L'inconvénient majeur de ce refactoring est qu'il est compliqué à mettre en place.
+
+\paragraph{Technique inverse :}
+Il est possible de faire le refactoring dans le sens inverse dans le cas où l'objet change très peu au fil du temps. Il ne vaut donc pas le coup de mettre en place une référence dans ce cas là.
+
+\subsection{Remplacer les nombres magiques en constantes}
+\paragraph{Présentation :}
+Un nombre magique est un nombre qui n'est pas stocker dans une variable et qui apparait dans une équation sans qu'on ne connaisse sont utilité au premier coup d'œil. Il est très compliqué de modifier ces nombres magiques surtout s'ils apparaissent plusieurs fois dans le code.
+
+\paragraph{Comment faire :}
+La solution pour faire disparaître les nombres magiques et de rendre le code plus lisible est très simple. Il suffit de trouver toutes les occurrences de ces nombres magiques et de déclarer une constante qu'on utilisera à la place. Cette constante aura un nom adapté pour que l'on puisse comprendre rapidement ce qu'elle représente.
+
+\paragraph{Bénéfices :}
+Les constantes permettent de savoir facilement ce qu'elle représente.\\
+Il est beaucoup plus simple de changer la valeur d'une constante plutôt que de chercher partout dans le code.
+
+
+
 \subsection{Encapsulation des champs}
 s
 \subsection{Encapsulation de collection}
