@@ -321,17 +321,65 @@ La solution pour faire disparaître les nombres magiques et de rendre le code pl
 Les constantes permettent de savoir facilement ce qu'elle représente.\\
 Il est beaucoup plus simple de changer la valeur d'une constante plutôt que de chercher partout dans le code.
 
-
-
-\subsection{Encapsulation des champs}
-s
 \subsection{Encapsulation de collection}
-s
-\subsection{Remplacer les type code par une classe}
-s
-\subsection{Remplacer des sous-classes par des champs}
-s
+\paragraph{Présentation :}
+Dans le cas de l'utilisation d'une collection, il faut avoir en tête qu'il ne s'agit pas d'une simple variable qui nécessite un getter et un setter. Il faut la gérer différemment et créer des méthodes spécifique pour la gestion de collection.
 
+\paragraph{Comment faire :}
+Pour traiter avec des collections, il faut un minimum de trois méthodes, la première étant la méthode "add". Cette méthode va permettre l'ajout d'un objet dans la collection en prenant uniquement l'objet à ajouter en paramètre.\\
+La deuxième méthode est "remove", elle permet de supprimer un objet d'une collection en ne donnant que l'objet à effacer de la collection en paramètre.\\
+La dernière est une simple méthode "get" qui va donner une copie de la collection pour que l'objet puisse être consulté sans pour autant pouvoir être modifié.
+
+\paragraph{Bénéfices :}
+Avec cette gestion de collection, on ne peut plus modifier une collection en récupérant l'objet à partir du getter.\\
+Les règles, s'il en a, pour ajouter des objets dans la collection seront toujours respecter puisqu'il faudra impérativement passer par la méthode add ou remove pour modifier la collection.\\
+Cela permet aussi de rendre l'utilisation de collection plus simple.
+
+\subsection{Remplacer les Type Code}
+\paragraph{Présentation :}
+Les Type Code sont des champs qui peuvent contenir des valeurs fixe définie par le développeur pour représenter quelque chose.\\
+Dans l'exemple ci-dessous, on a une classe qui représente une tâche à faire, et elle contient une variable qui va représenter son état qui peut être soit "TODO","ONGOING" ou "DONE". Ces trois états sont définie chacun par une valeur numérique.
+
+\begin{center}
+\includegraphics[scale=1]{Image/TypeCode.png}\\
+\itshape{Exemple de Type Code}
+\end{center}
+
+Il existe trois type de refactoring qui permettent chacun de remplacer les Type Code par des alternatives plus avantageuses.
+
+\paragraph{Remplacement par une classe :}
+Il est possible de remplacer un Type Code par une classe de type Énumération.\\
+Cela permet de ne plus utiliser de simple nombre qui ne sont pas forcément compréhensible à première vue alors que les énumérations sont facilement lisible.\\
+Le typage à l'aide d'une énumération va permettre de ne plus se soucier de la valeur des Type Code (Est ce que le nombre rentré à bien une signification?) ce qui permet de faire moins de gestion sur ces valeur.
+
+\begin{center}
+\includegraphics[scale=1]{Image/TypeCodeClasse.png}\\
+\itshape{Remplacement de Type Code à l'aide d'une classe}
+\end{center}
+
+\paragraph{Remplacement par une sous classe :}
+On peut remplacer les Type Code par des sous classe. A l'aide de ce procédé nous pouvons écrire des méthodes ou créer des champs spécifique selon le type de l'objet. Cette méthode permet aussi de rajouter très facilement de nouveau "type" en créant simplement une nouvelle sous classe.
+Il adhère aussi mieux au principe de responsabilité unique.\\
+En revanche, le problème de cette approche est qu'on ne peut pas changer le type de l'objet facilement s'il venait à changer.\\
+Il est possible de faire la technique inverse dans le cas où les sous classes diffère uniquement par les valeurs retour de les méthodes (ces valeurs étant des constantes). Garder des sous classes dans ce cas là, complexifie l'architecture pour un apport négligeable.
+
+\begin{center}
+\includegraphics[scale=1]{Image/TypeCode_SousClasse.png}\\
+\itshape{Avant remplacement de Type Code à l'aide d'une sous classe}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=1]{Image/TypeCode_SousClasse2.png}\\
+\itshape{Après remplacement de Type Code à l'aide d'une sous classe}
+\end{center}
+
+\paragraph{Remplacement par State/Strategy}
+Cette méthode est une alternative à la précédente dans le cas où le type de l'objet est soumis à des changement pendant sa durée de vie. Cette méthode utilise le pattern State/Strategy. Comme la précédente, il est simple de rajouter une nouveau type si besoin sans avoir à modifier du code existant. L'exemple suivant est le même que le précédent.
+
+\begin{center}
+\includegraphics[scale=1]{Image/TypeCode_State.png}\\
+\itshape{Après remplacement de Type Code à l'aide du pattern State/Strategy}
+\end{center}
 
 
 \newpage
@@ -341,16 +389,44 @@ Dans les programmes, il n'est pas rare de trouver des expressions conditionnels 
 
 
 \subsection{Décomposer les expressions conditionnels}
-s
-\subsection{Consolider les expressions conditionnels}
-s
-\subsection{Consolider les duplications des fragments conditionnels}
-s
-\subsection{Remplacer les conditions imbriquées par des clauses de garde}
-s
-\subsection{Remplacer les conditions imbriquées avec du polymorphisme}
-s
+\paragraph{Présentation :}
+Il nous arrive souvent dans nos programmes, d'avoir des conditions regroupant plusieurs condition. Le résultat étant une condition assez complexe à comprendre sans commentaire pour l'expliquer. La solution à ce problème est de déplacer le calcule de ces conditions dans des méthodes.
 
+\paragraph{Comment faire :}
+Pour ce faire, il faut utiliser la méthode de refactoring d'extraction de méthode sur le bloc conditionnel pour obtenir un simple appel de méthode avec un nom compréhensible.
+
+\paragraph{Bénéfices :}
+Le bénéfice majeur de cette technique est de permettre une relecture et une maintenance du code simplifier.
+
+\subsection{Remplacer les conditions imbriquées avec du polymorphisme}
+\paragraph{Présentation :}
+Dans le cas où nous avons par exemple un switch qui va produire différent traitement selon le type d'un objet. Alors dans ce cas là, il sera intéressant de supprimer le switch pour produire des sous classes.
+
+\begin{center}
+\includegraphics[scale=1]{Image/ReplaceConditionalPoly.png}\\
+\itshape{Avant refactoring \cite{ref5}}
+\end{center}
+
+\paragraph{Exemple :}
+Dans l'exemple, on est passé d'un switch qui calculait la vitesse d'un oiseau selon son type dans la classe "Bird". A une classe abstraite qui nécessite la redéfinition de la méthode de calcule de vitesse pour chaque sous classe soit obliger de la redéfinir.
+
+\begin{center}
+\includegraphics[scale=1]{Image/ReplaceConditionalPoly2.png}\\
+\itshape{Après refactoring \cite{ref5}}
+\end{center}
+
+\paragraph{Bénéfices :}
+Dans cette exemple cela permettrait de rajouter des types d'oiseau simplement en recréant une sous classe sans avoir à modifier une méthode déjà existante.\\
+On évite aussi des conditions switch ou autre très longue du fait qu'il y aurait beaucoup de type à gérer.
+
+\subsection{Introduire des assertions}
+\paragraph{Présentation :}
+Une assertion est une condition qui doit être évaluer à vrai pour que le programme puisse continuer à fonctionner. Si une assertion renvoie faux alors le programme s'arrête immédiatement.
+Dans le cadre d'un programme qui nécessite absolument une variable, un objet ou n'importe quoi pour pouvoir fonctionner. Même si cette donnée est censé être présente à ce moment du programme, il est plus sure de placer une assertion pour vérifier que cette donnée existe bien au moment venu.
+
+\paragraph{Bénéfices :}
+Placer des assertions permet de détecter des erreurs et permet d'arrêter des programmes qui risque de faire des dégâts si on les laisse continuer alors que quelque chose ne c'est pas déroulé comme prévue.
+Les assertions sont la plus part du temps utilisées dans les tests unitaires mais elles peuvent être utilisé dans nos programmes et se révéler très utiles.
 
 \newpage
 \section{Simplifier les appels de méthode}
