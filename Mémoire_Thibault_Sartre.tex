@@ -107,7 +107,7 @@ A l'aide de cette méthode, on évite la duplication de code. Puisque dans l'exe
 L'extraction de méthode nous permet aussi d'isoler les parties indépendantes du code. Cela est pratique lorsque l'on cherche un potentiel bug, on peut plus facilement tester toutes les méthodes du codes car elles sont toutes isolées les une des autres.
 
 \paragraph{Technique inverse :}
-La technique de refactoring Inline Method est l'exact opposé de l'extraction de méthode. Cette technique consiste à supprimé les méthodes jugées inutile qui sont très courtes ou qui sont plus facilement compréhensible par le code à l'intérieure de la méthode que par son nom. Cela à pour seul but de simplifier le code en diminuant le nombre de méthode dans le code.
+La technique de refactoring Inline Method est l'exact opposé de l'extraction de méthode. Cette technique consiste à supprimé les méthodes jugées inutile qui sont très courtes ou qui sont plus facilement compréhensible par le code à l'intérieure de la méthode que par son nom. Cela à pour seul but de simplifier le code en diminuant le nombre de méthode dans le code.\\
 
 \subsection{Extraction de variable}
 \paragraph{Présentation :}
@@ -135,7 +135,7 @@ Pour que le résultat de cette méthode soit optimal, il faut nommer efficacemen
 Le code va contenir beaucoup de variable mais cela est dérisoire comparé à la lisibilité du code qui est nettement améliorée.
 
 \paragraph{Technique inverse :}
-La technique Inline Temp va permettre de supprimer les variables superflue qui contienne uniquement le résultat d'une opération simple qui va être utilisé une seul fois. Cette technique n'a pas de vrai bénéfice dans cette état, en revanche elle peut être couplé avec la technique suivante.
+La technique Inline Temp va permettre de supprimer les variables superflue qui contienne uniquement le résultat d'une opération simple qui va être utilisé une seul fois. Cette technique n'a pas de vrai bénéfice dans cette état, en revanche elle peut être couplé avec la technique suivante.\\
 
 \subsection{Remplacement des temporaires avec des méthodes}
 \paragraph{Présentation :}
@@ -156,7 +156,7 @@ Au dessus, nous pouvons voir que l'addition des deux paramètre est stocké dans
 
 \paragraph{Bénéfices :}
 Le code est plus compréhensible grâce au nom de la méthode qui est explicite.\\
-Si j'ai besoin plus tard dans mon code de faire une addition, j'ai une méthode que je peux réutiliser.
+Si j'ai besoin plus tard dans mon code de faire une addition, j'ai une méthode que je peux réutiliser.\\
 
 \newpage
 
@@ -180,7 +180,7 @@ On peut voir au dessus que je réutilise la variable temp pour faire à la fois 
 
 \paragraph{Bénéfices :}
 Le fait d'avoir chaque variable, méthode ou n'importe quelle composant qui a un unique but ou une responsabilité permet de faciliter grandement la maintenance du code. Puisque on peut modifier des parties du code sans que ça affecte une autre partie.\\
-Cela permet aussi une meilleure relecture du code car on supprime les variables nommées temp ou value pour donner des noms facilement compréhensible.
+Cela permet aussi une meilleure relecture du code car on supprime les variables nommées temp ou value pour donner des noms facilement compréhensible.\\
 
 \subsection{Supprimer les assignations aux paramètres}
 \paragraph{Présentation :}
@@ -188,7 +188,7 @@ Ici le problème est semblable à celui de la division des variables temporaires
 Il vaut donc mieux déclarer une variable local plutôt que de modifier le paramètre.
 
 \paragraph{Bénéfices :}
-Comme dit plus haut, chaque éléments à une unique responsabilité et la maintenance du code est plus simple.  
+Comme dit plus haut, chaque éléments à une unique responsabilité et la maintenance du code est plus simple.\\
 
 \subsection{Remplacement de méthode par des objets}
 \paragraph{Présentation :}
@@ -209,7 +209,7 @@ L'isolation d'une méthode longue dans sa propre classe permet d'empêcher le fa
 On peut aussi scinder cette méthode en sous-méthode sans "polluer" la classe d'origine avec des méthodes utilitaires.
 
 \paragraph{Inconvénient :}
-Cette méthode de refactoring nous fait créer une nouvelle classe et cela augmente la complexité global du programme.
+Cette méthode de refactoring nous fait créer une nouvelle classe et cela augmente la complexité global du programme.\\
 
 \newpage
 
@@ -229,7 +229,7 @@ Ensuite, il faut s'assurer que toutes ces méthodes ne soit pas déclarer dans u
 Si toutes ces conditions sont réunis, on peut déclarer la ou les méthodes dans la nouvelle classe puis définir une méthode dans l'ancienne classe qui va appeler la nouvelle méthode.
 
 \paragraph{Bénéfices :}
-Cette méthode de refactoring nous permet d'obtenir une meilleure cohérence interne dans les classes.
+Cette méthode de refactoring nous permet d'obtenir une meilleure cohérence interne dans les classes.\\
 
 \subsection{Extraction de classe}
 \paragraph{Présentation :}
@@ -254,7 +254,7 @@ Cette méthode de refactoring permet de respecter le principe de responsabilité
 Les classes respectant ce principe sont plus fiable et tolérante aux changements puisque si une classe peut faire plusieurs choses, la modification d'une fonctionnalité de la classe peut casser une autre fonctionnalité.
 
 \paragraph{Technique inverse :}
-La technique inverse consiste à supprimer les classes qui ont peut d'utilités. Cela permet de libérer de la mémoire.
+La technique inverse consiste à supprimer les classes qui ont peut d'utilités. Cela permet de libérer de la mémoire.\\
 
 \subsection{Cacher la délégation}
 \paragraph{Présentation :}
@@ -280,7 +280,7 @@ A chaque fois, qu'une nouvelle fonctionnalité est ajoutées à la classe délé
 \paragraph{Technique inverse :}
 Il existe donc une technique pour les cas où la classe délégué possède beaucoup trop de méthode.
 La technique de suppression du "Middle Man".
-Cette technique consiste simplement à créer une méthode qui renvoie la classe délégué pour éviter de devoir changer la classe serveur à chaque fois qu'une nouvelle fonctionnalité est ajouté à la classe délégué.
+Cette technique consiste simplement à créer une méthode qui renvoie la classe délégué pour éviter de devoir changer la classe serveur à chaque fois qu'une nouvelle fonctionnalité est ajouté à la classe délégué.\\
 
 
 \newpage
@@ -294,7 +294,7 @@ Dans le cas d'une classe contenant des variables privées, il est préférable d
 
 \paragraph{Bénéfices :}
 En accédant indirectement aux variables, on opte pour une approche plus flexible, cela nous permet par exemple de produire des opérations quand une variable est "set" ou "get". Cela peut être fait très facilement en modifiant simplement le getter et setter de la variable en question.
-Utiliser les gettes et setters nous permet aussi de les redéfinir dans les sous-classes si un changement doit être fait dans les opérations de vérifications.
+Utiliser les gettes et setters nous permet aussi de les redéfinir dans les sous-classes si un changement doit être fait dans les opérations de vérifications.\\
 
 \subsection{Passer du stockage par valeur en référence}
 \paragraph{Présentation :}
@@ -308,7 +308,8 @@ Utiliser les références permet de posséder les informations les plus récente
 L'inconvénient majeur de ce refactoring est qu'il est compliqué à mettre en place.
 
 \paragraph{Technique inverse :}
-Il est possible de faire le refactoring dans le sens inverse dans le cas où l'objet change très peu au fil du temps. Il ne vaut donc pas le coup de mettre en place une référence dans ce cas là.
+Il est possible de faire le refactoring dans le sens inverse dans le cas où l'objet change très peu au fil du temps. Il ne vaut donc pas le coup de mettre en place une référence dans ce cas là.\\
+
 
 \subsection{Remplacer les nombres magiques en constantes}
 \paragraph{Présentation :}
@@ -319,7 +320,7 @@ La solution pour faire disparaître les nombres magiques et de rendre le code pl
 
 \paragraph{Bénéfices :}
 Les constantes permettent de savoir facilement ce qu'elle représente.\\
-Il est beaucoup plus simple de changer la valeur d'une constante plutôt que de chercher partout dans le code.
+Il est beaucoup plus simple de changer la valeur d'une constante plutôt que de chercher partout dans le code.\\
 
 \subsection{Encapsulation de collection}
 \paragraph{Présentation :}
@@ -333,19 +334,18 @@ La dernière est une simple méthode "get" qui va donner une copie de la collect
 \paragraph{Bénéfices :}
 Avec cette gestion de collection, on ne peut plus modifier une collection en récupérant l'objet à partir du getter.\\
 Les règles, s'il en a, pour ajouter des objets dans la collection seront toujours respecter puisqu'il faudra impérativement passer par la méthode add ou remove pour modifier la collection.\\
-Cela permet aussi de rendre l'utilisation de collection plus simple.
+Cela permet aussi de rendre l'utilisation de collection plus simple.\\
 
 \subsection{Remplacer les Type Code}
 \paragraph{Présentation :}
 Les Type Code sont des champs qui peuvent contenir des valeurs fixe définie par le développeur pour représenter quelque chose.\\
-Dans l'exemple ci-dessous, on a une classe qui représente une tâche à faire, et elle contient une variable qui va représenter son état qui peut être soit "TODO","ONGOING" ou "DONE". Ces trois états sont définie chacun par une valeur numérique.
+Dans l'exemple ci-dessous, on a une classe qui représente une tâche à faire, et elle contient une variable qui va représenter son état qui peut être soit "TODO","ONGOING" ou "DONE". Ces trois états sont définie chacun par une valeur numérique.\\
+Il existe trois type de refactoring qui permettent chacun de remplacer les Type Code par des alternatives plus avantageuses.
 
 \begin{center}
 \includegraphics[scale=1]{Image/TypeCode.png}\\
 \itshape{Exemple de Type Code}
 \end{center}
-
-Il existe trois type de refactoring qui permettent chacun de remplacer les Type Code par des alternatives plus avantageuses.
 
 \paragraph{Remplacement par une classe :}
 Il est possible de remplacer un Type Code par une classe de type Énumération.\\
@@ -396,7 +396,7 @@ Il nous arrive souvent dans nos programmes, d'avoir des conditions regroupant pl
 Pour ce faire, il faut utiliser la méthode de refactoring d'extraction de méthode sur le bloc conditionnel pour obtenir un simple appel de méthode avec un nom compréhensible.
 
 \paragraph{Bénéfices :}
-Le bénéfice majeur de cette technique est de permettre une relecture et une maintenance du code simplifier.
+Le bénéfice majeur de cette technique est de permettre une relecture et une maintenance du code simplifier.\\
 
 \subsection{Remplacer les conditions imbriquées avec du polymorphisme}
 \paragraph{Présentation :}
@@ -417,7 +417,7 @@ Dans l'exemple, on est passé d'un switch qui calculait la vitesse d'un oiseau s
 
 \paragraph{Bénéfices :}
 Dans cette exemple cela permettrait de rajouter des types d'oiseau simplement en recréant une sous classe sans avoir à modifier une méthode déjà existante.\\
-On évite aussi des conditions switch ou autre très longue du fait qu'il y aurait beaucoup de type à gérer.
+On évite aussi des conditions switch ou autre très longue du fait qu'il y aurait beaucoup de type à gérer.\\
 
 \subsection{Introduire des assertions}
 \paragraph{Présentation :}
@@ -426,7 +426,7 @@ Dans le cadre d'un programme qui nécessite absolument une variable, un objet ou
 
 \paragraph{Bénéfices :}
 Placer des assertions permet de détecter des erreurs et permet d'arrêter des programmes qui risque de faire des dégâts si on les laisse continuer alors que quelque chose ne c'est pas déroulé comme prévue.
-Les assertions sont la plus part du temps utilisées dans les tests unitaires mais elles peuvent être utilisé dans nos programmes et se révéler très utiles.
+Les assertions sont la plus part du temps utilisées dans les tests unitaires mais elles peuvent être utilisé dans nos programmes et se révéler très utiles.\\
 
 \newpage
 \section{Simplifier les appels de méthode}
@@ -434,29 +434,86 @@ Ces techniques de refactoring ont pour but de simplifier l'appel de méthode ain
 
 
 
-
 \subsection{Renommer une méthode}
-s
-\subsection{Ajout de paramètre}
-s
-\subsection{Suppression de paramètre}
-s
-\subsection{Séparer les fonctionnalités d'une même méthode}
-s
-\subsection{Méthode de paramétrage}
-s
-\subsection{Remplacer les paramètres avec des méthodes explicites}
-s
+\paragraph{Présentation :}
+Commençons cette partie par quelque chose de simple mais terriblement efficace, les noms de méthode.\\
+Lorsque l'on code une méthode, il faut lui donner un nom qui permet de comprendre ce que la méthode fait sans avoir à lire une seul ligne de code. Il s'agit d'une règle de base en programmation mais elle n'est pas toujours respectée.
+
+\paragraph{Bénéfices :}
+L'avantage de bien nommer une méthode est d'améliorer la relecture de son propre code ainsi que grandement faciliter la futur maintenance du code par quelqu'un d'autre.\\
+
+\subsection{Séparer les requêtes de questionnement et de modification}
+\paragraph{Présentation :}
+Une méthode doit avoir une seul tâche à accomplir et non pas plusieurs. Et surtout si cette même méthode mêle opération de lecture et d'écriture.
+Dans cette méthode de refactoring, nous appliquons le pattern de "Command and Query Responsibility Segregation" qui nous dis qu'il faut séparer les opérations de lecture et d'écriture.
+Pour appliquer ce refactoring il faut simplement séparer la méthode en deux pour obtenir deux nouvelles méthodes, une qui récupère des données et l'autre qui modifie des données.
+
+\paragraph{Bénéfices :}
+Cette technique permet évidemment de pouvoir faire des lectures sans avoir forcement à modifier une donnée.\\
+Le pattern "Command and Query Responsibility Segregation" nous permet de maximiser les performances, l'évolutivité ainsi que la sécurité.\\
+
+\subsection{Méthode paramétrée}
+\paragraph{Présentation :}
+Parfois, il nous peut nous arriver d'écrire deux méthodes assez similaire qui on un but commun mais qui le traite avec des opérations ou valeurs qui diffèrent. Dans un cas similaire, il est conseillé de créer une seul méthode qui va regrouper les deux et prendre un paramètre pour savoir quel traitement appliquer.\\
+
+\begin{center}
+\includegraphics[scale=1]{Image/Methode_Parametre.png}\\
+\itshape{Exemple de méthode paramétrée \cite{ref8}}
+\end{center}
+
+\paragraph{Bénéfices :}
+On obtient une seul méthode au lieu de deux très similaire, ce qui permet la suppression de la duplication de code.\\
+A l'avenir, on a plus besoin de créer d'autre méthode si une nouvelle version de la méthode est nécessaire comme une augmentation de sept pourcents en reprenant l'exemple.\\
+
+\paragraph{Technique inverse :}
+il existe une technique qui revient plus ou moins a faire l'inverse. Il s'agit de la méthode de remplacement de paramètre avec des méthodes explicites.\\
+Dans ce cas, on a une méthode qui va pouvoir faire plusieurs traitement différent qui n'ont rien à avoir entre eux. La méthode sait qu'elle traitement faire grâce à un des paramètres.\\
+On peut avoir une méthode "setValue" sui prend en paramètre une chaîne de caractère et un valeur. Si la chaîne vaut "prix" alors la méthode sauvegarde la valeur dans le prix et si la chaîne vaut "poids" alors la méthode va enregistrer la valeur dans la variable poids.\\
+Il serait donc préférable de faire du refactoring et de séparer les deux méthodes pour obtenir une méthode "setPrix" et une autre "setPoids". Ce qui rend le programme plus clair et intuitif.\\
+
 \subsection{Conserver l'objet entier}
-s
-\subsection{Remplacer les paramètres avec des appels de méthodes}
-s
+\paragraph{Présentation :}
+Lorsqu'une méthode a besoin de variable qui sont contenus dans un objet, il est préférable d'envoyer l'objet entier en paramètre plutôt que d'envoyer uniquement les variables de l'objet.
+
+\paragraph{Bénéfices :}
+Le résultat est un code plus lisible car on a plus qu'un paramètre qui est l'objet contenant tous les anciens paramètres.\\
+Un autre avantage est que si la méthode doit évoluer et a besoin d'une autre variable de l'objet, pas besoin d'aller modifier tous le code pour modifier l'appel de la méthode en rajoutant le nouveau paramètre. Cela rend le code plus facile à faire évoluer.\\
+
 \subsection{Ajouter des objets en paramètre}
-s
-\subsection{Cacher les méthodes}
-s
+\paragraph{Présentation :}
+Dans nos programmes, il peut arriver que l'on écrive plusieurs méthode utilisant exactement les mêmes paramètre. Le problème étant une duplication de paramètre ainsi que potentiellement une duplication de code à l'intérieur des méthodes en traitant les paramètres.\\
+Dans ce cas, nous avons la possibilité de créer un objet qui va contenir les paramètres ainsi que des méthodes qui vont s'occuper du traitement de ces paramètres.\\
+
+\begin{center}
+\includegraphics[scale=1]{Image/Ajout_Objet_Parametre.png}\\
+\itshape{Exemple de transformation de paramètre en objet \cite{ref8}}
+\end{center}
+
+\paragraph{Bénéfices :}
+L'avantage principal de cette méthode est de supprimer la duplication de code généré par le traitement identique des paramètres dans plusieurs méthodes.\\
+Les paramètres sont aussi plus lisible du fait qu'il ne reste plus qu'un seul objet avec un nom adapté pour une compréhension simple et efficace.\\
+En revanche, ce refactoring n'est pas utile s'il ne sert uniquement à stocker les paramètres sans y ajouter des méthodes de traitement.\\
+
+\subsection{Remplacer les constructeurs par des méthode Factory}
+\paragraph{Présentation :}
+Plaçons nous dans un cas où on veut que notre constructeur ne soit pas accessible par l'extérieur.
+On va alors devoir utiliser cette méthode de refactoring qui se base sur le pattern de factory.
+
+\paragraph{Comment faire :}
+Pour ce faire, il faut simplement créer une nouvelle méthode avec un nom adapté comme "createNomObjet", cette méthode va alors appelé elle même le constructeur et renvoyer une instance de l'objet demandé.
+
+\paragraph{Bénéfices :}
+Les méthodes de type Factory ne renvoie pas forcément une instance de l'objet dont elle fait partie. Cela peut avoir un grand avantage s'il faut renvoyer un sous classe car on peut utiliser cette méthode pour faire un traitement à l'aide de paramètre pour décider qu'elle sous classe renvoyer.\\
+La méthode Factory peut avoir un nom plus approprié que celui d'un constructeur pour comprendre ce qu'elle fait.\\
+On peut aussi l'utiliser pour renvoyer des instances déjà existante(Singleton), ce qui n'est pas possible avec un constructeur.\\
+
+
 \subsection{Remplacer les codes d'erreurs par des exceptions}
 s
+
+
+
+
 \subsection{Remplacer les exceptions par des tests}
 s
 
