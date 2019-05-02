@@ -215,7 +215,7 @@ Cette méthode de refactoring nous fait créer une nouvelle classe et cela augme
 
 \section{Déplacement des fonctionnalités entre les objets}
 Lorsque l'on code beaucoup de fonctionnalités dans un même programme, il arrive qu'au bout d'un moment, on se rendent compte que , par exemple, on a placé une fonctionnalité dans la mauvaise classe et qu'on ne sache pas comment faire pour la déplacer sans risquer de casser tout le code.\\
-Or les méthodes de refactoring qui vont suivre seront du type à permettre le déplacement de fonctionnalités entre des classes en toute sécurité.
+Or les méthodes de refactoring qui vont suivre seront du type à permettre le déplacement de fonctionnalités entre des classes en toute sécurité.\\
 
 
 \subsection{Déplacement de méthode}
@@ -285,7 +285,7 @@ Cette technique consiste simplement à créer une méthode qui renvoie la classe
 
 \newpage
 \section{Organiser ses données}
-Ce type de refactoring va permettre de mieux gérer les données des classes en dissociant les associations de classe pour les rendre plus portable et réutilisables.
+Ce type de refactoring va permettre de mieux gérer les données des classes en dissociant les associations de classe pour les rendre plus portable et réutilisables.\\
 
 
 \subsection{Auto Encapsulation des champs}
@@ -384,7 +384,7 @@ Cette méthode est une alternative à la précédente dans le cas où le type de
 
 \newpage
 \section{Simplifier les expressions conditionnels}
-Dans les programmes, il n'est pas rare de trouver des expressions conditionnels qui possèdent une logique complexe avec beaucoup de condition. Ce type de refactoring va permettre de simplifier toutes ces expressions.
+Dans les programmes, il n'est pas rare de trouver des expressions conditionnels qui possèdent une logique complexe avec beaucoup de condition. Ce type de refactoring va permettre de simplifier toutes ces expressions.\\
 
 
 
@@ -430,7 +430,7 @@ Les assertions sont la plus part du temps utilisées dans les tests unitaires ma
 
 \newpage
 \section{Simplifier les appels de méthode}
-Ces techniques de refactoring ont pour but de simplifier l'appel de méthode ainsi que de rendre l'appel de méthode plus facile à comprendre.
+Ces techniques de refactoring ont pour but de simplifier l'appel de méthode ainsi que de rendre l'appel de méthode plus facile à comprendre.\\
 
 
 
@@ -509,37 +509,94 @@ On peut aussi l'utiliser pour renvoyer des instances déjà existante(Singleton)
 
 
 \subsection{Remplacer les codes d'erreurs par des exceptions}
-s
+\paragraph{Présentation :}
+Aujourd'hui, les codes d'erreurs sont quelques choses  qu'il ne vaut mieux plus utiliser car il existe une classe spécialement faites pour la gestion d'erreurs, les exceptions.\\
+L'utilisation des exceptions permet de détecter et de traiter les erreurs qui peuvent se produire pendant l'exécution du code.\\
 
+\begin{center}
+\includegraphics[scale=1]{Image/ThrowException.png}\\
+\itshape{Remplacement de code d'erreur par une exception \cite{ref8}}
+\end{center}
 
+\paragraph{Bénéfices :}
+L'utilisation des exceptions nous permet principalement d'éviter à faire de la gestion d'erreur à travers les codes d'erreurs.\\
+Il est plus rapide de se rendre compte que quelque chose c'est mal passé si une exception est levée.\\
+Les codes d'erreurs ne peuvent pas être utilisé dans les constructeurs alors que les exceptions le peuvent.\\
+On peut aussi créer nos propres exceptions pour qu'elles fassent un traitement particulier.\\
 
+\paragraph{Méthode alternative :}
+Les exceptions sont des objets qui doivent être utilisées pour gérer les comportements irréguliers provoqués par des erreurs inattendu.\\
+Il ne faut pas utilisé les exceptions à la place de simple test.\\
 
-\subsection{Remplacer les exceptions par des tests}
-s
-
+\begin{center}
+\includegraphics[scale=0.75]{Image/ExceptionTest.png}\\
+\itshape{Remplacement d'exception par un test \cite{ref5}}
+\end{center}
 
 \newpage
 \section{Faire face à la généralisation}
-Dans cette partie, nous allons étudier des techniques permettant de déplacer des fonctionnalités dans la hiérarchie d'héritage de classes, à la création de nouvelles classes et d'interfaces.
+Dans cette partie, nous allons étudier des techniques permettant de déplacer des fonctionnalités dans la hiérarchie d'héritage de classes, à la création de nouvelles classes et d'interfaces.\\
 
 
 
-\subsection{Remonter les champs}
-s
-\subsection{Remonter les méthodes}
-s
-\subsection{Remonter le corps du constructeur}
-s
-\subsection{Extraire une sous classe}
-s
+\subsection{Remonter les variables et méthodes}
+\paragraph{Présentation :}
+Nous allons commencer par un cas basique, si nous avons une super classe ainsi que deux sous classes qui hérite de la super classe, et que les deux sous classes possèdent un attribut ou une méthode commune que ne possède pas la super classe alors il sera intéressant de déplacer cette variable ou méthode dans la super classe.\\
+
+\paragraph{Bénéfices :}
+Ce refactoring élimine de la duplication de code que ce soit dans la définition d'une variable ou méthode ainsi que pour le corps de la méthode.\\
+Dans le cas de la méthode cela permet de ne modifier que la méthode présente dans la super classe en cas de changement au lieu de devoir passer dans toutes les sous classes.\\
+
+\paragraph{Technique inverse :}
+Il existe évidemment une technique pour descendre les champs et méthode.\\
+Que ce soit pour les variables ou les méthodes, il est préférable de déplacer un champs ou une méthode d'une super classe dans une sous classe si ce dit champs ou méthode n'est utilisé que dans cette même sous classe.\\
+Cela permet de rentre le code plus compréhensible et améliore la cohérence interne de la classe.\\
+
+
 \subsection{Extraire une super classe}
-s
-\subsection{Extraire une interface}
-s
-\subsection{Supprimer une sous classe}
-s
-\subsection{Créer des template méthodes}
-s
+\paragraph{Présentation :}
+Si l'on a deux classes qui possèdent des champs ou des méthodes communes, alors il serait intéressant de créer une super classe dont les deux classes hériteraient.\\
+
+\paragraph{Bénéfices :}
+On supprime donc de la duplication de code.\\
+En revanche cette méthode de refactoring ne peut pas être utilisé dans le cas où l'une des deux classes possèdent déjà une super classe.\\
+
+\subsection{Créer des méthodes Template}
+\paragraph{Présentation :}
+Il nous est déjà arriver d'avoir deux sous classe qui possèdent une méthode assez similaire qui déroule un algorithme possédant les mêmes étapes mais avec des valeurs changeante.\\
+Il y a alors un moyen de créer un template de la méthode dans la super classe tout en laissant l'implémentation qui diffère aux sous classe.\\
+
+\begin{center}
+\includegraphics[scale=0.75]{Image/Template.png}\\
+\itshape{Avant mise en place du template \cite{ref5}}
+\end{center}
+
+\paragraph{Exemple :}
+Dans cette exemple, on peut voir au dessus qu'on a deux sous classe qui possèdent une méthode permettant de calculer le montant d'une facture.\\
+Les deux méthodes n'utilisent pas les mêmes valeurs pour le calcule mais en revanche le calcule se résume dans les deux cas à l'addition du tarif de base additionner au taxe.\\
+On peut donc voir en dessous que la solution est de créer remonter la méthode de calcule du montant de la facture dans la super classe qui va renvoyer l'addition du prix de base additionner à celui des taxes.\\
+Ces prix là seront calculer à l'aide de deux nouvelles méthode qui seront redéfinie dans les sous classes.\\
+
+\begin{center}
+\includegraphics[scale=0.75]{Image/Template2.png}\\
+\itshape{Après mise en place du template \cite{ref5}}
+\end{center}
+
+\paragraph{Bénéfices :}
+Les templates nous permettent de supprimer de la duplication de code même s'il ne s'agit pas exactement du même code.\\
+Cela peut aussi nous faire gagner du temps dans le cas où il faut créer une nouvelle sous classe, on aura juste dans l'exemple à redéfinir le calcule du prix de base et des taxes.\\
+
+\subsection{Remplacer l'héritage par de la délégation}
+\paragraph{Présentation :}
+Ici, nous avons une classe B qui hérite d'une classe A et qui n'utilise qu'une petite portion des méthodes de sa super classe.\\
+Il serait judicieux de créer un champs dans B pour stocker A et ensuite de créer des méthodes pour déléguer le travail à la classe A.
+
+\paragraph{Bénéfices :}
+Cela permet à la classe B de posséder uniquement les méthodes qu'elle utilise et non pas toutes les méthodes de la classe A qu'elle n'utilise pas.
+
+\paragraph{Technique inverse :}
+Il existe aussi la technique inverse, c'est à dire remplacer la délégation par de l'héritage dans le cas où la classe B utilise beaucoup de méthode de la classe A.
+Dans ce cas il est préférable de privilégier l'héritage ce qui permet de réduire la taille du code due à la suppression de toutes les méthodes de délégation.\\
 
 \chapter{Outils de refactoring}
 \section{Fonctionnalités d'IDE}
