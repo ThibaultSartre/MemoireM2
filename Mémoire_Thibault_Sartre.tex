@@ -65,13 +65,133 @@ L'objectif du refactoring est de réduire les coûts de maintenance et de péren
 "With refactoring you can take a bad design, chaos even, and rework it into well-designed code."\cite{ref2}\\
 Le refactoring permet donc de passer d'un code possédant de mauvaise base à un code propre.\\
 Un bon refactoring doit pouvoir améliorer la qualité d'un code tout en gardant son fonctionnement du point de vue de l'utilisateur. Concernant la partie des tests, tout les tests qui fonctionnaient avant le refactoring se doivent d'être fonctionnels après.\\
-Dans ce mémoire, nous allons analyser différentes techniques de refactoring. Puis nous allons étudier les outils de refactoring existant ainsi que les graphes de flot de contrôle.\\ Enfin on étudiera s'il est possible de faire du refactoring à l'aide des flots de contrôle pour le langage Java.\\
+Dans ce mémoire, nous allons d'abord étudier les problèmes dans les programmes qui mène au refactoring, ensuite on va analyser différentes techniques de refactoring. Puis nous allons étudier les outils de refactoring existant ainsi que les graphes de flot de contrôle.\\ Enfin on étudiera s'il est possible de faire du refactoring à l'aide des flots de contrôle pour le langage Java.\\
 Ce sujet est intéressant et actuel car il faut commencer à ce soucier du code que l'on produit car plus l'on avance dans le temps plus les programmes sont lourds et contiennent de lignes de code. Avec la puissance des ordinateurs actuels, la plus part des développeurs ne prennent plus le temps d'écrire des codes de qualité car la machine sera de toute façon assez rapide pour compenser un code de mauvaise qualité.\cite{ref4}\\
 Avec le temps, la relecture et la modification de code sera difficile avec les programmes qui deviennent de plus en plus gros.\cite{ref4}\\
 Pour essayer de diminuer cette quantité de travail à l'avenir, il faut commencer à produire du code de qualité et bien structuré. Concernant les codes déjà existant il faudra donc faire du refactoring de code. Or le refactoring peut-être long selon la qualité des projets que l'on traite. Il serait donc intéressant et très utile d'avoir un programme permettant d'automatiser des parties de refactoring pour permettre de gagner du temps précieux. 
 Ce mémoire a pour but de fournir une solution qui permettrais de faire du refactoring de code facilement pour gagner du temps tout en produisant du code de qualité.\cite{ref3}
 
+\chapter{Pourquoi faire du refactoring ?}
+Dans ce chapitre, je vais vous présenter la plus part des problèmes rencontré par les développeurs qui va les mener à faire du refactoring.\\
+
+
+\section{Bloaters}
+Les bloaters (ou ballonnement) sont des classes, méthodes ou même du simple code qui à pris des proportions énormes. Ce qui rend le travail dessus compliqué. Ce type de problème se développe au fil du temps si personne ne fait attention .\\
+
+\subsection{Méthode trop longue}
+\paragraph{Problème :}
+Un des soucis que beaucoup de développeur possèdent, est qu'ils préfèrent rajouter des lignes de code dans une méthode existante plutôt que de créer une nouvelle méthode sous prétexte que cette nouvelle méthode ne ferait que quelques lignes.\\
+Cela engrange des méthodes trop grosses et difficile à lire et à maintenir.\\
+
+\paragraph{Gain du traitement :}
+Le refactoring d'une méthode trop longue permet à cette même méthode de vivre plus longtemps du fait de sa simplicité.\\
+Cela permet aussi en général de supprimer potentiellement une duplication de code.\\
+Avec une méthode qui est maintenant petite et clair, il est alors beaucoup plus simple et rapide de la maintenir.\\
+
+\subsection{Grande classe}
+\paragraph{Problème :}
+Un peu comme pour la méthode trop longue, on a tendance à préférer placer une nouvelle fonctionnalités dans une classe existante plutôt que de créer une nouvelle classe.\\
+Ce qui en découle est une classe monstrueusement grande, ce qui la rend très difficilement praticable.\\
+
+\paragraph{Gain du traitement :}
+Une fois le refactoring effectué, le développeurs n'a plus à avoir en tête les dizaine et dizaine d'attributs et méthodes qui composent sa classe.\\
+Et comme dit précédemment le découpage d'une classe va aussi en général permettre une suppression de doublon de code ou au moins le rendre moins apte à apparaître.\\
+
+\subsection{L'obsession des types primitifs}
+\paragraph{Problème :}
+Les problèmes liés aux types primitifs sont :\\
+- l'utilisation d'un simple type "string" pour un numéro de téléphone ou bien un "integer" pour représenter un montant d'argent à la place d'objet.\\
+- l'utilisation de constante pour coder de l'information comme des droits administrateurs\\
+- l'utilisation de chaîne de caractère en guise de noms de champs dans des tableaux de données.\\
+
+\paragraph{Gain du traitement :}
+On obtient un code plus flexible grâce à l'utilisation d'objet.\\
+Plus besoin de se demander à quoi serve toutes ces constantes.\\
+Globalement le code est plus compréhensible.\\
+
+\subsection{Longue liste de paramètre}
+\paragraph{Problème :}
+On peut considérer qu'une liste de paramètre devient trop longue dès lors qu'elle contient plus de quatre paramètres.\\
+Une longue liste de paramètre peut vouloir dire qu'une méthode est en faite la combinaison de plusieurs.\\
+Ces listes sont difficile à comprendre, il est préférable d'utiliser les attributs de la classe où la méthode se trouve et si ce n'est pas possible alors il est préférable d'envoyer un objet qui regroupe les données nécessaires.\\
+
+\paragraph{Gain du traitement :}
+Le code devient plus lisible.\\
+Il peut être raccourcie dans le cas où la méthode était une fusion de plusieurs.\\
+
+\subsection{Agrégat de données}
+\paragraph{Problème :}
+Parfois il est possible de trouver des groupes de variable identique qui apparaissent à plusieurs endroit dans le code.\\
+Ces agrégats sont souvent dû à de la programmation copié collé ou à une structure pauvre du programme.\\
+Pour savoir s'il est possible d'extraire ces agrégat de données pour former une nouvelle classe, il faut vérifier si c'est bien le groupement de toutes ces données qui leurs donne du sens (par exemple les données nécessaires à la connections vers une base). Si c'est la cas, le choix de créer une nouvelle classe pour ces données est conseillé.\\
+
+\paragraph{Gain du traitement :}
+Permet de facilité la compréhension et l'organisation du code et surtout de ces agrégats de données puisque les opérations liées à ces données sont maintenant regroupés vers une seule classe.\\
+
+\section{Abus du principe orientation objet}
+Il s'agit de problème basé sur la mauvaise utilisation du principe de programmation "orienté objet".\\
+
+\subsection{La structure switch}
+\paragraph{Problème :}
+Ce problème survient lorsque l'on obtient un "switch" ou une séquence de "if" complexe.\\
+Les "switch" de ce type peuvent être utilisés pour faire un traitement différent selon le type d'un objet.\\
+Par exemple, on a une classe Oiseau qui possède une méthode getSpeed(). Cette méthode va à l'aide d'un switch analyser un attribut qui définie qu'elle oiseau représente la classe pour renvoyer la vitesse de cette oiseau.\\
+Dans ces cas là, il est préférable d'utiliser le polymorphisme (voir \textit{Remplacer les conditions avec du polymorphisme}).
+
+\paragraph{Gain du traitement :}
+On obtient une meilleure organisation du code.\\
+
+\subsection{Héritage refusé}
+\paragraph{Problème :}
+Ici, le problème survient lorsque l'on commence à créer des sous classes uniquement pour ré-utiliser certaine méthode de la super classe alors que la super classe et la sous classe ne possèdent pas de réel lien.\\
+
+
+\paragraph{Gain du traitement :}
+En supprimant ces liens entre les classes, on obtient  un code plus organisé et clair.\\
+On n'aura plus d'héritage "bizarre" qui n'ont aucun sens.\\
+
+\section{Modification complexe}
+Dans cette section, nous allons parler de problème lié a la modification difficile de code.\\
+Par exemple lorsqu'on doit modifier du code à plein d'endroit différent pour faire fonctionner le tout.\\
+
+\subsection{Changement Divergent}
+\paragraph{Problème :}
+Ce problème cible particulièrement le cas ou un simple changement dans une classe produit un grand nombre de changement dans d'autre méthode de cette même classe.\\
+Par exemple dans le cas d'une classe produit, et qu'on veut rajouter un type de produit, il faut alors changer les méthodes de recherche, d'affichage et d'ordonnancement de produit.\\
+Pour cette exemple, il faudrait utiliser la technique de refactoring d'extraction de classe.\\
+
+\paragraph{Gain du traitement :}
+Avec ce traitement, on simplifie la maintenance du code et on simplifie son organisation.\\
+
+\subsection{Chirurgie au fusil}
+\paragraph{Problème :}
+Cette fois, on a un problème totalement inverse au précédent c'est à dire qu'ici un petit changement demande de faire des petits changement dans plusieurs classe.\\
+On obtient ce problème dans le cas où une responsabilité de traitement est affecté à plusieurs classe et si ce traitement doit changer, toutes les classes doivent être modifiées.\\
+Les refactoring utilisés pour réparer le code sont le "déplacement de méthode et d'attribut".\\
+
+\paragraph{Gain du traitement :}
+En revanche les avantages du traitement sont les mêmes que précédemment c'est à dire une meilleure organisation et une maintenance simplifiée.\\
+
+
+\section{Les choses inutiles}
+s
+\subsection{Les commentaires}
+s
+\subsection{La duplication de code}
+s
+\subsection{Les classes paresseuses}
+s
+\subsection{Les classes données}
+s
+\subsection{Le code mort}
+s
+\subsection{Généralité spéculative}
+s
+
+
 \chapter{Les différents type de refactoring}
+Dans ce chapitre, je vais vous présenter des méthodes de refactoring qui permettent d'améliorer la qualité du code.\\
+
 \section{Pattern de méthode composée}
 L'un des grands ennemie des développeurs est de faire des méthodes trop longue qui sont difficilement compréhensible.
 Une grande partie du refactoring est donc consacrée à la composition correcte des méthodes.\cite{ref5}\\
@@ -398,7 +518,7 @@ Pour ce faire, il faut utiliser la méthode de refactoring d'extraction de méth
 \paragraph{Bénéfices :}
 Le bénéfice majeur de cette technique est de permettre une relecture et une maintenance du code simplifier.\\
 
-\subsection{Remplacer les conditions imbriquées avec du polymorphisme}
+\subsection{Remplacer les conditions avec du polymorphisme}
 \paragraph{Présentation :}
 Dans le cas où nous avons par exemple un switch qui va produire différent traitement selon le type d'un objet. Alors dans ce cas là, il sera intéressant de supprimer le switch pour produire des sous classes.
 
