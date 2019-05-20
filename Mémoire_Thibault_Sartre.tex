@@ -173,20 +173,66 @@ Les refactoring utilisés pour réparer le code sont le "déplacement de méthod
 En revanche les avantages du traitement sont les mêmes que précédemment c'est à dire une meilleure organisation et une maintenance simplifiée.\\
 
 
-\section{Les choses inutiles}
-s
+\section{Les choses dispensables}
+Lors de cette partie, nous allons parler de toutes les petites choses qui sont dans le code mais qui ne servent à rien.
+
 \subsection{Les commentaires}
-s
+\paragraph{Problème :}
+Attention je ne dis pas que les commentaires en générales sont inutiles.\\
+Ici le problème est lorsque l'on utilise les commentaires pour masquer un code d'une qualité douteuse.\\
+Dans ces cas la, les développeurs vont écrire du code très peu compréhensible au premier regard et le remplie de commentaire afin de tout expliquer.\\
+Pour remédier à ce problème, on va suivre la règle : "Le meilleure des commentaires est un bon nom de méthode, classe ou variable".\\
+
+\paragraph{Gain du traitement :}
+En renommant nos méthodes, classe et variable pour que leurs noms représentent ce qu'elles contiennent ou font, on obtient un code avec beaucoup moins de commentaire mais qui devient bien plus intuitif et facile à comprendre.\\
+Les commentaires restant ne sont plus la pour expliquer qu'est ce que contient une variable avec un nom peu évocateur tel que les variables temporaires qui s'appelle "temp".\\
+
 \subsection{La duplication de code}
-s
+\paragraph{Problème :}
+Ce problème peut arriver lorsque plusieurs développeurs travaillent en même temps sur le même projet. Il peut arriver qu'une fonctionnalité soit développer deux fois à deux endroits différent du code.\\
+La duplication de code entraîne une réécriture plus longue de la fonctionnalité dupliqué car il faut la modifier à plusieurs endroits du code, et il est aussi possible d'oublier de modifier la fonctionnalité dans une des parties.\\
+Pour supprimer la duplication de code il est conseillé d'utiliser la technique de refactoring "Extraction de méthode" qui va permettre d'extraire la méthode pour ensuite uniquement faire des appels de méthodes.\\
+
+\paragraph{Gain du traitement :}
+La suppression de la duplication de code nous permet de réduire la taille du code et donc de le simplifier.\\
+Ce qui rend le code plus facile à modifier et faire évoluer.\\
+
 \subsection{Les classes paresseuses}
-s
-\subsection{Les classes données}
-s
+\paragraph{Problème :}
+La maintenance et la compréhension d'une classe sont des choses qui prennent du temps. Il est donc judicieux de faire en sorte de ne pas garder des classes qui ne sont plus pertinente et qui font perdre plus de temps qu'elles ne sont utiles.\\
+Ici nous allons parler d'une classe qui ne contient que très peu de fonctionnalités et qui est devenu très petite avec le temps après d'autre refactoring.\\
+
+
+Ce type de classe n'a plus grand intérêt à exister, il est donc intéressant de déplacer le peu de fonctionnalités restantes de la classe vers une autre classe puis de la supprimer.\\
+
+\paragraph{Gain du refactoring :}
+Supprimer des classes peu utile voir inutile permet de réduire la taille du code et de faciliter sa compréhension et sa maintenance.\\
+
+\subsection{Les classes de données}
+\paragraph{Problème :}
+Une classe de donnée est une classe qui contient un regroupement de données qui permettent de faire des traitements si elles sont regroupées.\\
+Ces classes de données sont utile mais peuvent rapidement perdre de leurs utilité lorsqu'elles sont utilisé uniquement comme un stockage de donnée. C'est à dire que la classe de données ne contient pas de fonctionnalité et ne contient que les variables avec des getters et setters.\\
+Il est donc préférable de regrouper toutes les fonctionnalités lié à cette classe de données éparpiller dans tous le code pour les insérer comme des méthodes de la classe de données.\\ 
+
+\paragraph{Gain du traitement :}
+Regrouper les fonctionnalités va permettre de supprimer d'éventuels  duplication de code.\\
+Et cela permet surtout de facilité la maintenance du code puisque toutes les fonctionnalités lié aux données sont regroupés dans la même classe.\\
+
 \subsection{Le code mort}
-s
-\subsection{Généralité spéculative}
-s
+\paragraph{Problème :}
+Du code mort est un bout de code qui n'a plus aucune utilité au moment présent. Il peut s'agir de n'importe quoi comme une classe, une variable, une méthode ou même un paramètre.
+Le soucis avec le code mort, c'est qu'une personne qui reprend du code ne va pas savoir que ce code n'a plus de raison d'exister et risque de perdre du temps en essayant de comprendre son utilité.\\
+
+On peut aussi générer du code mort lorsque l'on développe de manière prévisionnel c'est à dire que l'on pense que dans le futur on aura besoin de cette fonctionnalité dans le futur.
+On développe donc certaine fonctionnalité juste au cas où on en ai besoin.\\
+Résultat la fonctionnalité n'a jamais été utilisé et on se retrouve avec du code mort.\\
+
+La meilleure chose à faire avec du code mort c'est de le supprimer.\\
+
+\paragraph{Gain du traitement :}
+Supprimer du code mort permet de réduire la taille du code considérablement selon ce qui est supprimé mais aussi cela va rendre le code beaucoup plus simple à maintenir.\\
+
+
 
 
 \chapter{Les différents type de refactoring}
