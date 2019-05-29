@@ -7,6 +7,13 @@
 \usepackage{lmodern} 
 \usepackage{hyperref}
 \usepackage{tabto}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\definecolor{couleur}{RGB}{255,0,0}
+\definecolor{couleur2}{RGB}{200,0,0}
+\chapterfont{\color{couleur}}
+\sectionfont{\color{couleur}}
+\subsectionfont{\color{couleur2}}
 
 %% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx} 
@@ -58,19 +65,22 @@
 \end{titlepage}
 \renewcommand{\contentsname}{Sommaire}
 \tableofcontents{}
-\chapter{Pourquoi faire du refactoring ?}
-\section{Introduction}
+
+
+
+\chapter{Introduction}
 Le refactoring est une activité d'ingénierie logiciel consistant à modifier le code source d'une application de manière à améliorer sa qualité sans altérer son comportement vis-à-vis des utilisateurs.
 L'objectif du refactoring est de réduire les coûts de maintenance et de pérenniser les investissements tout au long du cycle de vie du logiciel en se concentrant sur la maintenabilité et l'évolutivité.\cite{ref1}\\
 "With refactoring you can take a bad design, chaos even, and rework it into well-designed code."\cite{ref2}\\
 Le refactoring permet donc de passer d'un code possédant de mauvaise base à un code propre.\\
 Un bon refactoring doit pouvoir améliorer la qualité d'un code tout en gardant son fonctionnement du point de vue de l'utilisateur. Concernant la partie des tests, tout les tests qui fonctionnaient avant le refactoring se doivent d'être fonctionnels après.\\
-Dans ce mémoire, nous allons d'abord étudier les problèmes dans les programmes qui mène au refactoring, ensuite on va analyser différentes techniques de refactoring. Puis nous allons étudier les outils de refactoring existant ainsi que les graphes de flot de contrôle.\\ Enfin on étudiera s'il est possible de faire du refactoring à l'aide des flots de contrôle pour le langage Java.\\
+Dans ce mémoire, nous allons d'abord étudier les problèmes dans les programmes qui mène au refactoring, ensuite on va analyser différentes techniques de refactoring. Enfin nous allons étudier les outils de refactoring existant ainsi que les graphes de flot de contrôle et s'ils sont utilisable dans le refactoring.\\
 Ce sujet est intéressant et actuel car il faut commencer à ce soucier du code que l'on produit car plus l'on avance dans le temps plus les programmes sont lourds et contiennent de lignes de code. Avec la puissance des ordinateurs actuels, la plus part des développeurs ne prennent plus le temps d'écrire des codes de qualité car la machine sera de toute façon assez rapide pour compenser un code de mauvaise qualité.\cite{ref4}\\
 Avec le temps, la relecture et la modification de code sera difficile avec les programmes qui deviennent de plus en plus gros.\cite{ref4}\\
 Pour essayer de diminuer cette quantité de travail à l'avenir, il faut commencer à produire du code de qualité et bien structuré. Concernant les codes déjà existant il faudra donc faire du refactoring de code. Or le refactoring peut-être long selon la qualité des projets que l'on traite. Il serait donc intéressant et très utile d'avoir un programme permettant d'automatiser des parties de refactoring pour permettre de gagner du temps précieux. 
-Ce mémoire a pour but de fournir une solution qui permettrais de faire du refactoring de code facilement pour gagner du temps tout en produisant du code de qualité.\cite{ref3}
+Ce mémoire a pour but d'établir s'il est possible de faire du refactoring à l'aide des graphs de flots de contrôle.\cite{ref3}
 
+\chapter{Pourquoi faire du refactoring ?}
 \section{Bloaters}
 Les bloaters (ou ballonnement) sont des classes, méthodes ou même du simple code qui à pris des proportions énormes. Ce qui rend le travail dessus compliqué. Ce type de problème se développe au fil du temps si personne ne fait attention .\\
 
@@ -751,10 +761,10 @@ Cela peut aussi nous faire gagner du temps dans le cas où il faut créer une no
 \subsection{Remplacer l'héritage par de la délégation}
 \paragraph{Présentation :}
 Ici, nous avons une classe B qui hérite d'une classe A et qui n'utilise qu'une petite portion des méthodes de sa super classe.\\
-Il serait judicieux de créer un champs dans B pour stocker A et ensuite de créer des méthodes pour déléguer le travail à la classe A.
+Il serait judicieux de créer un champs dans B pour stocker A et ensuite de créer des méthodes pour déléguer le travail à la classe A.\\
 
 \paragraph{Bénéfices :}
-Cela permet à la classe B de posséder uniquement les méthodes qu'elle utilise et non pas toutes les méthodes de la classe A qu'elle n'utilise pas.
+Cela permet à la classe B de posséder uniquement les méthodes qu'elle utilise et non pas toutes les méthodes de la classe A qu'elle n'utilise pas.\\
 
 \paragraph{Technique inverse :}
 Il existe aussi la technique inverse, c'est à dire remplacer la délégation par de l'héritage dans le cas où la classe B utilise beaucoup de méthode de la classe A.
@@ -762,13 +772,34 @@ Dans ce cas il est préférable de privilégier l'héritage ce qui permet de ré
 
 \chapter{Outils de refactoring}
 \section{Fonctionnalités d'IDE}
-Dans cette partie, je vais vous présenter les fonctionnalités de refactoring que l'IDE Eclipse propose à ces utilisateurs.
+Dans cette partie, je vais vous présenter les fonctionnalités de refactoring les plus utilisées qui sont intégrées dans les IDE.
+Je vais donc vous parler rapidement des fonctionnalités les plus utilisées.\\
 
+\paragraph{Suppression sans danger :}
+Ce premier refactoring va permettre aux utilisateurs de pouvoir supprimer un élément sans que cela ne cause des problèmes sur le fonctionnement du code.\\
+
+\begin{center}
+\includegraphics[scale=0.8]{Image/SafeDelete.png}\\
+\itshape{Exemple de suppression sans  danger \cite{ref9}}
+\end{center}
+
+Par exemple on a une méthode "foo" avec un paramètre de type integer. Ce paramètre est ensuite passé à la méthode "bar" puis à la méthode "baz" où il est enfin utilisé.\\
+Si l'on décide de supprimer la paramètre de la méthode "baz" alors intelliJ va, si demandé, effectuer le refactoring en supprimant le paramètre de toute les méthodes puisqu'il n'était utilisé que dans la méthode "baz".
+Cette option permet d'éviter d'avoir des oublies lorsqu'on supprime un élément et que l'on cherche où sont les répercussions.\\
+
+\paragraph{Capacité de déplacement :}
+IntelliJ nous permet de déplacer des fonctionnalités à travers le code. On peut donc déplacer des méthodes ou des attributs vers d'autre classe si cela semble plus pertinent.\\
+
+\paragraph{Extraction :}
+On a aussi la possibilité d'effectuer des extractions de tous types, que ce soit pour extraire des méthodes, attributs ou paramètres (voir \textit{Extraction de méthode, Extraction de variable}).\\
+
+\paragraph{Renommer :}
+Et pour finir, il existe une fonctionnalité permettant de renommer n'importe quelle élément. Cela nous permet de ne pas avoir à chercher dans le code toutes les occurrences de l'élément que l'on vient de modifier.\\
 
 \section{AutoRefactor}
 \subsection{Présentation du projet}
 Le projet AutoRefactor a été lancé par Jean-Noël Rouvignac. Il a décidé de se lancer dans se projet car il était fatigué de devoir prendre trop de temps pour appliquer les mêmes nettoyages de code encore et encore. L'objectif de ce projet est de faciliter la maintenance, moderniser le code, rendre le code plus léger et compacte et augmenter les performances des programmes. Il a commencé à travailler sur les expressions rationnelles pour retravailler toute la base du code, mais les faux positifs étaient trop nombreux.\cite{ref7} Il a ensuite créé un greffon Eclipse (AutoRefactor) qui utilise  l'API des Java Development Tools (Eclipse JDT) qui est l'API que eclipse utilise pour faire du refactoring.\\
-Une première release du produit est sortie le 22 mars 2015 et plus récemment la version 1.2 est sortie (30 juin 2018).
+Une première release du produit est sortie le 22 mars 2015 et plus récemment la version 1.2 est sortie (30 juin 2018).\\
 
 \subsection{Fonctionnement du programme}
 Je vais maintenant vous présenter un algorithme simplifié de comment fonctionne AutoRefactor.
@@ -787,21 +818,89 @@ Le développeur choisi les règles de refactoring à appliquer puis le greffon p
 \tabto{0.8cm} 3) Boucle vers 1.\\
 \tabto{0.8cm} 4) Sinon, fin : il n'y a plus de refactoring possibles sur ce fichier.\\
 
-Actuellement, tous les refactorings implémentés font du filtrage par motif et travaillent fichiers par fichiers.
+Actuellement, tous les refactorings implémentés font du filtrage par motif et travaillent fichiers par fichiers.\\
+
 \subsection{Fonctionnalités}
-s
+Il existe beaucoup de fonctionnalités de refactoring dans AutoRefactor mais je vais vous en présenter que quelques unes.\\
+
+\paragraph{Remplacement de boucle par une seule méthode :}
+AutoRefactor peut détécter des boucles inutiles liées à l'ajout ou à la suppression d'éléments dans des objets de type "List", "Map", "Collection".\\
+
+\begin{center}
+\includegraphics[scale=0.7]{Image/SupBoucle.png}\\
+\itshape{Exemple de suppression de boucle \cite{ref10}}
+\end{center}
+
+
+On peut voir sur l'exemple ci-dessus que les boucles pour parcourir les listes on été supprimé au profit d'une simple méthode.\\
+
+\paragraph{Changement de type de stockage :}
+Il existe des refactoring dans AutoRefactor qui modifie le type de variable pour en préférer d'autre.\\
+Par exemple remplacer tous les types Vector et LinkedList par des ArrayList ou bien préférer des ArrayDeque à des Stack. Il en existe plein d'autre à disposition.\\
+
+\paragraph{Préférer les types primitifs :}
+AutoRefactor nous permet de modifier le type de toutes les variables en un type primitif si cela est possible.\\
+Par exemple si AutoRefactor détecte un objet de type Boolean, il va alors modifier le code pour utiliser le type boolean primitif. Cela peut être utilisé sur tous les types primitifs.\\
+
+\paragraph{Fusionner les bloc if :}
+On peut aussi détecter des bloc if qui peuvent s'emboiter pour n'en former plus qu'un.
+
+\begin{center}
+\includegraphics[scale=1]{Image/FusionIf.png}\\
+\itshape{Exemple de fusion de bloc if \cite{ref10}}
+\end{center}
+
+\paragraph{Remplacer des clauses redondantes :}
+AutoRefactor est capable de détécter des conditions inutiles qui peuvent être remplacé par une simple condition "or".
+
+\begin{center}
+\includegraphics[scale=1]{Image/ClauseRedondante.png}\\
+\itshape{Exemple de suppression de clause redondante\cite{ref10}}
+\end{center}
+
 
 \subsection{Objectif futur}
 Jean-Noël Rouvignac a pour objectif futur de réussir à construire des graphes de flot de contrôle pour pouvoir les analyser. Ceci lui permettrait d'écrire des refactorings comprenant les chemins d'exécution du code, comme le ferait un développeur qui lirait du code. En particulier, il deviendrait possible de réduire la portée des variables, comprendre quels chemins d'exécution du code sont morts (impossibles à atteindre).\cite{ref7}\\
-Il aimerait développer une fonctionnalité d'extraction automatique de méthode pour simplifier les longues méthodes.
+Il aimerait développer une fonctionnalité d'extraction automatique de méthode pour simplifier les longues méthodes.\\
 
 
 
 \section{Les graphes de flots de contrôle}
-Actuellement, les flots de contrôle ne sont pas utilisés pour faire du refactoring.
+\subsection{Qu'est ce que c'est ?}
+Un graphe de flot de contrôle est une représentation sous forme de graphe de tous les chemins qui peuvent être suivis par un programme durant son exécution.\\
+Chaque graphes de flots de contrôle possèdent un sommet entrée (la où le programme débute) et un sommet sortie (la où le programme termine).\\
+Les autres sommets représentent des blocs d'instructions et les arcs la possibilité de transfert de l'exécution d'un nœud à un autre \cite{ref11}.
+
+\begin{center}
+\includegraphics[scale=0.7]{Image/GFC.png}\\
+\itshape{Exemple de graphe de flots de contrôle\cite{ref11}}
+\end{center}
+
+Une exécution possible est représenté par un chemin de contrôle dans le graphe de contrôle. Un chemin de contrôle doit impérativement commencer par le sommet entrée et finir par le sommet sortie.\\
+Par exemple une chemin de contrôle de l'exemple est [a,c,d,e,g].\\
+Il est possible de représenter sous forme algébrique l'ensemble des chemins de contrôle du graphe (M).\\
+Ici on aurait :\\
+M = a.(b+c).d.(e+f).g\\
+
+\subsection{Est-il utilisable pour faire du refactoring ?}
+Actuellement il n'existe pas de logiciel utilisant les graphes de flots de contrôle pour effectuer du refactoring.\\
+Théoriquement il n'est pas impossible de faire du refactoring avec ce type de graph.
+D'après un article de recherche traitant du test structurel d'executable, il est possible à l'aide des flots de contrôle de détécter si tous les noeuds ou tous les arcs peuvent être atteint\cite{ref12}.\\
+Cet aspect pourrait être utilisé dans le refactoring pour détecter du code non accessible lors de l'exécution du programme.\\
+On pourrait aussi utiliser une détection de chemin
+permettant une optimisation du code en empruntant un chemin moins couteux en temps et ressources.\\
+En revanche, on ne peut pas utiliser les graphes de flots de contrôle pour tester tous les chemins possibles d'un programme dès lors qu'il contient des boucles car le nombre de chemin va être infinie.\\
 
 
-
+\chapter{Conclusion}
+Nous avons pu constater que tous nos programmes peuvent rapidement être infesté de code mal structuré ou de chose indésirable.\\
+On a pu voir qu'il existe beaucoup de manière de faire du refactoring pour augmenter la lisibilité du code, réduire sa taille en supprimant les doublons ou tout simplement augmenter la qualité du code.\\
+Puis nous avons vu des outils permettant de faire du refactoring.\\
+Il y a les IDE tel que IntelliJ ou bien Eclipse qui propose des possibilités de refactoring basique.\\
+Ensuite nous avons regardé AutoRefactor un outil en cours de développement qui utilise actuellement le filtrage par motif pour effectuer du refactoring et qui par la suite aimerais utiliser les graphs de flots de contrôle.\\
+Et pour finir nous avons étudier les graphs de flot de contrôle et nous nous sommes rendu compte qu'il était théoriquement possible de les utiliser pour faire du refactoring.\\
+En conclusion, le refactoring est quelque chose de très important car il ne faut pas se reposer sur des ordinateurs ultra puissant pour produire du code de très mauvaise qualité. Le refactoring permet aussi de rendre le code plus compréhensible et plus facile à maintenir donc de réduire les coûts de développement.\\
+Et à l'avenir je pense qu'il serait intéressant de se pencher sur les graphs de flot de contrôle pour l'utiliser dans certaine partie du refactoring tel que la détection de code mort.\\
 
 
 \bibliographystyle{plain}
