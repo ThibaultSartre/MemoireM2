@@ -74,7 +74,7 @@ L'objectif du refactoring est de réduire les coûts de maintenance et de péren
 "With refactoring you can take a bad design, chaos even, and rework it into well-designed code."\cite{ref2}\\
 Le refactoring permet donc de passer d'un code possédant de mauvaises bases à un code propre.\\
 Un bon refactoring doit pouvoir améliorer la qualité d'un code tout en gardant son fonctionnement du point de vue de l'utilisateur. Concernant la partie des tests, tous les tests qui fonctionnaient avant le refactoring se doivent d'être fonctionnels après.\\
-Dans ce mémoire, nous allons d'abord étudier les problèmes dans les programmes qui mènent au refactoring. Ensuite on va analyser différentes techniques de refactoring. Enfin nous allons étudier les outils de refactoring existant ainsi que les graphes de flot de contrôle et s'ils sont utilisable dans le refactoring.\\
+Dans ce mémoire, nous allons d'abord étudier les problèmes dans les programmes qui mènent au refactoring. Ensuite on va analyser différentes techniques de refactoring. Enfin nous allons étudier les outils de refactoring existant ainsi que les graphes de flots de contrôle et s'ils sont utilisables dans le refactoring.\\
 Ce sujet est intéressant et actuel car il faut commencer à se soucier du code que l'on produit car plus l'on avance dans le temps plus les programmes sont lourds et contiennent de lignes de code. Avec la puissance des ordinateurs actuels, la plupart des développeurs ne prennent plus le temps d'écrire des codes de qualité car la machine sera de toute façon assez rapide pour compenser un code de mauvaise qualité.\cite{ref4}\\
 A l'avenir, la relecture et la modification de code seront plus difficiles, avec les programmes devenant de plus en plus gros.\cite{ref4}\\
 Pour essayer de diminuer cette quantité de travail, il faut commencer à produire du code de qualité et bien structuré. Concernant les codes déjà existants il faudra donc faire du refactoring de code. Or le refactoring peut être long selon la qualité des projets que l'on traite. Il serait donc intéressant et très utile d'avoir un programme permettant d'automatiser des parties de refactoring pour permettre de gagner un temps précieux. 
@@ -553,24 +553,24 @@ Cette méthode est une alternative à la précédente dans le cas où le type de
 
 
 \newpage
-\section{Simplifier les expressions conditionnels}
-Dans les programmes, il n'est pas rare de trouver des expressions conditionnels qui possèdent une logique complexe avec beaucoup de condition. Ce type de refactoring va permettre de simplifier toutes ces expressions.\\
+\section{Simplifier les expressions conditionnelles}
+Dans les programmes, il n'est pas rare de trouver des expressions conditionnelles qui possèdent une logique complexe avec beaucoup de conditions. Ce type de refactoring va permettre de simplifier toutes ces expressions.\\
 
 
 
-\subsection{Décomposer les expressions conditionnels}
+\subsection{Décomposer les expressions conditionnelles}
 \paragraph{Présentation :}
-Il nous arrive souvent dans nos programmes, d'avoir des conditions regroupant plusieurs condition. Le résultat étant une condition assez complexe à comprendre sans commentaire pour l'expliquer. La solution à ce problème est de déplacer le calcule de ces conditions dans des méthodes.
+Il nous arrive souvent, dans nos programmes, d'avoir des conditions regroupant plusieurs conditions. Le résultat étant une condition assez complexe à comprendre sans commentaire pour l'expliquer. La solution à ce problème est de déplacer le calcul de ces conditions dans des méthodes.
 
 \paragraph{Comment faire :}
 Pour ce faire, il faut utiliser la méthode de refactoring d'extraction de méthode sur le bloc conditionnel pour obtenir un simple appel de méthode avec un nom compréhensible.
 
 \paragraph{Bénéfices :}
-Le bénéfice majeur de cette technique est de permettre une relecture et une maintenance du code simplifier.\\
+Le bénéfice majeur de cette technique est de permettre une relecture et une maintenance du code simplifiées.\\
 
 \subsection{Remplacer les conditions avec du polymorphisme}
 \paragraph{Présentation :}
-Dans le cas où nous avons par exemple un switch qui va produire différent traitement selon le type d'un objet. Alors dans ce cas là, il sera intéressant de supprimer le switch pour produire des sous classes.
+Dans le cas où nous avons par exemple un switch qui va produire différents traitements selon le type d'un objet, il sera intéressant de supprimer le switch pour produire des sous classes.
 
 \begin{center}
 \includegraphics[scale=1]{Image/ReplaceConditionalPoly.png}\\
@@ -578,7 +578,7 @@ Dans le cas où nous avons par exemple un switch qui va produire différent trai
 \end{center}
 
 \paragraph{Exemple :}
-Dans l'exemple, on est passé d'un switch qui calculait la vitesse d'un oiseau selon son type dans la classe "Bird". A une classe abstraite qui nécessite la redéfinition de la méthode de calcule de vitesse pour chaque sous classe soit obliger de la redéfinir.
+Dans l'exemple, on est passé d'un switch qui calculait la vitesse d'un oiseau selon son type dans la classe "Bird" à une classe abstraite qui nécessite la redéfinition de la méthode de calcul de vitesse afin que chaque sous-classe soit obligée de la redéfinir.
 
 \begin{center}
 \includegraphics[scale=1]{Image/ReplaceConditionalPoly2.png}\\
@@ -586,36 +586,36 @@ Dans l'exemple, on est passé d'un switch qui calculait la vitesse d'un oiseau s
 \end{center}
 
 \paragraph{Bénéfices :}
-Dans cette exemple cela permettrait de rajouter des types d'oiseau simplement en recréant une sous classe sans avoir à modifier une méthode déjà existante.\\
-On évite aussi des conditions switch ou autre très longue du fait qu'il y aurait beaucoup de type à gérer.\\
+Dans cette exemple cela permettrait de rajouter des types d'oiseaux simplement en recréant une sous classe sans avoir à modifier une méthode déjà existante.\\
+On évite aussi des conditions switch ou autres très longues du fait qu'il y aurait beaucoup de types à gérer.\\
 
 \subsection{Introduire des assertions}
 \paragraph{Présentation :}
-Une assertion est une condition qui doit être évaluer à vrai pour que le programme puisse continuer à fonctionner. Si une assertion renvoie faux alors le programme s'arrête immédiatement.
-Dans le cadre d'un programme qui nécessite absolument une variable, un objet ou n'importe quoi pour pouvoir fonctionner. Même si cette donnée est censé être présente à ce moment du programme, il est plus sure de placer une assertion pour vérifier que cette donnée existe bien au moment venu.
+Une assertion est une expression qui doit être évaluée à vrai pour que le programme puisse continuer à fonctionner. Si une assertion est évaluée faux alors le programme s'arrête immédiatement.
+Dans le cadre d'un programme qui nécessite absolument une variable, un objet ou n'importe quoi pour pouvoir fonctionner, même si cette donnée est censée être présente à ce moment du programme, il est plus sûr de placer une assertion pour vérifier que cette donnée existe bien au moment venu.
 
 \paragraph{Bénéfices :}
-Placer des assertions permet de détecter des erreurs et permet d'arrêter des programmes qui risque de faire des dégâts si on les laisse continuer alors que quelque chose ne c'est pas déroulé comme prévue.
-Les assertions sont la plus part du temps utilisées dans les tests unitaires mais elles peuvent être utilisé dans nos programmes et se révéler très utiles.\\
+Placer des assertions permet de détecter des erreurs et permet d'arrêter des programmes qui risquent de faire des dégâts si on les laisse continuer alors que quelque chose ne c'est pas déroulé comme prévue.
+Les assertions sont la plupart du temps utilisées dans les tests unitaires mais elles peuvent être utilisées dans nos programmes et se révéler très utiles.\\
 
 \newpage
 \section{Simplifier les appels de méthode}
-Ces techniques de refactoring ont pour but de simplifier l'appel de méthode ainsi que de rendre l'appel de méthode plus facile à comprendre.\\
+Ces techniques de refactoring ont pour but de simplifier l'appel de méthode et rendre l'appel de méthode plus facile à comprendre.\\
 
 
 
 \subsection{Renommer une méthode}
 \paragraph{Présentation :}
 Commençons cette partie par quelque chose de simple mais terriblement efficace, les noms de méthode.\\
-Lorsque l'on code une méthode, il faut lui donner un nom qui permet de comprendre ce que la méthode fait sans avoir à lire une seul ligne de code. Il s'agit d'une règle de base en programmation mais elle n'est pas toujours respectée.
+Lorsque l'on code une méthode, il faut lui donner un nom qui permet de comprendre ce que la méthode fait sans avoir à lire une seule ligne de code. Il s'agit d'une règle de base en programmation mais elle n'est pas toujours respectée.
 
 \paragraph{Bénéfices :}
 L'avantage de bien nommer une méthode est d'améliorer la relecture de son propre code ainsi que grandement faciliter la futur maintenance du code par quelqu'un d'autre.\\
 
 \subsection{Séparer les requêtes de questionnement et de modification}
 \paragraph{Présentation :}
-Une méthode doit avoir une seul tâche à accomplir et non pas plusieurs. Et surtout si cette même méthode mêle opération de lecture et d'écriture.
-Dans cette méthode de refactoring, nous appliquons le pattern de "Command and Query Responsibility Segregation" qui nous dis qu'il faut séparer les opérations de lecture et d'écriture.
+Une méthode doit avoir une seule tâche à accomplir et non plusieurs et surtout si cette même méthode mêle opération de lecture et d'écriture.
+Dans cette méthode de refactoring, nous appliquons le pattern de "Command and Query Responsibility Segregation" qui nous dit qu'il faut séparer les opérations de lecture et d'écriture.
 Pour appliquer ce refactoring il faut simplement séparer la méthode en deux pour obtenir deux nouvelles méthodes, une qui récupère des données et l'autre qui modifie des données.
 
 \paragraph{Bénéfices :}
@@ -624,7 +624,7 @@ Le pattern "Command and Query Responsibility Segregation" nous permet de maximis
 
 \subsection{Méthode paramétrée}
 \paragraph{Présentation :}
-Parfois, il nous peut nous arriver d'écrire deux méthodes assez similaire qui on un but commun mais qui le traite avec des opérations ou valeurs qui diffèrent. Dans un cas similaire, il est conseillé de créer une seul méthode qui va regrouper les deux et prendre un paramètre pour savoir quel traitement appliquer.\\
+Parfois, il peut nous arriver d'écrire deux méthodes assez similaires qui ont un but commun mais qui le traitent avec des opérations ou valeurs qui diffèrent. Dans un cas similaire, il est conseillé de créer une seule méthode qui va regrouper les deux et prendre un paramètre pour savoir quel traitement appliquer.\\
 
 \begin{center}
 \includegraphics[scale=1]{Image/Methode_Parametre.png}\\
@@ -632,26 +632,26 @@ Parfois, il nous peut nous arriver d'écrire deux méthodes assez similaire qui 
 \end{center}
 
 \paragraph{Bénéfices :}
-On obtient une seul méthode au lieu de deux très similaire, ce qui permet la suppression de la duplication de code.\\
-A l'avenir, on a plus besoin de créer d'autre méthode si une nouvelle version de la méthode est nécessaire comme une augmentation de sept pourcents en reprenant l'exemple.\\
+On obtient une seule méthode au lieu de deux très similaires, ce qui permet la suppression de la duplication de code.\\
+A l'avenir, on n'a plus besoin de créer d'autre méthode si une nouvelle version de la méthode est nécessaire comme une augmentation de sept pour cent en reprenant l'exemple.\\
 
 \paragraph{Technique inverse :}
-il existe une technique qui revient plus ou moins a faire l'inverse. Il s'agit de la méthode de remplacement de paramètre avec des méthodes explicites.\\
-Dans ce cas, on a une méthode qui va pouvoir faire plusieurs traitement différent qui n'ont rien à avoir entre eux. La méthode sait qu'elle traitement faire grâce à un des paramètres.\\
-On peut avoir une méthode "setValue" sui prend en paramètre une chaîne de caractère et un valeur. Si la chaîne vaut "prix" alors la méthode sauvegarde la valeur dans le prix et si la chaîne vaut "poids" alors la méthode va enregistrer la valeur dans la variable poids.\\
+Il existe une technique qui revient plus ou moins à faire l'inverse. Il s'agit de la méthode de remplacement de paramètres avec des méthodes explicites.\\
+Dans ce cas, on a une méthode qui va pouvoir faire plusieurs traitements différents qui n'ont rien à avoir entre eux. La méthode sait quel traitement faire grâce à un des paramètres.\\
+On peut avoir une méthode "setValue" qui prend en paramètre une chaîne de caractères et une valeur. Si la chaîne est "prix" alors la méthode sauvegarde la valeur dans le prix et si la chaîne est "poids" alors la méthode va enregistrer la valeur dans la variable poids.\\
 Il serait donc préférable de faire du refactoring et de séparer les deux méthodes pour obtenir une méthode "setPrix" et une autre "setPoids". Ce qui rend le programme plus clair et intuitif.\\
 
 \subsection{Conserver l'objet entier}
 \paragraph{Présentation :}
-Lorsqu'une méthode a besoin de variable qui sont contenus dans un objet, il est préférable d'envoyer l'objet entier en paramètre plutôt que d'envoyer uniquement les variables de l'objet.
+Lorsqu'une méthode a besoin de variables qui sont contenues dans un objet, il est préférable d'envoyer l'objet entier en paramètre plutôt que d'envoyer uniquement les variables de l'objet.
 
 \paragraph{Bénéfices :}
-Le résultat est un code plus lisible car on a plus qu'un paramètre qui est l'objet contenant tous les anciens paramètres.\\
-Un autre avantage est que si la méthode doit évoluer et a besoin d'une autre variable de l'objet, pas besoin d'aller modifier tous le code pour modifier l'appel de la méthode en rajoutant le nouveau paramètre. Cela rend le code plus facile à faire évoluer.\\
+Le résultat est un code plus lisible car on n'a plus qu'un paramètre qui est l'objet contenant tous les anciens paramètres.\\
+Un autre avantage : si la méthode doit évoluer et a besoin d'une autre variable de l'objet, pas besoin d'aller modifier tout le code pour modifier l'appel de la méthode en rajoutant le nouveau paramètre. Cela rend le code plus facile à faire évoluer.\\
 
 \subsection{Ajouter des objets en paramètre}
 \paragraph{Présentation :}
-Dans nos programmes, il peut arriver que l'on écrive plusieurs méthode utilisant exactement les mêmes paramètre. Le problème étant une duplication de paramètre ainsi que potentiellement une duplication de code à l'intérieur des méthodes en traitant les paramètres.\\
+Dans nos programmes, il peut arriver que l'on écrive plusieurs méthodes utilisant exactement les mêmes paramètres. Le problème étant une duplication de paramètres ainsi que potentiellement une duplication de code à l'intérieur des méthodes en traitant les paramètres.\\
 Dans ce cas, nous avons la possibilité de créer un objet qui va contenir les paramètres ainsi que des méthodes qui vont s'occuper du traitement de ces paramètres.\\
 
 \begin{center}
@@ -660,9 +660,9 @@ Dans ce cas, nous avons la possibilité de créer un objet qui va contenir les p
 \end{center}
 
 \paragraph{Bénéfices :}
-L'avantage principal de cette méthode est de supprimer la duplication de code généré par le traitement identique des paramètres dans plusieurs méthodes.\\
-Les paramètres sont aussi plus lisible du fait qu'il ne reste plus qu'un seul objet avec un nom adapté pour une compréhension simple et efficace.\\
-En revanche, ce refactoring n'est pas utile s'il ne sert uniquement à stocker les paramètres sans y ajouter des méthodes de traitement.\\
+L'avantage principal de cette méthode est de supprimer la duplication de code générée par le traitement identique des paramètres dans plusieurs méthodes.\\
+Les paramètres sont aussi plus lisibles du fait qu'il ne reste plus qu'un seul objet avec un nom adapté pour une compréhension simple et efficace.\\
+En revanche, ce refactoring est inutile s'il sert uniquement à stocker les paramètres sans y ajouter des méthodes de traitement.\\
 
 \subsection{Remplacer les constructeurs par des méthode Factory}
 \paragraph{Présentation :}
@@ -670,17 +670,17 @@ Plaçons nous dans un cas où on veut que notre constructeur ne soit pas accessi
 On va alors devoir utiliser cette méthode de refactoring qui se base sur le pattern de factory.
 
 \paragraph{Comment faire :}
-Pour ce faire, il faut simplement créer une nouvelle méthode avec un nom adapté comme "createNomObjet", cette méthode va alors appelé elle même le constructeur et renvoyer une instance de l'objet demandé.
+Pour ce faire, il faut simplement créer une nouvelle méthode avec un nom adapté comme "createNomObjet", cette méthode va alors appeler elle-même le constructeur et renvoyer une instance de l'objet demandé.
 
 \paragraph{Bénéfices :}
-Les méthodes de type Factory ne renvoie pas forcément une instance de l'objet dont elle fait partie. Cela peut avoir un grand avantage s'il faut renvoyer un sous classe car on peut utiliser cette méthode pour faire un traitement à l'aide de paramètre pour décider qu'elle sous classe renvoyer.\\
-La méthode Factory peut avoir un nom plus approprié que celui d'un constructeur pour comprendre ce qu'elle fait.\\
-On peut aussi l'utiliser pour renvoyer des instances déjà existante(Singleton), ce qui n'est pas possible avec un constructeur.\\
+Les méthodes de type Factory ne renvoient pas forcément une instance de l'objet dont elles font parties. Cela peut avoir un grand avantage s'il faut renvoyer une sous-classe car on peut utiliser cette méthode pour faire un traitement à l'aide de paramètres pour décider quelle sous-classe renvoyer.\\
+La méthode Factory peut avoir un nom plus approprié que celui d'un constructeur afin de comprendre ce qu'elle fait.\\
+On peut aussi l'utiliser pour renvoyer des instances déjà existantes(Singleton), ce qui n'est pas possible avec un constructeur.\\
 
 
 \subsection{Remplacer les codes d'erreurs par des exceptions}
 \paragraph{Présentation :}
-Aujourd'hui, les codes d'erreurs sont quelques choses  qu'il ne vaut mieux plus utiliser car il existe une classe spécialement faites pour la gestion d'erreurs, les exceptions.\\
+Aujourd'hui il vaut mieux éviter d'utiliser les codes d'erreurs car il existe une classe spécialement faite pour la gestion d'erreurs, les exceptions.\\
 L'utilisation des exceptions permet de détecter et de traiter les erreurs qui peuvent se produire pendant l'exécution du code.\\
 
 \begin{center}
@@ -689,14 +689,14 @@ L'utilisation des exceptions permet de détecter et de traiter les erreurs qui p
 \end{center}
 
 \paragraph{Bénéfices :}
-L'utilisation des exceptions nous permet principalement d'éviter à faire de la gestion d'erreur à travers les codes d'erreurs.\\
-Il est plus rapide de se rendre compte que quelque chose c'est mal passé si une exception est levée.\\
-Les codes d'erreurs ne peuvent pas être utilisé dans les constructeurs alors que les exceptions le peuvent.\\
+L'utilisation des exceptions nous permet principalement d'éviter de faire de la gestion d'erreur à travers les codes d'erreurs.\\
+Il est plus rapide de se rendre compte que quelque chose s'est mal passé si une exception est levée.\\
+Les codes d'erreurs ne peuvent pas être utilisés dans les constructeurs alors que les exceptions le peuvent.\\
 On peut aussi créer nos propres exceptions pour qu'elles fassent un traitement particulier.\\
 
 \paragraph{Méthode alternative :}
-Les exceptions sont des objets qui doivent être utilisées pour gérer les comportements irréguliers provoqués par des erreurs inattendu.\\
-Il ne faut pas utilisé les exceptions à la place de simple test.\\
+Les exceptions sont des objets qui doivent être utilisées pour gérer les comportements irréguliers provoqués par des erreurs inattendues.\\
+Il ne faut pas utiliser les exceptions à la place de simple test.\\
 
 \begin{center}
 \includegraphics[scale=0.75]{Image/ExceptionTest.png}\\
@@ -711,16 +711,16 @@ Dans cette partie, nous allons étudier des techniques permettant de déplacer d
 
 \subsection{Remonter les variables et méthodes}
 \paragraph{Présentation :}
-Nous allons commencer par un cas basique, si nous avons une super classe ainsi que deux sous classes qui hérite de la super classe, et que les deux sous classes possèdent un attribut ou une méthode commune que ne possède pas la super classe alors il sera intéressant de déplacer cette variable ou méthode dans la super classe.\\
+Nous allons commencer par un cas basique : si nous avons une super classe ainsi que deux sous-classes qui héritent de la super classe, et que les deux sous-classes possèdent un attribut ou une méthode commune que ne possède pas la super classe alors il sera intéressant de déplacer cette variable ou méthode dans la super classe.\\
 
 \paragraph{Bénéfices :}
 Ce refactoring élimine de la duplication de code que ce soit dans la définition d'une variable ou méthode ainsi que pour le corps de la méthode.\\
-Dans le cas de la méthode cela permet de ne modifier que la méthode présente dans la super classe en cas de changement au lieu de devoir passer dans toutes les sous classes.\\
+Dans le cas de la méthode cela permet de ne modifier que la méthode présente dans la super classe en cas de changement au lieu de devoir passer dans toutes les sous-classes.\\
 
 \paragraph{Technique inverse :}
-Il existe évidemment une technique pour descendre les champs et méthode.\\
-Que ce soit pour les variables ou les méthodes, il est préférable de déplacer un champs ou une méthode d'une super classe dans une sous classe si ce dit champs ou méthode n'est utilisé que dans cette même sous classe.\\
-Cela permet de rentre le code plus compréhensible et améliore la cohérence interne de la classe.\\
+Il existe évidemment une technique pour descendre les champs et méthodes.\\
+Que ce soit pour les variables ou les méthodes, il est préférable de déplacer un champ ou une méthode d'une super classe dans une sous-classe si ce dit champ ou méthode n'est utilisé que dans cette même sous-classe.\\
+Cela permet de rendre le code plus compréhensible et améliore la cohérence interne de la classe.\\
 
 
 \subsection{Extraire une super classe}
@@ -729,12 +729,12 @@ Si l'on a deux classes qui possèdent des champs ou des méthodes communes, alor
 
 \paragraph{Bénéfices :}
 On supprime donc de la duplication de code.\\
-En revanche cette méthode de refactoring ne peut pas être utilisé dans le cas où l'une des deux classes possèdent déjà une super classe.\\
+En revanche cette méthode de refactoring ne peut pas être utilisée dans le cas où l'une des deux classes possèdent déjà une super classe.\\
 
 \subsection{Créer des méthodes Template}
 \paragraph{Présentation :}
-Il nous est déjà arriver d'avoir deux sous classe qui possèdent une méthode assez similaire qui déroule un algorithme possédant les mêmes étapes mais avec des valeurs changeante.\\
-Il y a alors un moyen de créer un template de la méthode dans la super classe tout en laissant l'implémentation qui diffère aux sous classe.\\
+Il nous est déjà arrivé d'avoir deux sous-classe qui possèdent une méthode assez similaire qui déroule un algorithme possédant les mêmes étapes mais avec des valeurs changeantes.\\
+Il y a alors un moyen de créer un template de la méthode dans la super classe tout en laissant l'implémentation qui diffère aux sous-classe.\\
 
 \begin{center}
 \includegraphics[scale=0.75]{Image/Template.png}\\
@@ -742,10 +742,10 @@ Il y a alors un moyen de créer un template de la méthode dans la super classe 
 \end{center}
 
 \paragraph{Exemple :}
-Dans cette exemple, on peut voir au dessus qu'on a deux sous classe qui possèdent une méthode permettant de calculer le montant d'une facture.\\
-Les deux méthodes n'utilisent pas les mêmes valeurs pour le calcule mais en revanche le calcule se résume dans les deux cas à l'addition du tarif de base additionner au taxe.\\
-On peut donc voir en dessous que la solution est de créer remonter la méthode de calcule du montant de la facture dans la super classe qui va renvoyer l'addition du prix de base additionner à celui des taxes.\\
-Ces prix là seront calculer à l'aide de deux nouvelles méthode qui seront redéfinie dans les sous classes.\\
+Dans l'exemple ci-dessus, on peut voir qu'on a deux sous-classe qui possèdent une méthode permettant de calculer le montant d'une facture.\\
+Les deux méthodes n'utilisent pas les mêmes valeurs pour le calcul mais en revanche le calcul se résume dans les deux cas à l'addition du tarif de base additionné aux taxes.\\
+On peut donc voir ci-dessous que la solution est de remonter la méthode de calcul du montant de la facture dans la super classe. Celle-ci va renvoyer l'addition du prix de base additionné à celui des taxes.\\
+Ces prix-là seront calculés à l'aide de deux nouvelles méthodes qui seront redéfinies dans les sous-classes.\\
 
 \begin{center}
 \includegraphics[scale=0.75]{Image/Template2.png}\\
@@ -754,27 +754,26 @@ Ces prix là seront calculer à l'aide de deux nouvelles méthode qui seront red
 
 \paragraph{Bénéfices :}
 Les templates nous permettent de supprimer de la duplication de code même s'il ne s'agit pas exactement du même code.\\
-Cela peut aussi nous faire gagner du temps dans le cas où il faut créer une nouvelle sous classe, on aura juste dans l'exemple à redéfinir le calcule du prix de base et des taxes.\\
+Cela peut aussi nous faire gagner du temps dans le cas où il faut créer une nouvelle sous-classe. Dans l'exemple il suffira de redéfinir le calcul du prix de base et des taxes.\\
 
 \subsection{Remplacer l'héritage par de la délégation}
 \paragraph{Présentation :}
 Ici, nous avons une classe B qui hérite d'une classe A et qui n'utilise qu'une petite portion des méthodes de sa super classe.\\
-Il serait judicieux de créer un champs dans B pour stocker A et ensuite de créer des méthodes pour déléguer le travail à la classe A.\\
+Il serait judicieux de créer un champ dans B pour stocker A et ensuite de créer des méthodes pour déléguer le travail à la classe A.\\
 
 \paragraph{Bénéfices :}
 Cela permet à la classe B de posséder uniquement les méthodes qu'elle utilise et non pas toutes les méthodes de la classe A qu'elle n'utilise pas.\\
 
 \paragraph{Technique inverse :}
-Il existe aussi la technique inverse, c'est à dire remplacer la délégation par de l'héritage dans le cas où la classe B utilise beaucoup de méthode de la classe A.
-Dans ce cas il est préférable de privilégier l'héritage ce qui permet de réduire la taille du code due à la suppression de toutes les méthodes de délégation.\\
+Il existe aussi la technique inverse, c'est à dire remplacer la délégation par de l'héritage dans le cas où la classe B utilise beaucoup de méthodes de la classe A.
+Dans ce cas il est préférable de privilégier l'héritage afin de réduire la taille du code due à la suppression de toutes les méthodes de délégation.\\
 
 \chapter{Outils de refactoring}
 \section{Fonctionnalités d'IDE}
-Dans cette partie, je vais vous présenter les fonctionnalités de refactoring les plus utilisées qui sont intégrées dans les IDE.
-Je vais donc vous parler rapidement des fonctionnalités les plus utilisées.\\
+Dans cette partie, je vais vous présenter rapidement les fonctionnalités de refactoring les plus utilisées qui sont intégrées dans les IDE.\\
 
 \paragraph{Suppression sans danger :}
-Ce premier refactoring va permettre aux utilisateurs de pouvoir supprimer un élément sans que cela ne cause des problèmes sur le fonctionnement du code.\\
+Ce premier refactoring va permettre aux utilisateurs de pouvoir supprimer un élément sans occasionner des problèmes sur le fonctionnement du code.\\
 
 \begin{center}
 \includegraphics[scale=0.8]{Image/SafeDelete.png}\\
@@ -782,27 +781,27 @@ Ce premier refactoring va permettre aux utilisateurs de pouvoir supprimer un él
 \end{center}
 
 Par exemple on a une méthode "foo" avec un paramètre de type integer. Ce paramètre est ensuite passé à la méthode "bar" puis à la méthode "baz" où il est enfin utilisé.\\
-Si l'on décide de supprimer la paramètre de la méthode "baz" alors intelliJ va, si demandé, effectuer le refactoring en supprimant le paramètre de toute les méthodes puisqu'il n'était utilisé que dans la méthode "baz".
-Cette option permet d'éviter d'avoir des oublies lorsqu'on supprime un élément et que l'on cherche où sont les répercussions.\\
+Si on décide de supprimer la paramètre de la méthode "baz", l'IDE va, si demandé, effectuer le refactoring en supprimant le paramètre de toutes les méthodes puisqu'il n'était utilisé que dans la méthode "baz".
+Cette option permet d'éviter d'avoir des oublis lorsqu'on supprime un élément et que l'on cherche où sont les répercussions.\\
 
 \paragraph{Capacité de déplacement :}
-IntelliJ nous permet de déplacer des fonctionnalités à travers le code. On peut donc déplacer des méthodes ou des attributs vers d'autre classe si cela semble plus pertinent.\\
+L'IDE nous permet de déplacer des fonctionnalités à travers le code. On peut donc déplacer des méthodes ou des attributs vers d'autres classes si cela semble plus pertinent.\\
 
 \paragraph{Extraction :}
 On a aussi la possibilité d'effectuer des extractions de tous types, que ce soit pour extraire des méthodes, attributs ou paramètres (voir \textit{Extraction de méthode, Extraction de variable}).\\
 
 \paragraph{Renommer :}
-Et pour finir, il existe une fonctionnalité permettant de renommer n'importe quelle élément. Cela nous permet de ne pas avoir à chercher dans le code toutes les occurrences de l'élément que l'on vient de modifier.\\
+Et pour finir, il existe une fonctionnalité permettant de renommer n'importe quel élément. Cela nous permet de ne pas avoir à chercher dans le code toutes les occurrences de l'élément que l'on vient de modifier.\\
 
 \section{AutoRefactor}
 \subsection{Présentation du projet}
-Le projet AutoRefactor a été lancé par Jean-Noël Rouvignac. Il a décidé de se lancer dans se projet car il était fatigué de devoir prendre trop de temps pour appliquer les mêmes nettoyages de code encore et encore. L'objectif de ce projet est de faciliter la maintenance, moderniser le code, rendre le code plus léger et compacte et augmenter les performances des programmes. Il a commencé à travailler sur les expressions rationnelles pour retravailler toute la base du code, mais les faux positifs étaient trop nombreux.\cite{ref7} Il a ensuite créé un greffon Eclipse (AutoRefactor) qui utilise  l'API des Java Development Tools (Eclipse JDT) qui est l'API que eclipse utilise pour faire du refactoring.\\
+Le projet AutoRefactor a été lancé par Jean-Noël Rouvignac. Il a décidé de se lancer dans ce projet car il était fatigué de devoir prendre trop de temps pour appliquer les mêmes nettoyages de code encore et encore. L'objectif de ce projet est de faciliter la maintenance, moderniser le code, rendre le code plus léger et compact ainsi qu'augmenter les performances des programmes. Rouvignac a commencé à travailler sur les expressions rationnelles pour retravailler toute la base du code, mais les faux positifs étaient trop nombreux.\cite{ref7} Il a ensuite créé un greffon Eclipse (AutoRefactor) qui utilise  l'API des Java Development Tools (Eclipse JDT) qui est l'API qu'Eclipse utilise pour faire du refactoring.\\
 Une première release du produit est sortie le 22 mars 2015 et plus récemment la version 1.2 est sortie (30 juin 2018).\\
 
 \subsection{Fonctionnement du programme}
-Je vais maintenant vous présenter un algorithme simplifié de comment fonctionne AutoRefactor.
+Je vais maintenant vous présenter un algorithme simplifié du fonctionnement d'AutoRefactor.
 
-Le développeur choisi les règles de refactoring à appliquer puis le greffon prend la liste des refactorings.
+Le développeur choisit les règles de refactoring à appliquer puis le greffon prend la liste des refactorings.
 
 1) Le fichier Java à analyser est parsé et produit un arbre syntaxique abstrait.\\
 
@@ -810,16 +809,16 @@ Le développeur choisi les règles de refactoring à appliquer puis le greffon p
 \tabto{0.8cm} 1) Cherche des opportunités de refactoring en visitant l'abre syntaxique abstrait.\\
 \tabto{0.8cm} 2) Génère les réécritures de code lorsqu'une  opportunité de refactoring a été identifiée.\\
 
-3) Lorsque tout l'arbre syntaxique abstrait a été visité, si des réécriture de code ont été générées :\\
+3) Lorsque tout l'arbre syntaxique abstrait a été visité, si des réécritures de code ont été générées :\\
 \tabto{0.8cm} 1) Alors, toutes les réécritures de code générées sont appliquées sur le fichier.\\
 \tabto{0.8cm} 2) Le fichier est sauvegardé.\\
 \tabto{0.8cm} 3) Boucle vers 1.\\
-\tabto{0.8cm} 4) Sinon, fin : il n'y a plus de refactoring possibles sur ce fichier.\\
+\tabto{0.8cm} 4) Sinon, fin : il n'y a plus de refactoring possible sur ce fichier.\\
 
-Actuellement, tous les refactorings implémentés font du filtrage par motif et travaillent fichiers par fichiers.\\
+Actuellement, tous les refactorings implémentés font du filtrage par motif et travaillent fichier par fichier.\\
 
 \subsection{Fonctionnalités}
-Il existe beaucoup de fonctionnalités de refactoring dans AutoRefactor mais je vais vous en présenter que quelques unes.\\
+Il existe beaucoup de fonctionnalités de refactoring dans AutoRefactor; je vais vous en présenter quelques unes.\\
 
 \paragraph{Remplacement de boucle par une seule méthode :}
 AutoRefactor peut détécter des boucles inutiles liées à l'ajout ou à la suppression d'éléments dans des objets de type "List", "Map", "Collection".\\
@@ -830,18 +829,18 @@ AutoRefactor peut détécter des boucles inutiles liées à l'ajout ou à la sup
 \end{center}
 
 
-On peut voir sur l'exemple ci-dessus que les boucles pour parcourir les listes on été supprimé au profit d'une simple méthode.\\
+On peut voir sur l'exemple ci-dessus que les boucles pour parcourir les listes ont été supprimées au profit d'une simple méthode.\\
 
 \paragraph{Changement de type de stockage :}
-Il existe des refactoring dans AutoRefactor qui modifie le type de variable pour en préférer d'autre.\\
-Par exemple remplacer tous les types Vector et LinkedList par des ArrayList ou bien préférer des ArrayDeque à des Stack. Il en existe plein d'autre à disposition.\\
+Il existe des refactoring dans AutoRefactor qui modifient le type de variable pour en préférer d'autres.\\
+Par exemple remplacer tous les types Vector et LinkedList par des ArrayList ou bien préférer des ArrayDeque à des Stack. Il en existe beaucoup d'autres à disposition.\\
 
 \paragraph{Préférer les types primitifs :}
 AutoRefactor nous permet de modifier le type de toutes les variables en un type primitif si cela est possible.\\
 Par exemple si AutoRefactor détecte un objet de type Boolean, il va alors modifier le code pour utiliser le type boolean primitif. Cela peut être utilisé sur tous les types primitifs.\\
 
-\paragraph{Fusionner les bloc if :}
-On peut aussi détecter des bloc if qui peuvent s'emboiter pour n'en former plus qu'un.
+\paragraph{Fusionner les blocs if :}
+On peut aussi détecter des blocs if qui peuvent s'emboiter pour n'en former plus qu'un.
 
 \begin{center}
 \includegraphics[scale=1]{Image/FusionIf.png}\\
@@ -849,7 +848,7 @@ On peut aussi détecter des bloc if qui peuvent s'emboiter pour n'en former plus
 \end{center}
 
 \paragraph{Remplacer des clauses redondantes :}
-AutoRefactor est capable de détécter des conditions inutiles qui peuvent être remplacé par une simple condition "or".
+AutoRefactor est capable de détécter des conditions inutiles qui peuvent être remplacées par une simple condition "or".
 
 \begin{center}
 \includegraphics[scale=1]{Image/ClauseRedondante.png}\\
@@ -858,7 +857,7 @@ AutoRefactor est capable de détécter des conditions inutiles qui peuvent être
 
 
 \subsection{Objectif futur}
-Jean-Noël Rouvignac a pour objectif futur de réussir à construire des graphes de flot de contrôle pour pouvoir les analyser. Ceci lui permettrait d'écrire des refactorings comprenant les chemins d'exécution du code, comme le ferait un développeur qui lirait du code. En particulier, il deviendrait possible de réduire la portée des variables, comprendre quels chemins d'exécution du code sont morts (impossibles à atteindre).\cite{ref7}\\
+Jean-Noël Rouvignac a pour objectif futur de réussir à construire des graphes de flots de contrôle pour pouvoir les analyser. Ceci lui permettrait d'écrire des refactorings comprenant les chemins d'exécution du code, comme le ferait un développeur qui lirait du code. En particulier, il deviendrait possible de réduire la portée des variables, comprendre quels chemins d'exécution du code sont morts (impossibles à atteindre).\cite{ref7}\\
 Il aimerait développer une fonctionnalité d'extraction automatique de méthode pour simplifier les longues méthodes.\\
 
 
@@ -866,7 +865,7 @@ Il aimerait développer une fonctionnalité d'extraction automatique de méthode
 \section{Les graphes de flots de contrôle}
 \subsection{Qu'est ce que c'est ?}
 Un graphe de flot de contrôle est une représentation sous forme de graphe de tous les chemins qui peuvent être suivis par un programme durant son exécution.\\
-Chaque graphes de flots de contrôle possèdent un sommet entrée (la où le programme débute) et un sommet sortie (la où le programme termine).\\
+Chaque graphe de flots de contrôle possède un sommet entrée (là où le programme débute) et un sommet sortie (là où le programme termine).\\
 Les autres sommets représentent des blocs d'instructions et les arcs la possibilité de transfert de l'exécution d'un nœud à un autre \cite{ref11}.
 
 \begin{center}
@@ -874,32 +873,32 @@ Les autres sommets représentent des blocs d'instructions et les arcs la possibi
 \itshape{Exemple de graphe de flots de contrôle\cite{ref11}}
 \end{center}
 
-Une exécution possible est représenté par un chemin de contrôle dans le graphe de contrôle. Un chemin de contrôle doit impérativement commencer par le sommet entrée et finir par le sommet sortie.\\
-Par exemple une chemin de contrôle de l'exemple est [a,c,d,e,g].\\
+Une exécution possible est représentée par un chemin de contrôle dans le graphe de contrôle. Un chemin de contrôle doit impérativement commencer par le sommet entrée et finir par le sommet sortie.\\
+Un exemple de chemin de contrôle : [a,c,d,e,g].\\
 Il est possible de représenter sous forme algébrique l'ensemble des chemins de contrôle du graphe (M).\\
 Ici on aurait :\\
 M = a.(b+c).d.(e+f).g\\
 
 \subsection{Est-il utilisable pour faire du refactoring ?}
 Actuellement il n'existe pas de logiciel utilisant les graphes de flots de contrôle pour effectuer du refactoring.\\
-Théoriquement il n'est pas impossible de faire du refactoring avec ce type de graph.
-D'après un article de recherche traitant du test structurel d'executable, il est possible à l'aide des flots de contrôle de détécter si tous les noeuds ou tous les arcs peuvent être atteint\cite{ref12}.\\
+Théoriquement il n'est pas impossible de faire du refactoring avec ce type de graphe.
+D'après un article de recherche traitant du test structurel des executables, il est possible à l'aide des flots de contrôle de détécter si tous les noeuds ou tous les arcs peuvent être atteints\cite{ref12}.\\
 Cet aspect pourrait être utilisé dans le refactoring pour détecter du code non accessible lors de l'exécution du programme.\\
 On pourrait aussi utiliser une détection de chemin
-permettant une optimisation du code en empruntant un chemin moins couteux en temps et ressources.\\
-En revanche, on ne peut pas utiliser les graphes de flots de contrôle pour tester tous les chemins possibles d'un programme dès lors qu'il contient des boucles car le nombre de chemin va être infinie.\\
+permettant une optimisation du code en empruntant un chemin moins coûteux en temps et ressources.\\
+En revanche, on ne peut pas utiliser les graphes de flots de contrôle pour tester tous les chemins possibles d'un programme dès lors qu'il contient des boucles car le nombre de chemin va être infini.\\
 
 
 \chapter{Conclusion}
-Nous avons pu constater que tous nos programmes peuvent rapidement être infesté de code mal structuré ou de chose indésirable.\\
-On a pu voir qu'il existe beaucoup de manière de faire du refactoring pour augmenter la lisibilité du code, réduire sa taille en supprimant les doublons ou tout simplement augmenter la qualité du code.\\
+Nous avons pu constater que tous nos programmes peuvent rapidement être infestés de codes mal structurés ou de choses indésirables.\\
+On a pu voir qu'il existe beaucoup de manières de faire du refactoring pour augmenter la lisibilité du code, réduire sa taille en supprimant les doublons ou tout simplement augmenter la qualité du code.\\
 Puis nous avons vu des outils permettant de faire du refactoring.\\
-Il y a les IDE tel que IntelliJ ou bien Eclipse qui propose des possibilités de refactoring basique.\\
-Ensuite nous avons regardé AutoRefactor un outil en cours de développement qui utilise actuellement le filtrage par motif pour effectuer du refactoring et qui par la suite aimerais utiliser les graphs de flots de contrôle.\\
-Et pour finir nous avons étudier les graphs de flot de contrôle et nous nous sommes rendu compte qu'il était théoriquement possible de les utiliser pour faire du refactoring.\\
-En conclusion, le refactoring est quelque chose de très important car il ne faut pas se reposer sur des ordinateurs ultra puissant pour produire du code de très mauvaise qualité. Le refactoring permet aussi de rendre le code plus compréhensible et plus facile à maintenir donc de réduire les coûts de développement.
+Il y a les IDE tel que IntelliJ ou bien Eclipse qui proposent des possibilités de refactoring basique.\\
+Ensuite nous avons regardé AutoRefactor un outil en cours de développement qui utilise actuellement le filtrage par motif pour effectuer du refactoring et qui par la suite aimerait utiliser les graphes de flots de contrôle.\\
+Et pour finir nous avons étudié les graphes de flots de contrôle et nous nous sommes rendu compte qu'il était théoriquement possible de les utiliser pour faire du refactoring.\\
+En conclusion, le refactoring est un remaniement du code très important car il ne faut pas se reposer sur des ordinateurs ultra puissants pour produire du code de très mauvaise qualité. Le refactoring permet aussi de rendre le code plus compréhensible et plus facile à maintenir donc de réduire les coûts de développement.
 Le refactoring doit être appliqué à bon escient selon le contexte.\\
-Et à l'avenir je pense qu'il serait intéressant de se pencher sur les graphes de flot de contrôle pour l'utiliser dans certaine partie du refactoring tel que la détection de code mort.\\
+Et à l'avenir je pense qu'il serait intéressant de se pencher sur les graphes de flots de contrôle pour les utiliser dans certaines parties du refactoring telle que la détection de code mort.\\
 
 
 \bibliographystyle{plain}
