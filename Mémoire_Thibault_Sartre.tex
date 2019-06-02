@@ -906,9 +906,9 @@ En revanche, on ne peut pas utiliser les graphes de flots de contrôle pour test
 
 \subsection{Exemple d'utilisation possible d'un graphe de flots de contrôle dans le refactoring}
 
-Je vais maintenant vous présenter comment on pourrait utiliser les graphes de flot de contrôle dans le refactoring et plus précisément pour détecter du code mort.\\
+Je vais maintenant vous présenter de quelle manière on pourrait utiliser les graphes de flot de contrôle dans le refactoring et plus précisément pour détecter du code mort.\\
 A l'aide du test structurel qui utilise les graphes de flot de contrôle, il est possible d'avoir une couverture de toutes les décisions possibles\cite{ref13}.\\
-C'est à dire de trouver au moins un ensemble de combinaisons de valeurs qui permet de passer toutes les conditions du programme. Cette technique pourrait donc être utilisé dans le refactoring pour détecter du code mort. Puisque dans le cas où il n'existe aucun ensemble de combinaisons de valeur permettant de satisfaire toutes les conditions, alors on peut détecter que dans le programme une partie du code est inatteignable et qu'il est donc mort.\\
+C'est à dire de trouver au moins un ensemble de combinaisons de valeurs qui permet de passer toutes les conditions du programme. Cette technique pourrait donc être utilisée dans le refactoring pour détecter du code mort; car dans le cas où il n'existe aucun ensemble de combinaisons de valeur permettant de satisfaire toutes les conditions, alors on peut trouver la partie du programme inatteignable (code mort).\\
 
 \begin{center}
 \includegraphics[scale=1.5]{Image/ExempleCodeGraphe.png}\\
@@ -920,11 +920,11 @@ C'est à dire de trouver au moins un ensemble de combinaisons de valeurs qui per
 \itshape{Graphe de flots de contrôle généré à partir du code ci-dessus}
 \end{center}
 
-Imaginons que dans l'exemple une variable y soit générer aléatoirement entre -100 et 100.
-L'exemple ci-dessus est très simple mais à pour but de montrer qu'il est possible de détecter du code mort.\\
-On a donc une variable x à laquelle on affecte le carré d'une variable y, or le carré de n'importe quel entier est positif ou nulle.\\ Si l'on regarde le mini programme, on peut facilement comprendre que jamais on ne pourra passer par le else car x ne peut pas être négatif. Mais imaginons que ce soit une programme beaucoup plus compliqué.\\ On a alors le graphe de flots de contrôle, qui à l'aide d'un algorithme permettant de vérifier toutes les décision possible, va nous dire qu'il est impossible de passer la condition x est négatif. Le graphe de flots de contrôle nous permettrait donc de détecter du code mort en étudiant les décisions possibles d'un programme.\\
-En revanche la complexité de l'algorithme qui détecte toute les décisions possibles est exponentiel en fonction du nombre de condition présent dans le programme.\\
-Pour contourner ça, il serait judicieux de l'appliquer sur des morceaux de programme pour diminuer le nombre de conditions traitées à la fois pour pouvoir obtenir un résultat dans des délais acceptables.\\
+Imaginons que dans l'exemple une variable y soit générée aléatoirement entre -100 et 100.
+L'exemple ci-dessus est très simple mais a pour but de montrer qu'il est possible de détecter du code mort.\\
+On a donc une variable x à laquelle on affecte le carré d'une variable y, or le carré de n'importe quel entier est positif ou nul.\\ Si l'on regarde le mini programme, on peut facilement comprendre que jamais on ne pourra passer par le else car x ne peut pas être négatif. Mais imaginons que ce soit un programme beaucoup plus compliqué.\\ On a alors le graphe de flots de contrôle, qui à l'aide d'un algorithme permettant de vérifier toutes les décisions possibles, va nous dire qu'il est impossible de passer la condition "x est négatif". Le graphe de flots de contrôle nous permettrait donc de détecter du code mort en étudiant les décisions possibles d'un programme.\\
+En revanche la complexité de l'algorithme qui détecte toute les décisions possibles est exponentiel en fonction du nombre de conditions présent dans le programme.\\
+Afin de contourner cela, il serait judicieux de l'appliquer sur des morceaux de programme pour diminuer le nombre de conditions traitées en même temps et obtenir un résultat dans des délais acceptables.\\
 
 \chapter{Conclusion}
 Nous avons pu constater que tous nos programmes peuvent rapidement être infestés de codes mal structurés ou de choses indésirables.\\
