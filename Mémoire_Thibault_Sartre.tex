@@ -178,6 +178,7 @@ Les refactoring utilisés pour réparer le code sont le "déplacement de méthod
 \paragraph{Gain du traitement :}
 En revanche les avantages du traitement sont les mêmes que précédemment c'est à dire une meilleure organisation et une maintenance simplifiée.\\
 
+\newpage
 
 \section{Les choses dispensables}
 Lors de cette partie, nous allons parler de toutes les petites choses qui sont dans le code mais qui ne servent à rien.
@@ -402,6 +403,8 @@ Si toutes ces conditions sont réunies, on peut déclarer la ou les méthodes da
 \paragraph{Bénéfices :}
 Cette méthode de refactoring nous permet d'obtenir une meilleure cohérence interne dans les classes.\\
 
+\newpage
+
 \subsection{Extraction de classe}
 \paragraph{Présentation :}
 Il est possible, lorsque l'on développe quelque chose, de créer une classe qui en réalité fait le travail de deux classes. Il vaut mieux modifier ça rapidement car cela risque d'empirer pour une classe illisible. On peut alors appliquer une technique de refactoring pour extraire une classe d'une autre.
@@ -426,6 +429,8 @@ Les classes respectant ce principe sont plus fiables et tolérantes aux changeme
 
 \paragraph{Technique inverse :}
 La technique inverse consiste à supprimer les classes qui ont peut d'utilités. Cela permet de libérer de la mémoire.\\
+
+\newpage
 
 \subsection{Cacher la délégation}
 \paragraph{Présentation :}
@@ -505,6 +510,8 @@ La dernière est une simple méthode "get" qui va donner une copie de la collect
 Avec cette gestion de collection, on ne peut plus modifier une collection en récupérant l'objet à partir du getter.\\
 Les règles, s'il y en a, pour ajouter des objets dans la collection seront toujours respectées puisqu'il faudra impérativement passer par la méthode add ou remove pour modifier la collection.\\
 Cela permet aussi de rendre l'utilisation de collection plus simple.\\
+
+\newpage
 
 \subsection{Remplacer les Type Code}
 \paragraph{Présentation :}
@@ -589,6 +596,8 @@ Dans l'exemple, on est passé d'un switch qui calculait la vitesse d'un oiseau s
 Dans cette exemple cela permettrait de rajouter des types d'oiseaux simplement en recréant une sous classe sans avoir à modifier une méthode déjà existante.\\
 On évite aussi des conditions switch ou autres très longues du fait qu'il y aurait beaucoup de types à gérer.\\
 
+\newpage
+
 \subsection{Introduire des assertions}
 \paragraph{Présentation :}
 Une assertion est une expression qui doit être évaluée à vrai pour que le programme puisse continuer à fonctionner. Si une assertion est évaluée faux alors le programme s'arrête immédiatement.
@@ -621,6 +630,8 @@ Pour appliquer ce refactoring il faut simplement séparer la méthode en deux po
 \paragraph{Bénéfices :}
 Cette technique permet évidemment de pouvoir faire des lectures sans avoir forcement à modifier une donnée.\\
 Le pattern "Command and Query Responsibility Segregation" nous permet de maximiser les performances, l'évolutivité ainsi que la sécurité.\\
+
+\newpage
 
 \subsection{Méthode paramétrée}
 \paragraph{Présentation :}
@@ -677,6 +688,7 @@ Les méthodes de type Factory ne renvoient pas forcément une instance de l'obje
 La méthode Factory peut avoir un nom plus approprié que celui d'un constructeur afin de comprendre ce qu'elle fait.\\
 On peut aussi l'utiliser pour renvoyer des instances déjà existantes(Singleton), ce qui n'est pas possible avec un constructeur.\\
 
+\newpage
 
 \subsection{Remplacer les codes d'erreurs par des exceptions}
 \paragraph{Présentation :}
@@ -756,6 +768,8 @@ Ces prix-là seront calculés à l'aide de deux nouvelles méthodes qui seront r
 Les templates nous permettent de supprimer de la duplication de code même s'il ne s'agit pas exactement du même code.\\
 Cela peut aussi nous faire gagner du temps dans le cas où il faut créer une nouvelle sous-classe. Dans l'exemple il suffira de redéfinir le calcul du prix de base et des taxes.\\
 
+\newpage
+
 \subsection{Remplacer l'héritage par de la délégation}
 \paragraph{Présentation :}
 Ici, nous avons une classe B qui hérite d'une classe A et qui n'utilise qu'une petite portion des méthodes de sa super classe.\\
@@ -792,6 +806,8 @@ On a aussi la possibilité d'effectuer des extractions de tous types, que ce soi
 
 \paragraph{Renommer :}
 Et pour finir, il existe une fonctionnalité permettant de renommer n'importe quel élément. Cela nous permet de ne pas avoir à chercher dans le code toutes les occurrences de l'élément que l'on vient de modifier.\\
+
+\newpage
 
 \section{AutoRefactor}
 \subsection{Présentation du projet}
@@ -860,7 +876,7 @@ AutoRefactor est capable de détécter des conditions inutiles qui peuvent être
 Jean-Noël Rouvignac a pour objectif futur de réussir à construire des graphes de flots de contrôle pour pouvoir les analyser. Ceci lui permettrait d'écrire des refactorings comprenant les chemins d'exécution du code, comme le ferait un développeur qui lirait du code. En particulier, il deviendrait possible de réduire la portée des variables, comprendre quels chemins d'exécution du code sont morts (impossibles à atteindre).\cite{ref7}\\
 Il aimerait développer une fonctionnalité d'extraction automatique de méthode pour simplifier les longues méthodes.\\
 
-
+\newpage
 
 \section{Les graphes de flots de contrôle}
 \subsection{Qu'est ce que c'est ?}
