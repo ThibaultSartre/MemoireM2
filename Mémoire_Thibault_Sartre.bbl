@@ -1,0 +1,68 @@
+\begin{thebibliography}{10}
+
+\bibitem{ref9}
+Jetbrains: Developer tools for professionals and teams.
+\newblock https://www.jetbrains.com/help/idea/refactoring-source-code.html.
+
+\bibitem{ref5}
+Refactoring techniques.
+\newblock https://sourcemaking.com/refactoring/refactorings.
+
+\bibitem{ref14}
+Refactoring techniques.
+\newblock https://refactoring.guru/refactoring/techniques.
+
+\bibitem{ref3}
+Jean-Michel Doudoux.
+\newblock Le refactoring, Janvier 2007.
+\newblock https://www.jmdoudoux.fr/java/dejae/chap009.htm.
+
+\bibitem{ref12}
+Sebastien~Bardin et~Philippe~Herrmann.
+\newblock Structural testing of executables.
+\newblock http://sebastien.bardin.free.fr/icst08.pdf.
+
+\bibitem{ref4}
+Romain Fallet.
+\newblock Le désenchantement du logiciel, Septembre 2018.
+\newblock https://blog.romainfallet.fr/desenchantement-logiciel/.
+
+\bibitem{ref11}
+Patrick Felix.
+\newblock http://dept-info.labri.fr/~felix/.
+
+\bibitem{ref8}
+Martin Fowler.
+\newblock Catalog of refactoring.
+\newblock https://refactoring.com/catalog/.
+
+\bibitem{ref2}
+Martin Fowler.
+\newblock {\em Refactoring: Improving the Design of Existing Code}.
+\newblock Addison-Wesley Professional, 1999.
+
+\bibitem{ref6}
+Zoran Maksimovic.
+\newblock Refactoring with composed method pattern, Janvier 2019.
+\newblock
+  https://www.agile-code.com/blog/refactoring-with-composed-method-pattern/.
+
+\bibitem{ref1}
+Jean-Philippe Retaillé.
+\newblock {\em Refactoring des applications JAVA/J2EE}.
+\newblock Eyrolles, 2005.
+
+\bibitem{ref7}
+Jean-Noël Rouvignac.
+\newblock https://github.com/JnRouvignac/AutoRefactor.
+
+\bibitem{ref10}
+Jean-Noël Rouvignac.
+\newblock http://autorefactor.org/html/samples.html.
+
+\bibitem{ref13}
+Sami Taktak.
+\newblock Test et validation du logiciel test structurel.
+\newblock http://cedric.cnam.fr/~taktaks/GLG101/teststructurel.pdf.
+
+\end{thebibliography}

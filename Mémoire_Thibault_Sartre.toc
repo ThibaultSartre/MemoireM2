@@ -1,0 +1,189 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}
+\contentsline {chapter}{\numberline {2}Pourquoi faire du refactoring ?}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}Bloaters}{9}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}M\IeC {\'e}thode trop longue}{9}{subsection.2.1.1}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{9}{section*.2}
+\contentsline {paragraph}{Gain du traitement :}{9}{section*.3}
+\contentsline {subsection}{\numberline {2.1.2}Grande classe}{9}{subsection.2.1.2}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{9}{section*.4}
+\contentsline {paragraph}{Gain du traitement :}{10}{section*.5}
+\contentsline {subsection}{\numberline {2.1.3}L'obsession des types primitifs}{10}{subsection.2.1.3}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{10}{section*.6}
+\contentsline {paragraph}{Gain du traitement :}{10}{section*.7}
+\contentsline {subsection}{\numberline {2.1.4}Longue liste de param\IeC {\`e}tres}{10}{subsection.2.1.4}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{10}{section*.8}
+\contentsline {paragraph}{Gain du traitement :}{10}{section*.9}
+\contentsline {subsection}{\numberline {2.1.5}Agr\IeC {\'e}gat de donn\IeC {\'e}es}{10}{subsection.2.1.5}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{10}{section*.10}
+\contentsline {paragraph}{Gain du traitement :}{11}{section*.11}
+\contentsline {section}{\numberline {2.2}Abus du principe orientation objet}{11}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}La structure switch}{11}{subsection.2.2.1}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{11}{section*.12}
+\contentsline {paragraph}{Gain du traitement :}{11}{section*.13}
+\contentsline {subsection}{\numberline {2.2.2}H\IeC {\'e}ritage refus\IeC {\'e}}{11}{subsection.2.2.2}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{11}{section*.14}
+\contentsline {paragraph}{Gain du traitement :}{11}{section*.15}
+\contentsline {section}{\numberline {2.3}Modification complexe}{12}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Changement Divergent}{12}{subsection.2.3.1}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{12}{section*.16}
+\contentsline {paragraph}{Gain du traitement :}{12}{section*.17}
+\contentsline {subsection}{\numberline {2.3.2}Chirurgie au fusil}{12}{subsection.2.3.2}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{12}{section*.18}
+\contentsline {paragraph}{Gain du traitement :}{12}{section*.19}
+\contentsline {section}{\numberline {2.4}Les choses dispensables}{13}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Les commentaires}{13}{subsection.2.4.1}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{13}{section*.20}
+\contentsline {paragraph}{Gain du traitement :}{13}{section*.21}
+\contentsline {subsection}{\numberline {2.4.2}La duplication de code}{13}{subsection.2.4.2}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{13}{section*.22}
+\contentsline {paragraph}{Gain du traitement :}{13}{section*.23}
+\contentsline {subsection}{\numberline {2.4.3}Les classes paresseuses}{14}{subsection.2.4.3}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{14}{section*.24}
+\contentsline {paragraph}{Gain du refactoring :}{14}{section*.25}
+\contentsline {subsection}{\numberline {2.4.4}Les classes de donn\IeC {\'e}es}{14}{subsection.2.4.4}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{14}{section*.26}
+\contentsline {paragraph}{Gain du traitement :}{14}{section*.27}
+\contentsline {subsection}{\numberline {2.4.5}Le code mort}{14}{subsection.2.4.5}
+\contentsline {paragraph}{Probl\IeC {\`e}me :}{14}{section*.28}
+\contentsline {paragraph}{Gain du traitement :}{15}{section*.29}
+\contentsline {chapter}{\numberline {3}Les diff\IeC {\'e}rents types de refactoring}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}Pattern de m\IeC {\'e}thode compos\IeC {\'e}e}{17}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Extraction de m\IeC {\'e}thode}{18}{subsection.3.1.1}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{18}{section*.30}
+\contentsline {paragraph}{Exemple :}{18}{section*.31}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{18}{section*.32}
+\contentsline {paragraph}{Technique inverse :}{19}{section*.33}
+\contentsline {subsection}{\numberline {3.1.2}Extraction de variable}{19}{subsection.3.1.2}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{19}{section*.34}
+\contentsline {paragraph}{Exemple :}{19}{section*.35}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{19}{section*.36}
+\contentsline {paragraph}{Inconv\IeC {\'e}nient :}{19}{section*.37}
+\contentsline {paragraph}{Technique inverse :}{20}{section*.38}
+\contentsline {subsection}{\numberline {3.1.3}Remplacement des temporaires avec des m\IeC {\'e}thodes}{20}{subsection.3.1.3}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{20}{section*.39}
+\contentsline {paragraph}{Exemple :}{20}{section*.40}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{20}{section*.41}
+\contentsline {subsection}{\numberline {3.1.4}Diviser les variables temporaires}{21}{subsection.3.1.4}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{21}{section*.42}
+\contentsline {paragraph}{Exemple :}{21}{section*.43}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{21}{section*.44}
+\contentsline {subsection}{\numberline {3.1.5}Supprimer les assignations aux param\IeC {\`e}tres}{21}{subsection.3.1.5}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{21}{section*.45}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{21}{section*.46}
+\contentsline {subsection}{\numberline {3.1.6}Remplacement de m\IeC {\'e}thode par des objets}{22}{subsection.3.1.6}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{22}{section*.47}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{22}{section*.48}
+\contentsline {paragraph}{Inconv\IeC {\'e}nient :}{22}{section*.49}
+\contentsline {section}{\numberline {3.2}D\IeC {\'e}placement des fonctionnalit\IeC {\'e}s entre les objets}{23}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}D\IeC {\'e}placement de m\IeC {\'e}thode}{23}{subsection.3.2.1}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{23}{section*.50}
+\contentsline {paragraph}{Comment faire :}{23}{section*.51}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{23}{section*.52}
+\contentsline {subsection}{\numberline {3.2.2}Extraction de classe}{24}{subsection.3.2.2}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{24}{section*.53}
+\contentsline {paragraph}{Comment faire :}{24}{section*.54}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{24}{section*.55}
+\contentsline {paragraph}{Technique inverse :}{24}{section*.56}
+\contentsline {subsection}{\numberline {3.2.3}Cacher la d\IeC {\'e}l\IeC {\'e}gation}{25}{subsection.3.2.3}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{25}{section*.57}
+\contentsline {paragraph}{Comment faire :}{25}{section*.58}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{25}{section*.59}
+\contentsline {paragraph}{Inconv\IeC {\'e}nient :}{25}{section*.60}
+\contentsline {paragraph}{Technique inverse :}{25}{section*.61}
+\contentsline {section}{\numberline {3.3}Organiser ses donn\IeC {\'e}es}{26}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Auto Encapsulation des champs}{26}{subsection.3.3.1}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{26}{section*.62}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{26}{section*.63}
+\contentsline {subsection}{\numberline {3.3.2}Passer du stockage par valeur en r\IeC {\'e}f\IeC {\'e}rence}{26}{subsection.3.3.2}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{26}{section*.64}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{26}{section*.65}
+\contentsline {paragraph}{Inconv\IeC {\'e}nient :}{26}{section*.66}
+\contentsline {paragraph}{Technique inverse :}{26}{section*.67}
+\contentsline {subsection}{\numberline {3.3.3}Remplacer les nombres magiques en constantes}{27}{subsection.3.3.3}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{27}{section*.68}
+\contentsline {paragraph}{Comment faire :}{27}{section*.69}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{27}{section*.70}
+\contentsline {subsection}{\numberline {3.3.4}Encapsulation de collection}{27}{subsection.3.3.4}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{27}{section*.71}
+\contentsline {paragraph}{Comment faire :}{27}{section*.72}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{27}{section*.73}
+\contentsline {subsection}{\numberline {3.3.5}Remplacer les Type Code}{28}{subsection.3.3.5}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{28}{section*.74}
+\contentsline {paragraph}{Remplacement par une classe :}{28}{section*.75}
+\contentsline {paragraph}{Remplacement par une sous classe :}{29}{section*.76}
+\contentsline {paragraph}{Remplacement par State/Strategy}{30}{section*.77}
+\contentsline {section}{\numberline {3.4}Simplifier les expressions conditionnelles}{32}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}D\IeC {\'e}composer les expressions conditionnelles}{32}{subsection.3.4.1}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{32}{section*.78}
+\contentsline {paragraph}{Comment faire :}{32}{section*.79}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{32}{section*.80}
+\contentsline {subsection}{\numberline {3.4.2}Remplacer les conditions avec du polymorphisme}{32}{subsection.3.4.2}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{32}{section*.81}
+\contentsline {paragraph}{Exemple :}{33}{section*.82}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{33}{section*.83}
+\contentsline {subsection}{\numberline {3.4.3}Introduire des assertions}{34}{subsection.3.4.3}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{34}{section*.84}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{34}{section*.85}
+\contentsline {section}{\numberline {3.5}Simplifier les appels de m\IeC {\'e}thode}{35}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Renommer une m\IeC {\'e}thode}{35}{subsection.3.5.1}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{35}{section*.86}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{35}{section*.87}
+\contentsline {subsection}{\numberline {3.5.2}S\IeC {\'e}parer les requ\IeC {\^e}tes de questionnement et de modification}{35}{subsection.3.5.2}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{35}{section*.88}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{35}{section*.89}
+\contentsline {subsection}{\numberline {3.5.3}M\IeC {\'e}thode param\IeC {\'e}tr\IeC {\'e}e}{36}{subsection.3.5.3}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{36}{section*.90}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{36}{section*.91}
+\contentsline {paragraph}{Technique inverse :}{36}{section*.92}
+\contentsline {subsection}{\numberline {3.5.4}Conserver l'objet entier}{37}{subsection.3.5.4}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{37}{section*.93}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{37}{section*.94}
+\contentsline {subsection}{\numberline {3.5.5}Ajouter des objets en param\IeC {\`e}tre}{37}{subsection.3.5.5}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{37}{section*.95}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{38}{section*.96}
+\contentsline {subsection}{\numberline {3.5.6}Remplacer les constructeurs par des m\IeC {\'e}thode Factory}{38}{subsection.3.5.6}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{38}{section*.97}
+\contentsline {paragraph}{Comment faire :}{38}{section*.98}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{38}{section*.99}
+\contentsline {subsection}{\numberline {3.5.7}Remplacer les codes d'erreurs par des exceptions}{39}{subsection.3.5.7}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{39}{section*.100}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{39}{section*.101}
+\contentsline {paragraph}{M\IeC {\'e}thode alternative :}{39}{section*.102}
+\contentsline {section}{\numberline {3.6}Faire face \IeC {\`a} la g\IeC {\'e}n\IeC {\'e}ralisation}{40}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Remonter les variables et m\IeC {\'e}thodes}{40}{subsection.3.6.1}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{40}{section*.103}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{40}{section*.104}
+\contentsline {paragraph}{Technique inverse :}{40}{section*.105}
+\contentsline {subsection}{\numberline {3.6.2}Extraire une super classe}{40}{subsection.3.6.2}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{40}{section*.106}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{40}{section*.107}
+\contentsline {subsection}{\numberline {3.6.3}Cr\IeC {\'e}er des m\IeC {\'e}thodes Template}{41}{subsection.3.6.3}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{41}{section*.108}
+\contentsline {paragraph}{Exemple :}{41}{section*.109}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{42}{section*.110}
+\contentsline {subsection}{\numberline {3.6.4}Remplacer l'h\IeC {\'e}ritage par de la d\IeC {\'e}l\IeC {\'e}gation}{43}{subsection.3.6.4}
+\contentsline {paragraph}{Pr\IeC {\'e}sentation :}{43}{section*.111}
+\contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{43}{section*.112}
+\contentsline {paragraph}{Technique inverse :}{43}{section*.113}
+\contentsline {chapter}{\numberline {4}Outils de refactoring}{45}{chapter.4}
+\contentsline {section}{\numberline {4.1}Fonctionnalit\IeC {\'e}s d'IDE}{45}{section.4.1}
+\contentsline {paragraph}{Suppression sans danger :}{45}{section*.114}
+\contentsline {paragraph}{Capacit\IeC {\'e} de d\IeC {\'e}placement :}{46}{section*.115}
+\contentsline {paragraph}{Extraction :}{46}{section*.116}
+\contentsline {paragraph}{Renommer :}{46}{section*.117}
+\contentsline {section}{\numberline {4.2}AutoRefactor}{47}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Pr\IeC {\'e}sentation du projet}{47}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Fonctionnement du programme}{47}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Fonctionnalit\IeC {\'e}s}{48}{subsection.4.2.3}
+\contentsline {paragraph}{Remplacement de boucle par une seule m\IeC {\'e}thode :}{48}{section*.118}
+\contentsline {paragraph}{Changement de type de stockage :}{48}{section*.119}
+\contentsline {paragraph}{Pr\IeC {\'e}f\IeC {\'e}rer les types primitifs :}{48}{section*.120}
+\contentsline {paragraph}{Fusionner les blocs if :}{48}{section*.121}
+\contentsline {paragraph}{Remplacer des clauses redondantes :}{49}{section*.122}
+\contentsline {subsection}{\numberline {4.2.4}Objectif futur}{49}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Les graphes de flots de contr\IeC {\^o}le}{50}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Qu'est ce que c'est ?}{50}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Est-il utilisable pour faire du refactoring ?}{50}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Exemple d'utilisation possible d'un graphe de flots de contr\IeC {\^o}le dans le refactoring}{51}{subsection.4.3.3}
+\contentsline {chapter}{\numberline {5}Conclusion}{53}{chapter.5}
