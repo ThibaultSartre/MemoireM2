@@ -175,7 +175,7 @@
 \contentsline {section}{\numberline {4.2}AutoRefactor}{47}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Pr\IeC {\'e}sentation du projet}{47}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Fonctionnement du programme}{47}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Fonctionnalit\IeC {\'e}s}{48}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.3}Fonctionnalit\IeC {\'e}s}{47}{subsection.4.2.3}
 \contentsline {paragraph}{Remplacement de boucle par une seule m\IeC {\'e}thode :}{48}{section*.118}
 \contentsline {paragraph}{Changement de type de stockage :}{48}{section*.119}
 \contentsline {paragraph}{Pr\IeC {\'e}f\IeC {\'e}rer les types primitifs :}{48}{section*.120}

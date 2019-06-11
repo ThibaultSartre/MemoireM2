@@ -813,11 +813,11 @@ Et pour finir, il existe une fonctionnalité permettant de renommer n'importe qu
 
 \section{AutoRefactor}
 \subsection{Présentation du projet}
-Le projet AutoRefactor a été lancé par Jean-Noël Rouvignac. Il a décidé de se lancer dans ce projet car il était fatigué de devoir prendre trop de temps pour appliquer les mêmes nettoyages de code encore et encore. L'objectif de ce projet est de faciliter la maintenance, moderniser le code, rendre le code plus léger et compact ainsi qu'augmenter les performances des programmes. Rouvignac a commencé à travailler sur les expressions rationnelles pour retravailler toute la base du code, mais les faux positifs étaient trop nombreux.\cite{ref7} Il a ensuite créé un greffon Eclipse (AutoRefactor) qui utilise  l'API des Java Development Tools (Eclipse JDT) qui est l'API qu'Eclipse utilise pour faire du refactoring.\\
+Le projet AutoRefactor a été lancé par Jean-Noël Rouvignac. Il a décidé de se lancer dans ce projet car il était fatigué de "devoir prendre trop de temps pour appliquer les mêmes nettoyages de code encore et encore". L'objectif de ce projet est de faciliter la maintenance, moderniser le code, rendre le code plus léger et compact ainsi qu'augmenter les performances des programmes. Rouvignac a commencé à travailler sur les expressions rationnelles pour retravailler toute la base du code, mais les faux positifs étaient trop nombreux.\cite{ref7} Il a ensuite créé un greffon Eclipse (AutoRefactor) qui utilise  l'API des Java Development Tools (Eclipse JDT) qui est l'API qu'Eclipse utilise pour faire du refactoring.\\
 Une première release du produit est sortie le 22 mars 2015 et plus récemment la version 1.2 est sortie (30 juin 2018).\\
 
 \subsection{Fonctionnement du programme}
-Je vais maintenant vous présenter un algorithme simplifié du fonctionnement d'AutoRefactor.
+Je vais maintenant vous présenter un algorithme simplifié du fonctionnement d'AutoRefactor\cite{ref7}.
 
 Le développeur choisit les règles de refactoring à appliquer puis le greffon prend la liste des refactorings.
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.4)  11 JUN 2019 15:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.4)  11 JUN 2019 15:55
 entering extended mode
 **./Mémoire_Thibault_Sartre.tex
 (Mémoire_Thibault_Sartre.tex
@@ -1503,6 +1503,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 816--818
  []
 
 
+Overfull \hbox (34.25803pt too wide) in paragraph at lines 820--821
+[]\T1/lmr/m/n/12 Je vais main-te-nant vous pr�-sen-ter un al-go-rithme sim-pli-
+fi� du fonc-tion-ne-ment d'AutoRefactor[[]]. 
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 824--825
 
  []
@@ -1532,7 +1538,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 842--843
 
  []
 
-<Image/SupBoucle.png, id=728, 657.2053pt x 159.59625pt>
+<Image/SupBoucle.png, id=729, 657.2053pt x 159.59625pt>
 File: Image/SupBoucle.png Graphic file (type png)
 
 <use Image/SupBoucle.png>
@@ -1558,14 +1564,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 857--859
 
  []
 
-<Image/FusionIf.png, id=730, 236.38312pt x 135.50626pt>
+<Image/FusionIf.png, id=731, 236.38312pt x 135.50626pt>
 File: Image/FusionIf.png Graphic file (type png)
 
 <use Image/FusionIf.png>
 Package pdftex.def Info: Image/FusionIf.png used on input line 864.
 (pdftex.def)             Requested size: 236.38254pt x 135.5059pt.
+
+Underfull \vbox (badness 1436) has occurred while \output is active []
+
  [48 <./Image/SupBoucle.png>]
-<Image/ClauseRedondante.png, id=741, 280.79906pt x 108.405pt>
+<Image/ClauseRedondante.png, id=742, 280.79906pt x 108.405pt>
 File: Image/ClauseRedondante.png Graphic file (type png)
 
 <use Image/ClauseRedondante.png>
@@ -1577,7 +1586,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 878--880
  []
 
 [49 <./Image/FusionIf.png> <./Image/ClauseRedondante.png>]
-<Image/GFC.png, id=752, 590.205pt x 258.21469pt>
+<Image/GFC.png, id=753, 590.205pt x 258.21469pt>
 File: Image/GFC.png Graphic file (type png)
  <use Image/GFC.png>
 Package pdftex.def Info: Image/GFC.png used on input line 890.
@@ -1597,14 +1606,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 911--914
 
  []
 
-<Image/ExempleCodeGraphe.png, id=763, 107.65219pt x 97.11281pt>
+<Image/ExempleCodeGraphe.png, id=764, 107.65219pt x 97.11281pt>
 File: Image/ExempleCodeGraphe.png Graphic file (type png)
 
 <use Image/ExempleCodeGraphe.png>
 Package pdftex.def Info: Image/ExempleCodeGraphe.png used on input line 916.
 (pdftex.def)             Requested size: 161.47787pt x 145.66884pt.
 
-<Image/ExempleGraphe.png, id=764, 412.54124pt x 322.20375pt>
+<Image/ExempleGraphe.png, id=765, 412.54124pt x 322.20375pt>
 File: Image/ExempleGraphe.png Graphic file (type png)
 
 <use Image/ExempleGraphe.png>
@@ -1671,16 +1680,16 @@ Here is how much of TeX's memory you used:
  11732 multiletter control sequences out of 15000+200000
  67549 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,6n,35p,786b,573s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,6n,35p,788b,573s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}<C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/lm/lmcsc10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/l
 mr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmri12.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/lm/lmss12.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on Mémoire_Thibault_Sartre.pdf (55 pages, 655570 bytes).
+Output written on Mémoire_Thibault_Sartre.pdf (55 pages, 655721 bytes).
 PDF statistics:
- 869 PDF objects out of 1000 (max. 8388607)
+ 870 PDF objects out of 1000 (max. 8388607)
  260 named destinations out of 1000 (max. 500000)
  707 words of extra memory for PDF output out of 10000 (max. 10000000)
 
