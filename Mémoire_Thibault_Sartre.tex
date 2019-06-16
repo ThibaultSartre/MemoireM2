@@ -75,7 +75,7 @@ Je tiens à remercier les professeurs de l'université de Paris Nanterre pour m'
 J'aimerais aussi remercier Emmanuel Hyon mon tuteur pour sa disponibilité et son aide lors de la réalisation de ce mémoire.\\
 
 
-\section{Introdution}
+\section{Introduction}
 Le refactoring est une activité d'ingénierie logicielle consistant à modifier le code source d'une application de manière à améliorer sa qualité sans altérer son comportement vis-à-vis des utilisateurs.
 L'objectif du refactoring est de réduire les coûts de maintenance et de pérenniser les investissements tout au long du cycle de vie du logiciel en se concentrant sur la maintenabilité et l'évolutivité.\cite{ref1}\\
 "With refactoring you can take a bad design, chaos even, and rework it into well-designed code."\cite{ref2}\\
@@ -138,7 +138,7 @@ Il peut être raccourci dans le cas où la méthode est une fusion de plusieurs.
 \paragraph{Problème :}
 Parfois il est possible de trouver des groupes de variables identiques qui apparaissent à plusieurs endroits dans le code.\\
 Ces agrégats sont souvent dûs à de la programmation "copié collé" ou à une structure pauvre du programme.\\
-Pour savoir s'il est possible d'extraire ces agrégats de données pour former une nouvelle classe, il faut vérifier si c'est bien le groupement de toutes ces données qui leurs donne du sens (par exemple les données nécessaires à la connection vers une base). Si c'est le cas, le choix de créer une nouvelle classe pour ces données est conseillé.\\
+Pour savoir s'il est possible d'extraire ces agrégats de données pour former une nouvelle classe, il faut vérifier si c'est bien le groupement de toutes ces données qui leur donne du sens (par exemple les données nécessaires à la connection vers une base). Si c'est le cas, le choix de créer une nouvelle classe pour ces données est conseillé.\\
 
 \paragraph{Gain du traitement :}
 Permet de faciliter la compréhension et l'organisation du code et surtout de ses agrégats de données puisque les opérations liées à ces données sont maintenant regroupées vers une seule classe.\\
@@ -173,7 +173,7 @@ Par exemple lorsqu'on doit modifier du code à différents endroits pour faire f
 \paragraph{Problème :}
 Ce problème cible particulièrement le cas où un simple changement dans une classe produit un grand nombre de changements dans d'autres méthodes de cette même classe.\\
 Par exemple dans le cas d'une classe produit, où l'on veut rajouter un type de produit, il faut alors changer les méthodes de recherche, d'affichage et d'ordonnancement de produit.\\
-Pour cette exemple, il faudrait utiliser la technique de refactoring d'extraction de classe.\\
+Pour cet exemple, il faudrait utiliser la technique de refactoring d'extraction de classe.\\
 
 \paragraph{Gain du traitement :}
 Avec ce traitement, on simplifie la maintenance du code et on simplifie son organisation.\\
@@ -190,7 +190,7 @@ En revanche les avantages du traitement sont les mêmes que précédemment c'est
 \newpage
 
 \section{Les choses dispensables}
-Lors de cette partie, nous allons parler de toutes les petites choses qui sont dans le code mais qui ne servent à rien.
+Dans cette partie, nous allons parler de toutes les petites choses qui sont dans le code mais qui ne servent à rien.
 
 \subsection{Les commentaires}
 \paragraph{Problème :}
@@ -225,7 +225,7 @@ Supprimer des classes peu utiles voir inutiles permet de réduire la taille du c
 
 \subsection{Les classes de données}
 \paragraph{Problème :}
-Une classe de donnée est une classe qui contient un regroupement de données qui permettent de faire des traitements si elles sont regroupées.\\
+Une classe de données est une classe qui contient un regroupement de données qui permettent de faire des traitements si elles sont regroupées.\\
 Ces classes de données sont utiles mais peuvent rapidement perdre de leur utilité lorsqu'elles sont utilisées uniquement comme un stockage de données. C'est à dire que la classe de données ne contient pas de fonctionnalité et ne contient que les variables avec des getters et setters.\\
 Il est donc préférable de regrouper toutes les fonctionnalités liées à cette classe de données éparpillées dans tout le code pour les insérer comme des méthodes de la classe de données.\\ 
 
@@ -235,7 +235,7 @@ Et cela permet surtout de faciliter la maintenance du code puisque toutes les fo
 
 \subsection{Le code mort}
 \paragraph{Problème :}
-Un code mort est un bout de code qui n'a plus aucune utilité à l'instant T. Il peut s'agir de n'importe quoi une classe, une variable, une méthode ou même un paramètre.
+Un code mort est un bout de code qui n'a plus aucune utilité à l'instant T. Il peut s'agir de n'importe quoi, une classe, une variable, une méthode ou même un paramètre.
 Une personne qui reprend du code ne va pas savoir que ce code n'a plus de raison d'exister et risque de perdre du temps en essayant de comprendre son utilité.\\
 
 On peut aussi générer du code mort lorsque l'on développe de manière prévisionnelle : on pense que dans le futur on aura besoin de cette fonctionnalité.
@@ -310,17 +310,17 @@ Si l'on applique l'extraction de variable, on obtient une variable isDone qui co
 \end{center}
 
 \paragraph{Bénéfices :}
-Pour que le résultat de cette méthode soit optimal, il faut nommer efficacement les variables créées pour  qu'elles soient le plus lisible possible. Cela va permettre de produire un code plus lisible et qui contiendra moins de long commentaire pour expliquer les longues expressions.
+Pour que le résultat de cette méthode soit optimal, il faut nommer efficacement les variables créées pour  qu'elles soient le plus lisible possible. Cela va permettre de produire un code plus lisible et qui contiendra moins de longs commentaires pour expliquer les longues expressions.
 
 \paragraph{Inconvénient :}
-Le code va contenir beaucoup de variable mais cela est dérisoire comparé à la lisibilité du code qui est nettement améliorée.
+Le code va contenir beaucoup de variables mais cela est dérisoire comparé à la lisibilité du code qui est nettement améliorée.
 
 \paragraph{Technique inverse :}
-La technique Inline Temp va permettre de supprimer les variables superflue qui contienne uniquement le résultat d'une opération simple qui va être utilisé une seul fois. Cette technique n'a pas de vrai bénéfice dans cette état, en revanche elle peut être couplé avec la technique suivante.\\
+La technique Inline Temp va permettre de supprimer les variables superflues qui contiennent uniquement le résultat d'une opération simple qui va être utilisé une seule fois. Cette technique n'a pas de vrai bénéfice dans cet état, en revanche elle peut être couplée avec la technique suivante.\\
 
 \subsection{Remplacement des temporaires avec des méthodes}
 \paragraph{Présentation :}
-Le remplacement des temporaires avec des méthodes va comme son nom l'indique, remplacer des variables temporaires par le résultat de méthode. On va extraire le code des variables temporaire avec la technique Inline method puis les placer dans des méthodes.
+Le remplacement des temporaires avec des méthodes va comme son nom l'indique, remplacer des variables temporaires par le résultat de méthode. On va extraire le code des variables temporaires avec la technique Inline method puis les placer dans des méthodes.
 
 \begin{center}
 \includegraphics[scale=1]{Image/Remplacement_Temp_Methode.png}\\
@@ -328,7 +328,7 @@ Le remplacement des temporaires avec des méthodes va comme son nom l'indique, r
 \end{center}
 
 \paragraph{Exemple :}
-Ci-dessus, nous pouvons voir que l'addition des deux paramètre est stocké dans une variable temporaire. Après le refactoring, la variable temporaire disparait et on obtient une méthode qui va s'occuper de faire l'addition à la place.
+Ci-dessus, nous pouvons voir que l'addition des deux paramètres est stockée dans une variable temporaire. Après le refactoring, la variable temporaire disparait et on obtient une méthode qui va s'occuper de faire l'addition à la place.
 
 \begin{center}
 \includegraphics[scale=1]{Image/Remplacement_Temp_Methode2.png}\\
@@ -352,7 +352,7 @@ Cette technique a pour but de ne plus utiliser la même variable temporaire pour
 \end{center}
 
 \paragraph{Exemple :}
-On peut voir au dessus que je réutilise la variable temp pour faire à la fois une addition et une soustraction. Après le refactoring on obtient deux variable proprement nommées addition et soustraction.
+On peut voir au dessus que je réutilise la variable temp pour faire à la fois une addition et une soustraction. Après le refactoring on obtient deux variables proprement nommées addition et soustraction.
 
 \begin{center}
 \includegraphics[scale=1]{Image/Diviser_Temp2.png}\\
@@ -395,7 +395,7 @@ Cette méthode de refactoring nous fait créer une nouvelle classe et cela augme
 \newpage
 
 \section{Déplacement des fonctionnalités entre les objets}
-Lorsque l'on code beaucoup de fonctionnalités dans un même programme, il arrive qu'au bout d'un moment, on se rende compte que , par exemple, on a placé une fonctionnalité dans la mauvaise classe. Et qu'on ne sais plus comment faire pour la déplacer sans risquer de casser tout le code.\\
+Lorsque l'on code beaucoup de fonctionnalités dans un même programme, il arrive qu'au bout d'un moment, on se rende compte que , par exemple, on a placé une fonctionnalité dans la mauvaise classe. Et qu'on ne sait plus comment faire pour la déplacer sans risquer de casser tout le code.\\
 Or les méthodes de refactoring qui vont suivre seront du type à permettre le déplacement de fonctionnalités entre des classes en toute sécurité.\\
 
 
@@ -404,7 +404,7 @@ Or les méthodes de refactoring qui vont suivre seront du type à permettre le d
 Il se peut qu'à un instant T, vous vouliez déplacer une méthode dans une autre classe car cela vous arrange ou car cela aurait plus de sens. Dans ce cas-là, on peut utiliser le refactoring pour déplacer cette méthode vers l'autre classe en toute sécurité.
 
 \paragraph{Comment faire :}
-Il faut commencer par regarder toutes les variables utilisées par la méthode et qui sont présente dans la classe. Si ces variables ne sont utilisées que par la méthode à déplacer, il faut les déplacer dans la nouvelle classe aussi.\\
+Il faut commencer par regarder toutes les variables utilisées par la méthode et qui sont présentes dans la classe. Si ces variables ne sont utilisées que par la méthode à déplacer, il faut les déplacer dans la nouvelle classe aussi.\\
 En revanche si ces variables sont utilisées par d'autres méthodes il est conseillé de déplacer aussi ces méthodes vers la nouvelle classe.
 Ensuite, il faut s'assurer que toutes ces méthodes ne soient pas déclarées dans une classe mère ou fille.\\
 Si toutes ces conditions sont réunies, on peut déclarer la ou les méthodes dans la nouvelle classe puis définir une méthode dans l'ancienne classe qui va appeler la nouvelle méthode.
@@ -437,13 +437,13 @@ Cette méthode de refactoring permet de respecter le principe de responsabilité
 Les classes respectant ce principe sont plus fiables et tolérantes aux changements puisque si une classe peut faire plusieurs choses, la modification d'une fonctionnalité de la classe peut casser une autre fonctionnalité.
 
 \paragraph{Technique inverse :}
-La technique inverse consiste à supprimer les classes qui ont peut d'utilités. Cela permet de libérer de la mémoire.\\
+La technique inverse consiste à supprimer les classes qui ont peu d'utilité. Cela permet de libérer de la mémoire.\\
 
 \newpage
 
 \subsection{Cacher la délégation}
 \paragraph{Présentation :}
-Nous sommes dans le cas où une structure permet à un client d'appeler une méthode d'un objet A qui lui renvoie un objet B pour ensuite appeler une méthode de l'objet B pour obtenir l'information souhaitée. On obtient une chaîne d'appels or si l'on veut changer quelque chose à la relation entre A et B, cela aura pour conséquence de changer la chaîne d'appels côté client.\\
+Nous sommes dans le cas où une structure permet à un client d'appeler une méthode d'un objet A qui lui renvoie un objet B pour ensuite appeler une méthode de l'objet B pour obtenir l'information souhaitée. On obtient une chaîne d'appels. Or si l'on veut changer quelque chose à la relation entre A et B, cela aura pour conséquence de changer la chaîne d'appels côté client.\\
 Pour éviter ça, il est préférable de cacher la délégation au yeux du client à l'aide de refactoring.
 
 \begin{center}
@@ -536,7 +536,7 @@ Il existe trois types de refactoring qui permettent chacun de remplacer les Type
 \paragraph{Remplacement par une classe :}
 Il est possible de remplacer un Type Code par une classe de type Énumération.\\
 Cela permet de ne plus utiliser de simples nombres qui ne sont pas forcément compréhensibles à première vue alors que les énumérations sont facilement lisibles.\\
-Le typage à l'aide d'une énumération va permettre de ne plus se soucier de la valeur des Type Code (Est ce que le nombre rentré à bien une signification?) ce qui permet de faire moins de gestion sur ces valeurs.
+Le typage à l'aide d'une énumération va permettre de ne plus se soucier de la valeur des Type Code (Est ce que le nombre rentré a bien une signification?) ce qui permet de faire moins de gestion sur ces valeurs.
 
 \begin{center}
 \includegraphics[scale=1]{Image/TypeCodeClasse.png}\\
@@ -544,7 +544,7 @@ Le typage à l'aide d'une énumération va permettre de ne plus se soucier de la
 \end{center}
 
 \paragraph{Remplacement par une sous classe :}
-On peut remplacer les Type Code par des sous-classe. A l'aide de ce procédé nous pouvons écrire des méthodes ou créer des champs spécifiques selon le type de l'objet. Cette méthode permet aussi de rajouter très facilement de nouveaux "types" en créant simplement une nouvelle sous-classe.
+On peut remplacer les Type Code par des sous-classes. A l'aide de ce procédé nous pouvons écrire des méthodes ou créer des champs spécifiques selon le type de l'objet. Cette méthode permet aussi de rajouter très facilement de nouveaux "types" en créant simplement une nouvelle sous-classe.
 Elle adhère aussi mieux au principe de responsabilité unique.\\
 En revanche, le problème de cette approche est qu'on ne peut pas modifier le type de l'objet facilement s'il venait à changer.\\
 Il est possible de faire la technique inverse dans le cas où les sous-classes diffèrent uniquement par les valeurs retour des méthodes (ces valeurs étant des constantes). Garder des sous classes dans ce cas là complexifie l'architecture pour un apport négligeable.
@@ -602,7 +602,7 @@ Dans l'exemple, on est passé d'un switch qui calculait la vitesse d'un oiseau s
 \end{center}
 
 \paragraph{Bénéfices :}
-Dans cette exemple cela permettrait de rajouter des types d'oiseaux simplement en recréant une sous classe sans avoir à modifier une méthode déjà existante.\\
+Dans cet exemple cela permettrait de rajouter des types d'oiseaux simplement en recréant une sous classe sans avoir à modifier une méthode déjà existante.\\
 On évite aussi des conditions switch ou autres très longues du fait qu'il y aurait beaucoup de types à gérer.\\
 
 \newpage
@@ -613,7 +613,7 @@ Une assertion est une expression qui doit être évaluée à vrai pour que le pr
 Dans le cadre d'un programme qui nécessite absolument une variable, un objet ou n'importe quoi pour pouvoir fonctionner, même si cette donnée est censée être présente à ce moment du programme, il est plus sûr de placer une assertion pour vérifier que cette donnée existe bien au moment venu.
 
 \paragraph{Bénéfices :}
-Placer des assertions permet de détecter des erreurs et permet d'arrêter des programmes qui risquent de faire des dégâts si on les laisse continuer alors que quelque chose ne c'est pas déroulé comme prévue.
+Placer des assertions permet de détecter des erreurs et permet d'arrêter des programmes qui risquent de faire des dégâts si on les laisse continuer alors que quelque chose ne s'est pas déroulé comme prévu.
 Les assertions sont la plupart du temps utilisées dans les tests unitaires mais elles peuvent être utilisées dans nos programmes et se révéler très utiles.\\
 
 \newpage
@@ -628,11 +628,11 @@ Commençons cette partie par quelque chose de simple mais terriblement efficace,
 Lorsque l'on code une méthode, il faut lui donner un nom qui permet de comprendre ce que la méthode fait sans avoir à lire une seule ligne de code. Il s'agit d'une règle de base en programmation mais elle n'est pas toujours respectée.
 
 \paragraph{Bénéfices :}
-L'avantage de bien nommer une méthode est d'améliorer la relecture de son propre code ainsi que grandement faciliter la futur maintenance du code par quelqu'un d'autre.\\
+L'avantage de bien nommer une méthode est d'améliorer la relecture de son propre code ainsi que grandement faciliter la future maintenance du code par quelqu'un d'autre.\\
 
 \subsection{Séparer les requêtes de questionnement et de modification}
 \paragraph{Présentation :}
-Une méthode doit avoir une seule tâche à accomplir et non plusieurs et surtout si cette même méthode mêle opération de lecture et d'écriture.
+Une méthode doit avoir une seule tâche à accomplir et non plusieurs, surtout si cette même méthode mêle opération de lecture et d'écriture.
 Dans cette méthode de refactoring, nous appliquons le pattern de "Command and Query Responsibility Segregation" qui nous dit qu'il faut séparer les opérations de lecture et d'écriture.
 Pour appliquer ce refactoring il faut simplement séparer la méthode en deux pour obtenir deux nouvelles méthodes, une qui récupère des données et l'autre qui modifie des données.
 
@@ -653,7 +653,7 @@ Parfois, il peut nous arriver d'écrire deux méthodes assez similaires qui ont 
 
 \paragraph{Bénéfices :}
 On obtient une seule méthode au lieu de deux très similaires, ce qui permet la suppression de la duplication de code.\\
-A l'avenir, on n'a plus besoin de créer d'autre méthode si une nouvelle version de la méthode est nécessaire comme une augmentation de sept pour cent en reprenant l'exemple.\\
+A l'avenir, on n'a plus besoin de créer d'autres méthodes si une nouvelle version de la méthode est nécessaire comme une augmentation de sept pour cent en reprenant l'exemple.\\
 
 \paragraph{Technique inverse :}
 Il existe une technique qui revient plus ou moins à faire l'inverse. Il s'agit de la méthode de remplacement de paramètres avec des méthodes explicites.\\
@@ -684,16 +684,16 @@ L'avantage principal de cette méthode est de supprimer la duplication de code g
 Les paramètres sont aussi plus lisibles du fait qu'il ne reste plus qu'un seul objet avec un nom adapté pour une compréhension simple et efficace.\\
 En revanche, ce refactoring est inutile s'il sert uniquement à stocker les paramètres sans y ajouter des méthodes de traitement.\\
 
-\subsection{Remplacer les constructeurs par des méthode Factory}
+\subsection{Remplacer les constructeurs par des méthodes Factory}
 \paragraph{Présentation :}
-Plaçons nous dans un cas où on veut que notre constructeur ne soit pas accessible par l'extérieur.
+Plaçons-nous dans un cas où on veut que notre constructeur ne soit pas accessible par l'extérieur.
 On va alors devoir utiliser cette méthode de refactoring qui se base sur le pattern de factory.
 
 \paragraph{Comment faire :}
 Pour ce faire, il faut simplement créer une nouvelle méthode avec un nom adapté comme "createNomObjet", cette méthode va alors appeler elle-même le constructeur et renvoyer une instance de l'objet demandé.
 
 \paragraph{Bénéfices :}
-Les méthodes de type Factory ne renvoient pas forcément une instance de l'objet dont elles font parties. Cela peut avoir un grand avantage s'il faut renvoyer une sous-classe car on peut utiliser cette méthode pour faire un traitement à l'aide de paramètres pour décider quelle sous-classe renvoyer.\\
+Les méthodes de type Factory ne renvoient pas forcément une instance de l'objet dont elles font partie. Cela peut avoir un grand avantage s'il faut renvoyer une sous-classe car on peut utiliser cette méthode pour faire un traitement à l'aide de paramètres pour décider quelle sous-classe renvoyer.\\
 La méthode Factory peut avoir un nom plus approprié que celui d'un constructeur afin de comprendre ce qu'elle fait.\\
 On peut aussi l'utiliser pour renvoyer des instances déjà existantes(Singleton), ce qui n'est pas possible avec un constructeur.\\
 
@@ -716,7 +716,7 @@ Les codes d'erreurs ne peuvent pas être utilisés dans les constructeurs alors 
 On peut aussi créer nos propres exceptions pour qu'elles fassent un traitement particulier.\\
 
 \paragraph{Méthode alternative :}
-Les exceptions sont des objets qui doivent être utilisées pour gérer les comportements irréguliers provoqués par des erreurs inattendues.\\
+Les exceptions sont des objets qui doivent être utilisés pour gérer les comportements irréguliers provoqués par des erreurs inattendues.\\
 Il ne faut pas utiliser les exceptions à la place de simple test.\\
 
 \begin{center}
@@ -735,7 +735,7 @@ Dans cette partie, nous allons étudier des techniques permettant de déplacer d
 Nous allons commencer par un cas basique : si nous avons une super classe ainsi que deux sous-classes qui héritent de la super classe, et que les deux sous-classes possèdent un attribut ou une méthode commune que ne possède pas la super classe alors il sera intéressant de déplacer cette variable ou méthode dans la super classe.\\
 
 \paragraph{Bénéfices :}
-Ce refactoring élimine de la duplication de code que ce soit dans la définition d'une variable ou méthode ainsi que pour le corps de la méthode.\\
+Ce refactoring élimine de la duplication de code que ce soit dans la définition d'une variable ou méthode ou bien pour le corps de la méthode.\\
 Dans le cas de la méthode cela permet de ne modifier que la méthode présente dans la super classe en cas de changement au lieu de devoir passer dans toutes les sous-classes.\\
 
 \paragraph{Technique inverse :}
@@ -746,7 +746,7 @@ Cela permet de rendre le code plus compréhensible et améliore la cohérence in
 
 \subsection{Extraire une super classe}
 \paragraph{Présentation :}
-Si l'on a deux classes qui possèdent des champs ou des méthodes communes, alors il serait intéressant de créer une super classe dont les deux classes hériteraient.\\
+Si l'on a deux classes qui possèdent des champs ou des méthodes communs, alors il serait intéressant de créer une super classe dont les deux classes hériteraient.\\
 
 \paragraph{Bénéfices :}
 On supprime donc de la duplication de code.\\
@@ -754,8 +754,8 @@ En revanche cette méthode de refactoring ne peut pas être utilisée dans le ca
 
 \subsection{Créer des méthodes Template}
 \paragraph{Présentation :}
-Il nous est déjà arrivé d'avoir deux sous-classe qui possèdent une méthode assez similaire qui déroule un algorithme possédant les mêmes étapes mais avec des valeurs changeantes.\\
-Il y a alors un moyen de créer un template de la méthode dans la super classe tout en laissant l'implémentation qui diffère aux sous-classe.\\
+Il nous est déjà arrivé d'avoir deux sous-classes qui possèdent une méthode assez similaire qui déroule un algorithme possédant les mêmes étapes mais avec des valeurs changeantes.\\
+Il y a alors un moyen de créer un template de la méthode dans la super classe tout en laissant l'implémentation qui diffère aux sous-classes.\\
 
 \begin{center}
 \includegraphics[scale=0.75]{Image/Template.png}\\
@@ -763,7 +763,7 @@ Il y a alors un moyen de créer un template de la méthode dans la super classe 
 \end{center}
 
 \paragraph{Exemple :}
-Dans l'exemple ci-dessus, on peut voir qu'on a deux sous-classe qui possèdent une méthode permettant de calculer le montant d'une facture.\\
+Dans l'exemple ci-dessus, on peut voir qu'on a deux sous-classes qui possèdent une méthode permettant de calculer le montant d'une facture.\\
 Les deux méthodes n'utilisent pas les mêmes valeurs pour le calcul mais en revanche le calcul se résume dans les deux cas à l'addition du tarif de base additionné aux taxes.\\
 On peut donc voir ci-dessous que la solution est de remonter la méthode de calcul du montant de la facture dans la super classe. Celle-ci va renvoyer l'addition du prix de base additionné à celui des taxes.\\
 Ces prix-là seront calculés à l'aide de deux nouvelles méthodes qui seront redéfinies dans les sous-classes.\\
@@ -804,7 +804,7 @@ Ce premier refactoring va permettre aux utilisateurs de pouvoir supprimer un él
 \end{center}
 
 Par exemple on a une méthode "foo" avec un paramètre de type integer. Ce paramètre est ensuite passé à la méthode "bar" puis à la méthode "baz" où il est enfin utilisé.\\
-Si on décide de supprimer la paramètre de la méthode "baz", l'IDE va, si demandé, effectuer le refactoring en supprimant le paramètre de toutes les méthodes puisqu'il n'était utilisé que dans la méthode "baz".
+Si on décide de supprimer le paramètre de la méthode "baz", l'IDE va, si demandé, effectuer le refactoring en supprimant le paramètre de toutes les méthodes puisqu'il n'était utilisé que dans la méthode "baz".
 Cette option permet d'éviter d'avoir des oublis lorsqu'on supprime un élément et que l'on cherche où sont les répercussions.\\
 
 \paragraph{Capacité de déplacement :}
@@ -831,7 +831,7 @@ Le développeur choisit les règles de refactoring à appliquer puis le greffon 
 1) Le fichier Java à analyser est parsé et produit un arbre syntaxique abstrait.\\
 
 2) Pour chaque refactoring :\\
-\tabto{0.8cm} 1) Cherche des opportunités de refactoring en visitant l'abre syntaxique abstrait.\\
+\tabto{0.8cm} 1) Cherche des opportunités de refactoring en visitant l'arbre syntaxique abstrait.\\
 \tabto{0.8cm} 2) Génère les réécritures de code lorsqu'une  opportunité de refactoring a été identifiée.\\
 
 3) Lorsque tout l'arbre syntaxique abstrait a été visité, si des réécritures de code ont été générées :\\
@@ -907,11 +907,11 @@ M = a.(b+c).d.(e+f).g\\
 \subsection{Est-il utilisable pour faire du refactoring ?}
 Actuellement il n'existe pas de logiciel utilisant les graphes de flots de contrôle pour effectuer du refactoring.\\
 Théoriquement il n'est pas impossible de faire du refactoring avec ce type de graphe.
-D'après un article de recherche traitant du test structurel des executables, il est possible à l'aide des flots de contrôle de détécter si tous les noeuds ou tous les arcs peuvent être atteints\cite{ref12}.\\
+D'après un article de recherche traitant du test structurel des exécutables, il est possible à l'aide des flots de contrôle de détécter si tous les noeuds ou tous les arcs peuvent être atteints\cite{ref12}.\\
 Cet aspect pourrait être utilisé dans le refactoring pour détecter du code non accessible lors de l'exécution du programme.\\
 On pourrait aussi utiliser une détection de chemin
 permettant une optimisation du code en empruntant un chemin moins coûteux en temps et ressources.\\
-En revanche, on ne peut pas utiliser les graphes de flots de contrôle pour tester tous les chemins possibles d'un programme dès lors qu'il contient des boucles car le nombre de chemin va être infini.\\
+En revanche, on ne peut pas utiliser les graphes de flots de contrôle pour tester tous les chemins possibles d'un programme dès lors qu'il contient des boucles car le nombre de chemins va être infini.\\
 
 \subsection{Exemple d'utilisation possible d'un graphe de flots de contrôle dans le refactoring}
 
@@ -932,7 +932,7 @@ C'est à dire de trouver au moins un ensemble de combinaisons de valeurs qui per
 Imaginons que dans l'exemple une variable y soit générée aléatoirement entre -100 et 100.
 L'exemple ci-dessus est très simple mais a pour but de montrer qu'il est possible de détecter du code mort.\\
 On a donc une variable x à laquelle on affecte le carré d'une variable y, or le carré de n'importe quel entier est positif ou nul.\\ Si l'on regarde le mini programme, on peut facilement comprendre que jamais on ne pourra passer par le else car x ne peut pas être négatif. Mais imaginons que ce soit un programme beaucoup plus compliqué.\\ On a alors le graphe de flots de contrôle, qui à l'aide d'un algorithme permettant de vérifier toutes les décisions possibles, va nous dire qu'il est impossible de passer la condition "x est négatif". Le graphe de flots de contrôle nous permettrait donc de détecter du code mort en étudiant les décisions possibles d'un programme.\\
-En revanche la complexité de l'algorithme qui détecte toute les décisions possibles est exponentiel en fonction du nombre de conditions présent dans le programme.\\
+En revanche la complexité de l'algorithme qui détecte toutes les décisions possibles est exponentiel en fonction du nombre de conditions présent dans le programme.\\
 Afin de contourner cela, il serait judicieux de l'appliquer sur des morceaux de programme pour diminuer le nombre de conditions traitées en même temps et obtenir un résultat dans des délais acceptables.\\
 
 \chapter{Conclusion}

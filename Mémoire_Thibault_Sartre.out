@@ -1,6 +1,6 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Remerciements}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Introdution}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Introduction}{chapter.1}% 3
 \BOOKMARK [0][-]{chapter.2}{Pourquoi faire du refactoring ?}{}% 4
 \BOOKMARK [1][-]{section.2.1}{Bloaters}{chapter.2}% 5
 \BOOKMARK [2][-]{subsection.2.1.1}{M\351thode trop longue}{section.2.1}% 6
@@ -48,7 +48,7 @@
 \BOOKMARK [2][-]{subsection.3.5.3}{M\351thode param\351tr\351e}{section.3.5}% 48
 \BOOKMARK [2][-]{subsection.3.5.4}{Conserver l'objet entier}{section.3.5}% 49
 \BOOKMARK [2][-]{subsection.3.5.5}{Ajouter des objets en param\350tre}{section.3.5}% 50
-\BOOKMARK [2][-]{subsection.3.5.6}{Remplacer les constructeurs par des m\351thode Factory}{section.3.5}% 51
+\BOOKMARK [2][-]{subsection.3.5.6}{Remplacer les constructeurs par des m\351thodes Factory}{section.3.5}% 51
 \BOOKMARK [2][-]{subsection.3.5.7}{Remplacer les codes d'erreurs par des exceptions}{section.3.5}% 52
 \BOOKMARK [1][-]{section.3.6}{Faire face \340 la g\351n\351ralisation}{chapter.3}% 53
 \BOOKMARK [2][-]{subsection.3.6.1}{Remonter les variables et m\351thodes}{section.3.6}% 54

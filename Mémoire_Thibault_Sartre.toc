@@ -1,7 +1,7 @@
 \select@language {french}
 \contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}
 \contentsline {section}{\numberline {1.1}Remerciements}{7}{section.1.1}
-\contentsline {section}{\numberline {1.2}Introdution}{7}{section.1.2}
+\contentsline {section}{\numberline {1.2}Introduction}{7}{section.1.2}
 \contentsline {chapter}{\numberline {2}Pourquoi faire du refactoring ?}{9}{chapter.2}
 \contentsline {section}{\numberline {2.1}Bloaters}{9}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}M\IeC {\'e}thode trop longue}{9}{subsection.2.1.1}
@@ -144,7 +144,7 @@
 \contentsline {subsection}{\numberline {3.5.5}Ajouter des objets en param\IeC {\`e}tre}{37}{subsection.3.5.5}
 \contentsline {paragraph}{Pr\IeC {\'e}sentation :}{37}{section*.95}
 \contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{38}{section*.96}
-\contentsline {subsection}{\numberline {3.5.6}Remplacer les constructeurs par des m\IeC {\'e}thode Factory}{38}{subsection.3.5.6}
+\contentsline {subsection}{\numberline {3.5.6}Remplacer les constructeurs par des m\IeC {\'e}thodes Factory}{38}{subsection.3.5.6}
 \contentsline {paragraph}{Pr\IeC {\'e}sentation :}{38}{section*.97}
 \contentsline {paragraph}{Comment faire :}{38}{section*.98}
 \contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{38}{section*.99}
