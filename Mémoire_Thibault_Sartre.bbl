@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{ref17}
+Graphe de flot de contrôle.
+\newblock https://fr.wikipedia.org/.
+
 \bibitem{ref9}
 Jetbrains: Developer tools for professionals and teams.
 \newblock https://www.jetbrains.com/help/idea/refactoring-source-code.html.
@@ -11,6 +15,11 @@ Refactoring techniques.
 \bibitem{ref14}
 Refactoring techniques.
 \newblock https://refactoring.guru/refactoring/techniques.
+
+\bibitem{ref18}
+Software engineering | control flow graph (cfg).
+\newblock
+  https://www.geeksforgeeks.org/software-engineering-control-flow-graph-cfg/.
 
 \bibitem{ref3}
 Jean-Michel Doudoux.

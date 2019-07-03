@@ -877,6 +877,35 @@ Il nous est donc possible de détecter des chemins infaisables à l'aide de l'ex
 \section{Les graphes de flots de contrôle}
 \subsection{Qu'est ce que c'est ?}
 Un graphe de flot de contrôle est une représentation sous forme de graphe de tous les chemins qui peuvent être suivis par un programme durant son exécution.\\
+Il s'agit de graphe orienté.\\
+Je vais maintenant vous présenter comment sont représentés les différents types d'instructions dans les graphes de flots de contrôle.\\
+Les exemples ci-dessous sont repris du site "geeksfirgeeks.org" \cite{ref18}\\
+
+Instruction If-Else :
+
+\begin{center}
+\includegraphics[scale=1]{Image/ExempleIfElse.png}\\
+\itshape{Exemple de bloc If Else dans un graphe de flots de contrôle}
+\end{center}
+
+\newpage
+
+Instruction While :
+
+\begin{center}
+\includegraphics[scale=1]{Image/ExempleWhile.png}\\
+\itshape{Exemple de bloc while dans un graphe de flots de contrôle}
+\end{center}
+
+Instruction Do While : 
+
+\begin{center}
+\includegraphics[scale=1]{Image/ExempleDoWhile.png}\\
+\itshape{Exemple de bloc do while dans un graphe de flots de contrôle}
+\end{center}
+
+\newpage
+
 Chaque graphe de flots de contrôle possède un sommet entrée (là où le programme débute) et un sommet sortie (là où le programme termine).\\
 Les autres sommets représentent des blocs d'instructions et les arcs la possibilité de transfert de l'exécution d'un nœud à un autre \cite{ref11}.
 
@@ -890,6 +919,23 @@ Un exemple de chemin de contrôle : [a,c,d,e,g].\\
 Il est possible de représenter sous forme algébrique l'ensemble des chemins de contrôle du graphe (M).\\
 Ici on aurait :\\
 M = a.(b+c).d.(e+f).g\\
+
+Les blocs présents dans les graphes de flots de contrôle possèdent des relations de domination entre eux.\\
+C'est-à-dire qu'on peut dire "qu'un bloc M domine un bloc N si chaque chemin qui atteint le bloc N passe par M"\cite{ref17}.\\
+Avec cette définition, on peut dire que le bloc entrée domine n'importe quels blocs puisque tous chemins débute par le bloc entrée.\\
+On peut aussi dire que M postdomine N si "chaque chemin de N vers le bloc de sortie passe par M"\cite{ref17}\\
+On parle aussi de domination immédiate dans le cas où un bloc M est le dernier dominant de N en partant du bloc entrée, un bloc ne peut donc être dominé immédiatement par un seul bloc.\\
+On peut analyser toutes ces relations de domination entre les blocs en générant un arbre de dominance.\\
+Voici un exemple d'arbre de dominance par rapport à l'exemple de graphe de flots de contrôle situé plus haut.
+
+\begin{center}
+\includegraphics[scale=1]{Image/ArbreDominance.png}\\
+\itshape{Exemple d'arbre de dominance}
+\end{center}
+
+On a donc f,e,g qui sont dominés par a et d.\\
+Et b,c,d qui sont dominés par a.\\
+
 
 \subsection{Est-il utilisable pour faire du refactoring ?}
 Actuellement il n'existe pas de logiciel utilisant les graphes de flots de contrôle pour effectuer du refactoring.\\
@@ -944,8 +990,6 @@ Le graphe de flots de contrôle nous permettrait donc de détecter du code mort 
 En revanche la complexité de l'algorithme qui détecte toutes les décisions possibles est exponentiel en fonction du nombre de conditions présent dans le programme.\\
 Afin de contourner cela, il serait judicieux de l'appliquer sur des morceaux de programme pour diminuer le nombre de conditions traitées en même temps et obtenir un résultat dans des délais acceptables.\\
 
-\newpage
-
 Pour résumer, notre solution aurait pour algorithme :\\
 
 1) Générer un graphe de flots de contrôle à partir du code.\\
@@ -981,6 +1025,8 @@ Le développeur choisit les règles de refactoring à appliquer puis le greffon 
 \tabto{0.8cm} 4) Sinon, fin : il n'y a plus de refactoring possible sur ce fichier.\\
 
 Actuellement, tous les refactorings implémentés font du filtrage par motif et travaillent fichier par fichier.\\
+
+\newpage
 
 \subsection{Fonctionnalités}
 Il existe beaucoup de fonctionnalités de refactoring dans AutoRefactor; je vais vous en présenter quelques unes.\\
