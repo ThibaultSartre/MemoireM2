@@ -174,18 +174,22 @@
 \contentsline {paragraph}{Capacit\IeC {\'e} de d\IeC {\'e}placement :}{46}{section*.115}
 \contentsline {paragraph}{Extraction :}{46}{section*.116}
 \contentsline {paragraph}{Renommer :}{46}{section*.117}
-\contentsline {section}{\numberline {4.2}AutoRefactor}{47}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Pr\IeC {\'e}sentation du projet}{47}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Fonctionnement du programme}{47}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Fonctionnalit\IeC {\'e}s}{47}{subsection.4.2.3}
-\contentsline {paragraph}{Remplacement de boucle par une seule m\IeC {\'e}thode :}{48}{section*.118}
-\contentsline {paragraph}{Changement de type de stockage :}{48}{section*.119}
-\contentsline {paragraph}{Pr\IeC {\'e}f\IeC {\'e}rer les types primitifs :}{48}{section*.120}
-\contentsline {paragraph}{Fusionner les blocs if :}{48}{section*.121}
-\contentsline {paragraph}{Remplacer des clauses redondantes :}{49}{section*.122}
-\contentsline {subsection}{\numberline {4.2.4}Objectif futur}{49}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.2}D\IeC {\'e}tection de chemin infaisable}{47}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}L'ex\IeC {\'e}cution symbolique}{47}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Arbre d'ex\IeC {\'e}cution symbolique}{48}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Le solveur Z3}{49}{subsection.4.2.3}
 \contentsline {section}{\numberline {4.3}Les graphes de flots de contr\IeC {\^o}le}{50}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Qu'est ce que c'est ?}{50}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Est-il utilisable pour faire du refactoring ?}{50}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Exemple d'utilisation possible d'un graphe de flots de contr\IeC {\^o}le dans le refactoring}{51}{subsection.4.3.3}
-\contentsline {chapter}{\numberline {5}Conclusion}{53}{chapter.5}
+\contentsline {section}{\numberline {4.4}AutoRefactor}{55}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Pr\IeC {\'e}sentation du projet}{55}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Fonctionnement du programme}{55}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Fonctionnalit\IeC {\'e}s}{55}{subsection.4.4.3}
+\contentsline {paragraph}{Remplacement de boucle par une seule m\IeC {\'e}thode :}{56}{section*.118}
+\contentsline {paragraph}{Changement de type de stockage :}{56}{section*.119}
+\contentsline {paragraph}{Pr\IeC {\'e}f\IeC {\'e}rer les types primitifs :}{56}{section*.120}
+\contentsline {paragraph}{Fusionner les blocs if :}{56}{section*.121}
+\contentsline {paragraph}{Remplacer des clauses redondantes :}{57}{section*.122}
+\contentsline {subsection}{\numberline {4.4.4}Objectif futur}{57}{subsection.4.4.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{59}{chapter.5}

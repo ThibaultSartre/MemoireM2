@@ -41,6 +41,11 @@ Martin Fowler.
 \newblock {\em Refactoring: Improving the Design of Existing Code}.
 \newblock Addison-Wesley Professional, 1999.
 
+\bibitem{ref16}
+James~C. King.
+\newblock Symbolic execution and program testing.
+\newblock https://yurichev.com/mirrors/king76symbolicexecution.pdf.
+
 \bibitem{ref6}
 Zoran Maksimovic.
 \newblock Refactoring with composed method pattern, Janvier 2019.
@@ -64,5 +69,10 @@ Jean-Noël Rouvignac.
 Sami Taktak.
 \newblock Test et validation du logiciel test structurel.
 \newblock http://cedric.cnam.fr/~taktaks/GLG101/teststructurel.pdf.
+
+\bibitem{ref15}
+Le~Wei.
+\newblock Symbolic execution.
+\newblock http://web.cs.iastate.edu/~weile/cs641/9.SymbolicExecution.pdf.
 
 \end{thebibliography}

@@ -57,13 +57,17 @@
 \BOOKMARK [2][-]{subsection.3.6.4}{Remplacer l'h\351ritage par de la d\351l\351gation}{section.3.6}% 57
 \BOOKMARK [0][-]{chapter.4}{Outils de refactoring}{}% 58
 \BOOKMARK [1][-]{section.4.1}{Fonctionnalit\351s d'IDE}{chapter.4}% 59
-\BOOKMARK [1][-]{section.4.2}{AutoRefactor}{chapter.4}% 60
-\BOOKMARK [2][-]{subsection.4.2.1}{Pr\351sentation du projet}{section.4.2}% 61
-\BOOKMARK [2][-]{subsection.4.2.2}{Fonctionnement du programme}{section.4.2}% 62
-\BOOKMARK [2][-]{subsection.4.2.3}{Fonctionnalit\351s}{section.4.2}% 63
-\BOOKMARK [2][-]{subsection.4.2.4}{Objectif futur}{section.4.2}% 64
-\BOOKMARK [1][-]{section.4.3}{Les graphes de flots de contr\364le}{chapter.4}% 65
-\BOOKMARK [2][-]{subsection.4.3.1}{Qu'est ce que c'est ?}{section.4.3}% 66
-\BOOKMARK [2][-]{subsection.4.3.2}{Est-il utilisable pour faire du refactoring ?}{section.4.3}% 67
-\BOOKMARK [2][-]{subsection.4.3.3}{Exemple d'utilisation possible d'un graphe de flots de contr\364le dans le refactoring}{section.4.3}% 68
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 69
+\BOOKMARK [1][-]{section.4.2}{D\351tection de chemin infaisable}{chapter.4}% 60
+\BOOKMARK [2][-]{subsection.4.2.1}{L'ex\351cution symbolique}{section.4.2}% 61
+\BOOKMARK [2][-]{subsection.4.2.2}{Arbre d'ex\351cution symbolique}{section.4.2}% 62
+\BOOKMARK [2][-]{subsection.4.2.3}{Le solveur Z3}{section.4.2}% 63
+\BOOKMARK [1][-]{section.4.3}{Les graphes de flots de contr\364le}{chapter.4}% 64
+\BOOKMARK [2][-]{subsection.4.3.1}{Qu'est ce que c'est ?}{section.4.3}% 65
+\BOOKMARK [2][-]{subsection.4.3.2}{Est-il utilisable pour faire du refactoring ?}{section.4.3}% 66
+\BOOKMARK [2][-]{subsection.4.3.3}{Exemple d'utilisation possible d'un graphe de flots de contr\364le dans le refactoring}{section.4.3}% 67
+\BOOKMARK [1][-]{section.4.4}{AutoRefactor}{chapter.4}% 68
+\BOOKMARK [2][-]{subsection.4.4.1}{Pr\351sentation du projet}{section.4.4}% 69
+\BOOKMARK [2][-]{subsection.4.4.2}{Fonctionnement du programme}{section.4.4}% 70
+\BOOKMARK [2][-]{subsection.4.4.3}{Fonctionnalit\351s}{section.4.4}% 71
+\BOOKMARK [2][-]{subsection.4.4.4}{Objectif futur}{section.4.4}% 72
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 73

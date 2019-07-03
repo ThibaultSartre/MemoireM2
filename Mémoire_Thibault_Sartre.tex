@@ -817,6 +817,146 @@ On a aussi la possibilité d'effectuer des extractions de tous types, que ce soi
 Et pour finir, il existe une fonctionnalité permettant de renommer n'importe quel élément. Cela nous permet de ne pas avoir à chercher dans le code toutes les occurrences de l'élément que l'on vient de modifier.\\
 
 \newpage
+\section{Détection de chemin infaisable}
+
+\subsection{L'exécution symbolique}
+Je vais maintenant vous parler de l’exécution symbolique qui est une technique d’analyse de programme qui est nécessaire pour la partie du refactoring avec les graphes de flots de contrôle.\\
+L’exécution symbolique n’est pas à confondre avec l’exécution concrète.\\
+Pour simplifier ce point, je vais vous présenter un exemple.\\
+
+\begin{center}
+\includegraphics[scale=0.8]{Image/ExempleExecutionSymbolique.png}\\
+\itshape{Exemple d'exécution symbolique \cite{ref15}}
+\end{center}
+
+A gauche, nous avons l’exécution concrète et à droite l’exécution symbolique.\\
+On peut voir que lors de l’exécution symbolique, on s’intéresse exclusivement aux valeurs des différentes variables présentent dans le programme.\\
+Ces valeurs ne sont pas définies avec des valeurs réelles mais avec des inconnues, ici la valeur de i et j dépendent principalement du paramètre i appelé i input.\\
+L’exécution symbolique à plusieurs applications.
+On peut par exemple générer des tests sur les inputs, trouver des bugs et des vulnérabilités dans les programmes.\\
+Mais ici l’utilisation qui nous intéresse est la détection de chemin infaisable.\cite{ref15}\\
+D’après James C. King, il faut que les variables utilisées dans les programmes soit uniquement des nombres entiers pour pouvoir effectuer l’exécution symbolique.\cite{ref16}
+
+\subsection{Arbre d'exécution symbolique}
+
+Les arbres d’exécution symbolique sont des représentations de l’exécution symbolique.\\
+
+D’après James C. King, les arbres d’exécution symbolique sont, pour la plupart des programmes, infinie.\cite{ref16}\\
+On va directement étudier un exemple pour mieux comprendre de quoi est formé un arbre d’exécution symbolique.\\
+
+\begin{center}
+\includegraphics[scale=0.8]{Image/ExempleArbreExecutionSymbolique.png}\\
+\itshape{Exemple d'un arbre d'exécution symbolique \cite{ref15}}
+\end{center}
+
+Sur l’exemple on a l’exécution symbolique qui nous dit que la variable a vaut alpha, b vaut beta et c vaut gamma.\\
+
+Le point 1 (alpha) sur l’arbre d’exécution symbolique représente la condition " if (a) ", elle signifie que si alpha est évalué à true alors on prend la branche de gauche sinon on prend la branche de droite.\\
+
+Les point 2 (beta < 5) représente la condition " if (b<5) ", si l’on prend le chemin de gauche c’est que l’évaluation de la condition est vraie et fausse pour le chemin de droite.\\
+
+Le point 3 (not alpha et gamma) représente la condition " if (!a ET c) " et comme pour les précédents, le chemin de gauche est l’évaluation à true et false pour le chemin de droite.\\
+
+Au niveau des feuilles de l’arbre, on peut voir en bleu des conditions de chemin.\\
+Il s’agit des conditions nécessaires à remplir pour pouvoir atteindre cet endroit de l’arbre d’exécution symbolique.\\
+
+Par exemple si l’on a : (alpha ET (beta < 5)) cela veut dire que pour accéder à cette branche, il faut que alpha soit évalué à true et que beta soit inférieur à 5.\\
+Et c’est à l’aide de ces conditions de chemin que l’on va pouvoir déterminer quels sont les chemins qui ne peuvent pas être atteints.\\
+
+\subsection{Le solveur Z3}
+
+Dans le cas où on a pu générer un arbre d’exécution symbolique qui contient uniquement des variables de type Integer et qui n’est pas infini.\\
+On va pouvoir utiliser le solveur Z3. Le solveur Z3 est un démonstrateur automatique de théorème, c’est-à-dire qu’il peut résoudre n’importe quelle équation du moment qu’il existe au moins une solution.\\
+Il s’agit d’un projet de Microsoft développé en C++, ce solveur est applicable sur plusieurs langages de programmation dont le Java dans notre cas.\\
+Le solveur Z3 va nous permettre de résoudre toutes les conditions de chemin pour savoir s’il est possible ou non d’accéder à ce chemin ou tout simplement détecter si les chemins sont faisables ou pas.\\
+Il nous est donc possible de détecter des chemins infaisables à l'aide de l'exécution symbolique et du solveur Z3.\\
+
+
+\newpage
+
+\section{Les graphes de flots de contrôle}
+\subsection{Qu'est ce que c'est ?}
+Un graphe de flot de contrôle est une représentation sous forme de graphe de tous les chemins qui peuvent être suivis par un programme durant son exécution.\\
+Chaque graphe de flots de contrôle possède un sommet entrée (là où le programme débute) et un sommet sortie (là où le programme termine).\\
+Les autres sommets représentent des blocs d'instructions et les arcs la possibilité de transfert de l'exécution d'un nœud à un autre \cite{ref11}.
+
+\begin{center}
+\includegraphics[scale=0.7]{Image/GFC.png}\\
+\itshape{Exemple de graphe de flots de contrôle\cite{ref11}}
+\end{center}
+
+Une exécution possible est représentée par un chemin de contrôle dans le graphe de contrôle. Un chemin de contrôle doit impérativement commencer par le sommet entrée et finir par le sommet sortie.\\
+Un exemple de chemin de contrôle : [a,c,d,e,g].\\
+Il est possible de représenter sous forme algébrique l'ensemble des chemins de contrôle du graphe (M).\\
+Ici on aurait :\\
+M = a.(b+c).d.(e+f).g\\
+
+\subsection{Est-il utilisable pour faire du refactoring ?}
+Actuellement il n'existe pas de logiciel utilisant les graphes de flots de contrôle pour effectuer du refactoring.\\
+Théoriquement il n'est pas impossible de faire du refactoring avec ce type de graphe.
+D'après un article de recherche traitant du test structurel des exécutables, il est possible à l'aide des flots de contrôle de détécter si tous les noeuds ou tous les arcs peuvent être atteints\cite{ref12}.\\
+Cet aspect pourrait être utilisé dans le refactoring pour détecter du code non accessible lors de l'exécution du programme.\\
+On pourrait aussi utiliser une détection de chemin
+permettant une optimisation du code en empruntant un chemin moins coûteux en temps et ressources.\\
+En revanche, on ne peut pas utiliser les graphes de flots de contrôle pour tester tous les chemins possibles d'un programme dès lors qu'il contient des boucles car le nombre de chemins va être infini.\\
+
+\subsection{Exemple d'utilisation possible d'un graphe de flots de contrôle dans le refactoring}
+
+Je vais maintenant vous présenter de quelle manière on pourrait utiliser les graphes de flot de contrôle dans le refactoring et plus précisément pour détecter du code mort.\\
+A l'aide du test structurel qui utilise les graphes de flot de contrôle, il est possible d'avoir une couverture de toutes les décisions possibles\cite{ref13}.\\
+C'est à dire de trouver au moins un ensemble de combinaisons de valeurs qui permet de passer toutes les conditions du programme. Cette technique pourrait donc être utilisée dans le refactoring pour détecter du code mort; car dans le cas où il n'existe aucun ensemble de combinaisons de valeur permettant de satisfaire toutes les conditions, alors on peut trouver la partie du programme inatteignable (code mort).\\
+
+\begin{center}
+\includegraphics[scale=1.5]{Image/ExempleCodeGraphe.png}\\
+\itshape{Code à analyser avec le graphe de flots de contrôle}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.8]{Image/ExempleGraphe.png}\\
+\itshape{Graphe de flots de contrôle généré à partir du code ci-dessus}
+\end{center}
+
+Imaginons que dans l'exemple une variable y soit générée aléatoirement entre -100 et 100.
+L'exemple ci-dessus est très simple mais a pour but de montrer qu'il est possible de détecter du code mort.\\
+On a donc une variable x à laquelle on affecte le carré d'une variable y, or le carré de n'importe quel entier est positif ou nul.\\ Si l'on regarde le mini programme, on peut facilement comprendre que jamais on ne pourra passer par le else car x ne peut pas être négatif. Mais imaginons que ce soit un programme beaucoup plus compliqué.\\
+On va alors générer un arbre d’exécution symbolique à partir du code présenté ci-dessus.\\
+On va donc obtenir l’arbre ci-dessous.\\
+
+
+\begin{center}
+\includegraphics[scale=0.9]{Image/ExempleArbreExecutionSymbolique2.png}\\
+\itshape{Arbre d'exécution symbolique généré}
+\end{center}
+
+Sur notre arbre d'exécution symbolique, on peut voir en bleu les conditions de chemins qui doivent être résoluble si l'on veut pouvoir affirmer qu'il s'agit d'un chemin faisable.\\
+Pour ce faire il nous suffit d'utiliser le solveur Z3 pour nous aider à résoudre ces équations.\\
+Le solveur va alors nous dire qu'il est possible de résoudre l'équation "X>=0" mais en revanche il nous dira qu'il est impossible de trouver une solution à l'équation "X<0".\\
+Maintenant que l'on connait les chemins qui sont infaisable, il nous suffit de régénérer le graphe de flots de contrôle en coloriant en rouge les blocs inaccessible et en vert les blocs accessible.\\
+On obtient donc un nouveau graphe de flot de contrôle facilement compréhensible pour visualiser où se trouve le code mort du programme.
+
+
+\begin{center}
+\includegraphics[scale=0.8]{Image/ExempleGraphe2.png}\\
+\itshape{Graphe de flots de contrôle généré après analyse de l'arbre d'exécution symbolique}
+\end{center}
+
+Le graphe de flots de contrôle nous permettrait donc de détecter du code mort en étudiant les décisions possibles d'un programme.\\
+En revanche la complexité de l'algorithme qui détecte toutes les décisions possibles est exponentiel en fonction du nombre de conditions présent dans le programme.\\
+Afin de contourner cela, il serait judicieux de l'appliquer sur des morceaux de programme pour diminuer le nombre de conditions traitées en même temps et obtenir un résultat dans des délais acceptables.\\
+
+\newpage
+
+Pour résumer, notre solution aurait pour algorithme :\\
+
+1) Générer un graphe de flots de contr^^ole à partir du code.\\
+
+2) Générer un arbre d'exécution symbolique.\\
+
+3) Appliquer le solveur Z3 sur les conditions de chemins pour trouver quels sont les chemins faisable ou infaisable.\\
+
+4) Modifier le graphe de flots de contrôle pour colorier en rouge les blocs inatteignables et en vert les blocs atteignables.\\
+
+\newpage
 
 \section{AutoRefactor}
 \subsection{Présentation du projet}
@@ -886,54 +1026,6 @@ Jean-Noël Rouvignac a pour objectif futur de réussir à construire des graphes
 Il aimerait développer une fonctionnalité d'extraction automatique de méthode pour simplifier les longues méthodes.\\
 
 \newpage
-
-\section{Les graphes de flots de contrôle}
-\subsection{Qu'est ce que c'est ?}
-Un graphe de flot de contrôle est une représentation sous forme de graphe de tous les chemins qui peuvent être suivis par un programme durant son exécution.\\
-Chaque graphe de flots de contrôle possède un sommet entrée (là où le programme débute) et un sommet sortie (là où le programme termine).\\
-Les autres sommets représentent des blocs d'instructions et les arcs la possibilité de transfert de l'exécution d'un nœud à un autre \cite{ref11}.
-
-\begin{center}
-\includegraphics[scale=0.7]{Image/GFC.png}\\
-\itshape{Exemple de graphe de flots de contrôle\cite{ref11}}
-\end{center}
-
-Une exécution possible est représentée par un chemin de contrôle dans le graphe de contrôle. Un chemin de contrôle doit impérativement commencer par le sommet entrée et finir par le sommet sortie.\\
-Un exemple de chemin de contrôle : [a,c,d,e,g].\\
-Il est possible de représenter sous forme algébrique l'ensemble des chemins de contrôle du graphe (M).\\
-Ici on aurait :\\
-M = a.(b+c).d.(e+f).g\\
-
-\subsection{Est-il utilisable pour faire du refactoring ?}
-Actuellement il n'existe pas de logiciel utilisant les graphes de flots de contrôle pour effectuer du refactoring.\\
-Théoriquement il n'est pas impossible de faire du refactoring avec ce type de graphe.
-D'après un article de recherche traitant du test structurel des exécutables, il est possible à l'aide des flots de contrôle de détécter si tous les noeuds ou tous les arcs peuvent être atteints\cite{ref12}.\\
-Cet aspect pourrait être utilisé dans le refactoring pour détecter du code non accessible lors de l'exécution du programme.\\
-On pourrait aussi utiliser une détection de chemin
-permettant une optimisation du code en empruntant un chemin moins coûteux en temps et ressources.\\
-En revanche, on ne peut pas utiliser les graphes de flots de contrôle pour tester tous les chemins possibles d'un programme dès lors qu'il contient des boucles car le nombre de chemins va être infini.\\
-
-\subsection{Exemple d'utilisation possible d'un graphe de flots de contrôle dans le refactoring}
-
-Je vais maintenant vous présenter de quelle manière on pourrait utiliser les graphes de flot de contrôle dans le refactoring et plus précisément pour détecter du code mort.\\
-A l'aide du test structurel qui utilise les graphes de flot de contrôle, il est possible d'avoir une couverture de toutes les décisions possibles\cite{ref13}.\\
-C'est à dire de trouver au moins un ensemble de combinaisons de valeurs qui permet de passer toutes les conditions du programme. Cette technique pourrait donc être utilisée dans le refactoring pour détecter du code mort; car dans le cas où il n'existe aucun ensemble de combinaisons de valeur permettant de satisfaire toutes les conditions, alors on peut trouver la partie du programme inatteignable (code mort).\\
-
-\begin{center}
-\includegraphics[scale=1.5]{Image/ExempleCodeGraphe.png}\\
-\itshape{Code à analyser avec le graphe de flots de contrôle}
-\end{center}
-
-\begin{center}
-\includegraphics[scale=1]{Image/ExempleGraphe.png}\\
-\itshape{Graphe de flots de contrôle généré à partir du code ci-dessus}
-\end{center}
-
-Imaginons que dans l'exemple une variable y soit générée aléatoirement entre -100 et 100.
-L'exemple ci-dessus est très simple mais a pour but de montrer qu'il est possible de détecter du code mort.\\
-On a donc une variable x à laquelle on affecte le carré d'une variable y, or le carré de n'importe quel entier est positif ou nul.\\ Si l'on regarde le mini programme, on peut facilement comprendre que jamais on ne pourra passer par le else car x ne peut pas être négatif. Mais imaginons que ce soit un programme beaucoup plus compliqué.\\ On a alors le graphe de flots de contrôle, qui à l'aide d'un algorithme permettant de vérifier toutes les décisions possibles, va nous dire qu'il est impossible de passer la condition "x est négatif". Le graphe de flots de contrôle nous permettrait donc de détecter du code mort en étudiant les décisions possibles d'un programme.\\
-En revanche la complexité de l'algorithme qui détecte toutes les décisions possibles est exponentiel en fonction du nombre de conditions présent dans le programme.\\
-Afin de contourner cela, il serait judicieux de l'appliquer sur des morceaux de programme pour diminuer le nombre de conditions traitées en même temps et obtenir un résultat dans des délais acceptables.\\
 
 \chapter{Conclusion}
 Nous avons pu constater que tous nos programmes peuvent rapidement être infestés de codes mal structurés ou de choses indésirables.\\
