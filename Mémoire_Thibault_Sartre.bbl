@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{ref19}
+Dead code detector (for java applications).
+\newblock https://github.com/evernat/dead-code-detector.
+
 \bibitem{ref17}
 Graphe de flot de contrôle.
 \newblock https://fr.wikipedia.org/.

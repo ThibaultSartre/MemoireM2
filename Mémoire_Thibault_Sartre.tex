@@ -792,31 +792,6 @@ Il existe aussi la technique inverse, c'est à dire remplacer la délégation pa
 Dans ce cas il est préférable de privilégier l'héritage afin de réduire la taille du code due à la suppression de toutes les méthodes de délégation.\\
 
 \chapter{Outils de refactoring}
-\section{Fonctionnalités d'IDE}
-Dans cette partie, je vais vous présenter rapidement les fonctionnalités de refactoring les plus utilisées qui sont intégrées dans les IDE.\\
-
-\paragraph{Suppression sans danger :}
-Ce premier refactoring va permettre aux utilisateurs de pouvoir supprimer un élément sans occasionner des problèmes sur le fonctionnement du code.\\
-
-\begin{center}
-\includegraphics[scale=0.8]{Image/SafeDelete.png}\\
-\itshape{Exemple de suppression sans  danger \cite{ref9}}
-\end{center}
-
-Par exemple on a une méthode "foo" avec un paramètre de type integer. Ce paramètre est ensuite passé à la méthode "bar" puis à la méthode "baz" où il est enfin utilisé.\\
-Si on décide de supprimer le paramètre de la méthode "baz", l'IDE va, si demandé, effectuer le refactoring en supprimant le paramètre de toutes les méthodes puisqu'il n'était utilisé que dans la méthode "baz".
-Cette option permet d'éviter d'avoir des oublis lorsqu'on supprime un élément et que l'on cherche où sont les répercussions.\\
-
-\paragraph{Capacité de déplacement :}
-L'IDE nous permet de déplacer des fonctionnalités à travers le code. On peut donc déplacer des méthodes ou des attributs vers d'autres classes si cela semble plus pertinent.\\
-
-\paragraph{Extraction :}
-On a aussi la possibilité d'effectuer des extractions de tous types, que ce soit pour extraire des méthodes, attributs ou paramètres (voir \textit{Extraction de méthode, Extraction de variable}).\\
-
-\paragraph{Renommer :}
-Et pour finir, il existe une fonctionnalité permettant de renommer n'importe quel élément. Cela nous permet de ne pas avoir à chercher dans le code toutes les occurrences de l'élément que l'on vient de modifier.\\
-
-\newpage
 \section{Détection de chemin infaisable}
 
 \subsection{L'exécution symbolique}
@@ -999,6 +974,43 @@ Pour résumer, notre solution aurait pour algorithme :\\
 3) Appliquer le solveur Z3 sur les conditions de chemins pour trouver quels sont les chemins faisable ou infaisable.\\
 
 4) Modifier le graphe de flots de contrôle pour colorier en rouge les blocs inatteignables et en vert les blocs atteignables.\\
+
+\newpage
+
+\section{Fonctionnalités d'IDE}
+Dans cette partie, je vais vous présenter rapidement les fonctionnalités de refactoring les plus utilisées qui sont intégrées dans les IDE.\\
+
+\paragraph{Suppression sans danger :}
+Ce premier refactoring va permettre aux utilisateurs de pouvoir supprimer un élément sans occasionner des problèmes sur le fonctionnement du code.\\
+
+\begin{center}
+\includegraphics[scale=0.8]{Image/SafeDelete.png}\\
+\itshape{Exemple de suppression sans  danger \cite{ref9}}
+\end{center}
+
+Par exemple on a une méthode "foo" avec un paramètre de type integer. Ce paramètre est ensuite passé à la méthode "bar" puis à la méthode "baz" où il est enfin utilisé.\\
+Si on décide de supprimer le paramètre de la méthode "baz", l'IDE va, si demandé, effectuer le refactoring en supprimant le paramètre de toutes les méthodes puisqu'il n'était utilisé que dans la méthode "baz".
+Cette option permet d'éviter d'avoir des oublis lorsqu'on supprime un élément et que l'on cherche où sont les répercussions.\\
+
+\paragraph{Capacité de déplacement :}
+L'IDE nous permet de déplacer des fonctionnalités à travers le code. On peut donc déplacer des méthodes ou des attributs vers d'autres classes si cela semble plus pertinent.\\
+
+\paragraph{Extraction :}
+On a aussi la possibilité d'effectuer des extractions de tous types, que ce soit pour extraire des méthodes, attributs ou paramètres (voir \textit{Extraction de méthode, Extraction de variable}).\\
+
+\paragraph{Renommer :}
+Et pour finir, il existe une fonctionnalité permettant de renommer n'importe quel élément. Cela nous permet de ne pas avoir à chercher dans le code toutes les occurrences de l'élément que l'on vient de modifier.\\
+
+\section{Dead Code Detector}
+
+Dead Code Detector (DCD) est un logiciel permettant de supprimer du code mort des applications Java/JEE\cite{ref19}.\\
+DCD utilise la librairie open source ASM.
+ASM permet notamment de générer dynamiquement des classes directement sous forme binaire ou bien des algorithmes d'analyse de code.\\
+ASM est utilisé par exemple par gradle pour générer des classes pendant l'exécution.\\
+DCD est capable de détecter si des méthodes sont mortes peut importe si elles sont public, private ou protected.\\ Ce que nous pouvons aussi faire avec les graphes de flots de contrôle.\\
+La différence étant que pour DCD il est précisé que les résultats sont des propositions et que ce n’est pas sûr à cent pourcents qu’il s'agisse bien de code mort.\\
+Alors que si on utilise les graphes de flots de contrôle, on peut être absolument certain que le code mort détecté est bien mort grâce à l’utilisation des arbres d’exécution symbolique et du solveur Z3.\\
+DCD peut aussi détecter des initialisations inutiles de variable est bien d'autre chose qui ne nous intéresse pas directement.\\
 
 \newpage
 
