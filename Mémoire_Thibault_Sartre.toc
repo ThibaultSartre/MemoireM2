@@ -175,7 +175,7 @@
 \contentsline {subsection}{\numberline {4.1.3}Le solveur Z3}{47}{subsection.4.1.3}
 \contentsline {section}{\numberline {4.2}Les graphes de flots de contr\IeC {\^o}le}{48}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Qu'est ce que c'est ?}{48}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Est-il utilisable pour faire du refactoring ?}{51}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.2}Sont-ils utilisable pour faire du refactoring ?}{51}{subsection.4.2.2}
 \contentsline {subsection}{\numberline {4.2.3}Exemple d'utilisation possible d'un graphe de flots de contr\IeC {\^o}le dans le refactoring}{51}{subsection.4.2.3}
 \contentsline {section}{\numberline {4.3}Fonctionnalit\IeC {\'e}s d'IDE}{55}{section.4.3}
 \contentsline {paragraph}{Suppression sans danger :}{55}{section*.114}

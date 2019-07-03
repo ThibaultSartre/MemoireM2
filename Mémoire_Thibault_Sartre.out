@@ -62,7 +62,7 @@
 \BOOKMARK [2][-]{subsection.4.1.3}{Le solveur Z3}{section.4.1}% 62
 \BOOKMARK [1][-]{section.4.2}{Les graphes de flots de contr\364le}{chapter.4}% 63
 \BOOKMARK [2][-]{subsection.4.2.1}{Qu'est ce que c'est ?}{section.4.2}% 64
-\BOOKMARK [2][-]{subsection.4.2.2}{Est-il utilisable pour faire du refactoring ?}{section.4.2}% 65
+\BOOKMARK [2][-]{subsection.4.2.2}{Sont-ils utilisable pour faire du refactoring ?}{section.4.2}% 65
 \BOOKMARK [2][-]{subsection.4.2.3}{Exemple d'utilisation possible d'un graphe de flots de contr\364le dans le refactoring}{section.4.2}% 66
 \BOOKMARK [1][-]{section.4.3}{Fonctionnalit\351s d'IDE}{chapter.4}% 67
 \BOOKMARK [1][-]{section.4.4}{Dead Code Detector}{chapter.4}% 68
