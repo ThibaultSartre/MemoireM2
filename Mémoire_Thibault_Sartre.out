@@ -23,7 +23,7 @@
 \BOOKMARK [0][-]{chapter.3}{Les diff\351rents types de refactoring}{}% 23
 \BOOKMARK [1][-]{section.3.1}{Pattern de m\351thode compos\351e}{chapter.3}% 24
 \BOOKMARK [2][-]{subsection.3.1.1}{Extraction de m\351thode}{section.3.1}% 25
-\BOOKMARK [2][-]{subsection.3.1.2}{Extraction de variable}{section.3.1}% 26
+\BOOKMARK [2][-]{subsection.3.1.2}{Extraction de variables}{section.3.1}% 26
 \BOOKMARK [2][-]{subsection.3.1.3}{Remplacement des temporaires avec des m\351thodes}{section.3.1}% 27
 \BOOKMARK [2][-]{subsection.3.1.4}{Diviser les variables temporaires}{section.3.1}% 28
 \BOOKMARK [2][-]{subsection.3.1.5}{Supprimer les assignations aux param\350tres}{section.3.1}% 29
@@ -61,8 +61,8 @@
 \BOOKMARK [2][-]{subsection.4.1.2}{Arbre d'ex\351cution symbolique}{section.4.1}% 61
 \BOOKMARK [2][-]{subsection.4.1.3}{Le solveur Z3}{section.4.1}% 62
 \BOOKMARK [1][-]{section.4.2}{Les graphes de flots de contr\364le}{chapter.4}% 63
-\BOOKMARK [2][-]{subsection.4.2.1}{Qu'est ce que c'est ?}{section.4.2}% 64
-\BOOKMARK [2][-]{subsection.4.2.2}{Sont-ils utilisable pour faire du refactoring ?}{section.4.2}% 65
+\BOOKMARK [2][-]{subsection.4.2.1}{D\351finition}{section.4.2}% 64
+\BOOKMARK [2][-]{subsection.4.2.2}{Sont-ils utilisables pour faire du refactoring ?}{section.4.2}% 65
 \BOOKMARK [2][-]{subsection.4.2.3}{Exemple d'utilisation possible d'un graphe de flots de contr\364le dans le refactoring}{section.4.2}% 66
 \BOOKMARK [1][-]{section.4.3}{Fonctionnalit\351s d'IDE}{chapter.4}% 67
 \BOOKMARK [1][-]{section.4.4}{Dead Code Detector}{chapter.4}% 68

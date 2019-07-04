@@ -41,7 +41,7 @@
     \textsc{\Large Mémoire de fin d’études présenté pour l’obtention du grade de master}\\[1.5cm]
 
     \HRule \\[0.4cm]
-    { \huge \bfseries Comment les flots de contrôle peuvent-ils nous permettre de faire du refactoring de code en Java. \\[0.4cm] }
+    { \huge \bfseries Comment les flots de contrôle peuvent nous permettre de faire du refactoring de code en Java. \\[0.4cm] }
 
     \HRule \\[2cm]
     \includegraphics[scale=0.40]{image/univ.jpg}
@@ -290,7 +290,7 @@ L'extraction de méthode nous permet aussi d'isoler les parties indépendantes d
 \paragraph{Technique inverse :}
 La technique de refactoring Inline Method est l'exact opposé de l'extraction de méthode. Cette technique consiste à supprimer les méthodes jugées inutiles qui sont très courtes ou qui sont plus facilement compréhensibles par le code à l'intérieur de la méthode que par son nom. Cela a pour seul but de simplifier le code en diminuant le nombre de méthodes dans le code.\\
 
-\subsection{Extraction de variable}
+\subsection{Extraction de variables}
 \paragraph{Présentation :}
 La technique d'extraction de variable permet de créer des variables claires qui nous permettent de rendre des expressions complexes plus compréhensibles.
 Elle peut s'appliquer, par exemple, sur les conditions de if ou aussi des expressions arithmétiques sans résultat intermédiaire.
@@ -849,7 +849,7 @@ Il nous est donc possible de détecter des chemins infaisables à l'aide de l'ex
 \newpage
 
 \section{Les graphes de flots de contrôle}
-\subsection{Qu'est ce que c'est ?}
+\subsection{Définition}
 Un graphe de flot de contrôle est une représentation sous forme de graphe de tous les chemins qui peuvent être suivis par un programme durant son exécution.\\
 Il s'agit de graphe orienté.\\
 Voici comment sont représentés les différents types d'instructions dans les graphes de flots de contrôle.\\
@@ -896,7 +896,7 @@ M = a.(b+c).d.(e+f).g\\
 
 Les blocs présents dans les graphes de flots de contrôle possèdent des relations de domination entre eux.\\
 C'est-à-dire qu'on peut dire "qu'un bloc M domine un bloc N si chaque chemin qui atteint le bloc N passe par M"\cite{ref17}.\\
-Avec cette définition, on peut dire que le bloc entrée domine n'importe quels blocs puisque tout chemin débute par le bloc entrée.\\
+Avec cette définition, on peut dire que le bloc entrée domine n'importe quel bloc puisque tout chemin débute par le bloc entrée.\\
 On peut aussi dire que M postdomine N si "chaque chemin de N vers le bloc de sortie passe par M"\cite{ref17}\\
 On parle aussi de domination immédiate dans le cas où un bloc M est le dernier dominant de N en partant du bloc entrée. Un bloc ne peut donc être dominé immédiatement par un seul bloc.\\
 On peut analyser toutes ces relations de domination entre les blocs en générant un arbre de dominance.\\
@@ -911,7 +911,7 @@ On a donc f,e,g qui sont dominés par a et d.\\
 Et b,c,d qui sont dominés par a.\\
 
 
-\subsection{Sont-ils utilisable pour faire du refactoring ?}
+\subsection{Sont-ils utilisables pour faire du refactoring ?}
 Actuellement il n'existe pas de logiciel utilisant les graphes de flots de contrôle pour effectuer du refactoring.\\
 Théoriquement il n'est pas impossible de faire du refactoring avec ce type de graphe.
 D'après un article de recherche traitant du test structurel des exécutables, il est possible à l'aide des flots de contrôle de détécter si tous les noeuds ou tous les arcs peuvent être atteints\cite{ref12}.\\
@@ -922,9 +922,9 @@ En revanche, on ne peut pas utiliser les graphes de flots de contrôle pour test
 
 \subsection{Exemple d'utilisation possible d'un graphe de flots de contrôle dans le refactoring}
 
-Je vais maintenant vous présenter de quelle manière on pourrait utiliser les graphes de flot de contrôle dans le refactoring et plus précisément pour détecter du code mort.\\
+Ci-dessous une manière d'utiliser les graphes de flot de contrôle dans le refactoring et plus précisément pour détecter du code mort.\\
 A l'aide du test structurel qui utilise les graphes de flot de contrôle, il est possible d'avoir une couverture de toutes les décisions possibles\cite{ref13}.\\
-C'est à dire de trouver au moins un ensemble de combinaisons de valeurs qui permet de passer toutes les conditions du programme. Cette technique pourrait donc être utilisée dans le refactoring pour détecter du code mort; car dans le cas où il n'existe aucun ensemble de combinaisons de valeur permettant de satisfaire toutes les conditions, alors on peut trouver la partie du programme inatteignable (code mort).\\
+C'est à dire de trouver au moins un ensemble de combinaisons de valeurs qui permet de passer toutes les conditions du programme. Cette technique pourrait donc être utilisée dans le refactoring pour détecter du code mort car dans le cas où il n'existe aucun ensemble de combinaisons de valeur permettant de satisfaire toutes les conditions, alors on peut trouver la partie du programme inatteignable (code mort).\\
 
 \begin{center}
 \includegraphics[scale=1.5]{Image/ExempleCodeGraphe.png}\\
@@ -938,7 +938,7 @@ C'est à dire de trouver au moins un ensemble de combinaisons de valeurs qui per
 
 Imaginons que dans l'exemple une variable y soit générée aléatoirement entre -100 et 100.
 L'exemple ci-dessus est très simple mais a pour but de montrer qu'il est possible de détecter du code mort.\\
-On a donc une variable x à laquelle on affecte le carré d'une variable y, or le carré de n'importe quel entier est positif ou nul.\\ Si l'on regarde le mini programme, on peut facilement comprendre que jamais on ne pourra passer par le else car x ne peut pas être négatif. Mais imaginons que ce soit un programme beaucoup plus compliqué.\\
+On a donc une variable x à laquelle on affecte le carré d'une variable y, or le carré de n'importe quel entier est positif ou nul.\\ Si on regarde le mini programme, on peut facilement comprendre que jamais on ne pourra passer par le else car x ne peut pas être négatif. Mais imaginons que ce soit un programme beaucoup plus compliqué.\\
 On va alors générer un arbre d’exécution symbolique à partir du code présenté ci-dessus.\\
 Et on obtiendra l’arbre ci-dessous.\\
 
@@ -1009,7 +1009,7 @@ ASM est utilisé par exemple par gradle pour générer des classes pendant l'ex�
 DCD est capable de détecter si des méthodes sont mortes qu'elles soient public, private ou protected.\\ Nous pouvons aussi le faire avec les graphes de flots de contrôle.\\
 La différence est que pour DCD il est précisé que les résultats sont des propositions donc on n'est pas certain à cent pour cent qu’il s'agisse bien de code mort.\\
 Alors que si on utilise les graphes de flots de contrôle, on peut être absolument certain que le code mort détecté est bien mort grâce à l’utilisation des arbres d’exécution symbolique et du solveur Z3.\\
-DCD peut aussi entre autres des initialisations inutiles de variables.\\
+DCD peut aussi détecter entre autres des initialisations inutiles de variables.\\
 
 \newpage
 
@@ -1090,7 +1090,7 @@ On a pu voir qu'il existe beaucoup de manières de faire du refactoring pour aug
 Puis nous avons vu des outils permettant de faire du refactoring.\\
 Il y a les IDE tel que IntelliJ ou bien Eclipse qui proposent des possibilités de refactoring basique.\\
 Ensuite nous avons regardé AutoRefactor un outil en cours de développement qui utilise actuellement le filtrage par motif pour effectuer du refactoring et qui par la suite aimerait utiliser les graphes de flots de contrôle.\\
-Et pour finir nous avons étudié les graphes de flots de contrôle et nous nous sommes rendu compte qu'il était théoriquement possible de les utiliser pour faire du refactoring.\\
+Et pour finir nous avons étudié les graphes de flots de contrôle ainsi que l'exécution symbolique et nous nous sommes rendu compte qu'il était théoriquement possible de les utiliser pour faire du refactoring.\\
 En conclusion, le refactoring est un remaniement du code très important car il ne faut pas se reposer sur des ordinateurs ultra puissants pour produire du code de très mauvaise qualité. Le refactoring permet aussi de rendre le code plus compréhensible et plus facile à maintenir donc de réduire les coûts de développement.
 Le refactoring doit être appliqué à bon escient selon le contexte.\\
 Et à l'avenir je pense qu'il serait intéressant de se pencher sur les graphes de flots de contrôle pour les utiliser dans certaines parties du refactoring telle que la détection de code mort.\\
