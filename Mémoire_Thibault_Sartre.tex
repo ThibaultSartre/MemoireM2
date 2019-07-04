@@ -817,6 +817,7 @@ D’après James C. King, il faut que les variables utilisées dans les programm
 Les arbres d’exécution symbolique sont des représentations de l’exécution symbolique.\\
 
 D’après James C. King, les arbres d’exécution symbolique sont, pour la plupart des programmes, infinis.\cite{ref16}\\
+Cela pourrait être un point bloquant si on veut utiliser cette solution couplé aux graphes de flots de contrôle pour faire du refactoring. Il faudrait se limiter à des programmes avec lesquels on peut générer un arbre d'exécution symbolique fini.\\
 On va directement étudier un exemple pour mieux comprendre de quoi est formé un arbre d’exécution symbolique.\\
 
 \begin{center}
@@ -960,7 +961,7 @@ On obtient donc un nouveau graphe de flot de contrôle facilement compréhensibl
 \itshape{Graphe de flots de contrôle généré après analyse de l'arbre d'exécution symbolique}
 \end{center}
 
-Le graphe de flots de contrôle nous permettrait donc de détecter du code mort en étudiant les décisions possibles d'un programme.\\
+Le graphe de flots de contrôle nous permettrait donc de détecter du code mort en étudiant les décisions possibles d'un programme à l'aide de l'exécution symbolique.\\
 En revanche la complexité de l'algorithme qui détecte toutes les décisions possibles est exponentiel en fonction du nombre de conditions présent dans le programme.\\
 Afin de contourner cela, il serait judicieux de l'appliquer sur des morceaux de programme pour diminuer le nombre de conditions traitées en même temps et obtenir un résultat dans des délais acceptables.\\
 
