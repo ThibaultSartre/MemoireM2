@@ -25,6 +25,10 @@ Software engineering | control flow graph (cfg).
 \newblock
   https://www.geeksforgeeks.org/software-engineering-control-flow-graph-cfg/.
 
+\bibitem{ref21}
+Ucdetector: Unnecessary code detector.
+\newblock http://www.ucdetector.org/.
+
 \bibitem{ref3}
 Jean-Michel Doudoux.
 \newblock Le refactoring, Janvier 2007.
@@ -69,6 +73,12 @@ Zoran Maksimovic.
 Jean-Philippe Retaillé.
 \newblock {\em Refactoring des applications JAVA/J2EE}.
 \newblock Eyrolles, 2005.
+
+\bibitem{ref20}
+Frédéric Voisin Burkhart~Wolf Romain~Aissat, Marie-Claude~Gaudel.
+\newblock Pruning infeasible paths via graph transformations and symbolic
+  execution: a method and a tool.
+\newblock https://hal.archives-ouvertes.fr/hal-01764525/document.
 
 \bibitem{ref7}
 Jean-Noël Rouvignac.

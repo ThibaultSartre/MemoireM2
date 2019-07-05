@@ -168,29 +168,34 @@
 \contentsline {paragraph}{Pr\IeC {\'e}sentation :}{43}{section*.111}
 \contentsline {paragraph}{B\IeC {\'e}n\IeC {\'e}fices :}{43}{section*.112}
 \contentsline {paragraph}{Technique inverse :}{43}{section*.113}
-\contentsline {chapter}{\numberline {4}Outils de refactoring}{45}{chapter.4}
-\contentsline {section}{\numberline {4.1}D\IeC {\'e}tection de chemin infaisable}{45}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}L'ex\IeC {\'e}cution symbolique}{45}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Arbre d'ex\IeC {\'e}cution symbolique}{46}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Le solveur Z3}{47}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Les graphes de flots de contr\IeC {\^o}le}{48}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}D\IeC {\'e}finition}{48}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Sont-ils utilisables pour faire du refactoring ?}{51}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Exemple d'utilisation possible d'un graphe de flots de contr\IeC {\^o}le dans le refactoring}{51}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}Fonctionnalit\IeC {\'e}s d'IDE}{55}{section.4.3}
-\contentsline {paragraph}{Suppression sans danger :}{55}{section*.114}
-\contentsline {paragraph}{Capacit\IeC {\'e} de d\IeC {\'e}placement :}{55}{section*.115}
-\contentsline {paragraph}{Extraction :}{55}{section*.116}
-\contentsline {paragraph}{Renommer :}{55}{section*.117}
-\contentsline {section}{\numberline {4.4}Dead Code Detector}{56}{section.4.4}
-\contentsline {section}{\numberline {4.5}AutoRefactor}{57}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Pr\IeC {\'e}sentation du projet}{57}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Fonctionnement du programme}{57}{subsection.4.5.2}
-\contentsline {subsection}{\numberline {4.5.3}Fonctionnalit\IeC {\'e}s}{58}{subsection.4.5.3}
-\contentsline {paragraph}{Remplacement de boucle par une seule m\IeC {\'e}thode :}{58}{section*.118}
-\contentsline {paragraph}{Changement de type de stockage :}{58}{section*.119}
-\contentsline {paragraph}{Pr\IeC {\'e}f\IeC {\'e}rer les types primitifs :}{58}{section*.120}
-\contentsline {paragraph}{Fusionner les blocs if :}{58}{section*.121}
-\contentsline {paragraph}{Remplacer des clauses redondantes :}{59}{section*.122}
-\contentsline {subsection}{\numberline {4.5.4}Objectif futur}{59}{subsection.4.5.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{61}{chapter.5}
+\contentsline {chapter}{\numberline {4}Les graphes de flots de contr\IeC {\^o}le dans le refactoring}{45}{chapter.4}
+\contentsline {section}{\numberline {4.1}Pr\IeC {\'e}sentation}{45}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}D\IeC {\'e}finition}{45}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Sont-ils utilisables pour faire du refactoring ?}{48}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}D\IeC {\'e}tection du code mort avec les graphes de flots de contr\IeC {\^o}le}{49}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}L'ex\IeC {\'e}cution symbolique}{49}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Arbre d'ex\IeC {\'e}cution symbolique}{50}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Le solveur Z3}{51}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Exemple d'utilisation possible d'un graphe de flots de contr\IeC {\^o}le dans le refactoring}{52}{subsection.4.2.4}
+\contentsline {chapter}{\numberline {5}Outils de refactoring}{55}{chapter.5}
+\contentsline {section}{\numberline {5.1}Dead Code Detector}{55}{section.5.1}
+\contentsline {section}{\numberline {5.2}Fonctionnalit\IeC {\'e}s d'IDE}{56}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Fonctionnalit\IeC {\'e}s basique}{56}{subsection.5.2.1}
+\contentsline {paragraph}{Suppression sans danger :}{56}{section*.114}
+\contentsline {paragraph}{Capacit\IeC {\'e} de d\IeC {\'e}placement :}{56}{section*.115}
+\contentsline {paragraph}{Extraction :}{56}{section*.116}
+\contentsline {paragraph}{Renommer :}{57}{section*.117}
+\contentsline {subsection}{\numberline {5.2.2}Plugins}{57}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}UCDetector}{57}{section.5.3}
+\contentsline {section}{\numberline {5.4}AutoRefactor}{58}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Pr\IeC {\'e}sentation du projet}{58}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Fonctionnement du programme}{58}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Fonctionnalit\IeC {\'e}s}{59}{subsection.5.4.3}
+\contentsline {paragraph}{Remplacement de boucle par une seule m\IeC {\'e}thode :}{59}{section*.118}
+\contentsline {paragraph}{Changement de type de stockage :}{59}{section*.119}
+\contentsline {paragraph}{Pr\IeC {\'e}f\IeC {\'e}rer les types primitifs :}{59}{section*.120}
+\contentsline {paragraph}{Fusionner les blocs if :}{59}{section*.121}
+\contentsline {paragraph}{Remplacer des clauses redondantes :}{60}{section*.122}
+\contentsline {subsection}{\numberline {5.4.4}Objectif futur}{60}{subsection.5.4.4}
+\contentsline {section}{\numberline {5.5}Bilan}{61}{section.5.5}
+\contentsline {chapter}{\numberline {6}Conclusion}{63}{chapter.6}
