@@ -841,8 +841,8 @@ Ici on aurait :\\
 M = a.(b+c).d.(e+f).g\\
 
 Les blocs présents dans les graphes de flots de contrôle possèdent des relations de domination entre eux.\\
-C'est-à-dire qu'on peut dire "qu'un bloc M domine un bloc N si chaque chemin qui atteint le bloc N passe par M"\cite{ref17}.\\
-Avec cette définition, on peut dire que le bloc entrée domine n'importe quel bloc puisque tout chemin débute par le bloc entrée.\\
+On peut dire "qu'un bloc M domine un bloc N si chaque chemin qui atteint le bloc N passe par M"\cite{ref17}.\\
+Cette définition montre que le bloc entrée domine n'importe quel bloc puisque tout chemin débute par le bloc entrée.\\
 On peut aussi dire que M postdomine N si "chaque chemin de N vers le bloc de sortie passe par M"\cite{ref17}\\
 On parle aussi de domination immédiate dans le cas où un bloc M est le dernier dominant de N en partant du bloc entrée. Un bloc ne peut donc être dominé immédiatement par un seul bloc.\\
 On peut analyser toutes ces relations de domination entre les blocs en générant un arbre de dominance.\\
@@ -861,7 +861,7 @@ Et b,c,d qui sont dominés par a.\\
 Actuellement il n'existe pas de logiciel utilisant les graphes de flots de contrôle pour effectuer du refactoring.\\
 Théoriquement il n'est pas impossible de faire du refactoring avec ce type de graphe.
 D'après un article de recherche traitant du test structurel des exécutables, il est possible à l'aide des flots de contrôle de détécter si tous les noeuds ou tous les arcs peuvent être atteints\cite{ref12}.\\
-Dans un autre article on nous dit qu'en utilisant les graphes de flots de contrôle couplé à l'exécution symbolique, il est possible de détecté des chemins infaisable\cite{ref20}.\\
+Dans un autre article on nous dit qu'en utilisant les graphes de flots de contrôle couplés à l'exécution symbolique, il est possible de détecter des chemins infaisables\cite{ref20}.\\
 Cet aspect pourrait être utilisé dans le refactoring pour détecter du code non accessible lors de l'exécution du programme.\\
 On pourrait aussi utiliser une détection de chemin
 permettant une optimisation du code en empruntant un chemin moins coûteux en temps et ressources.\\
@@ -894,7 +894,7 @@ D’après James C. King, il faut que les variables utilisées dans les programm
 Les arbres d’exécution symbolique sont des représentations de l’exécution symbolique.\\
 
 D’après James C. King, les arbres d’exécution symbolique sont, pour la plupart des programmes, infinis.\cite{ref16}\\
-Cela pourrait être un point bloquant si on veut utiliser cette solution couplé aux graphes de flots de contrôle pour faire du refactoring. Il faudrait se limiter à des programmes avec lesquels on peut générer un arbre d'exécution symbolique fini.\\
+Cela pourrait être un point bloquant si on veut utiliser cette solution couplée aux graphes de flots de contrôle pour faire du refactoring. Il faudrait se limiter à des programmes avec lesquels on peut générer un arbre d'exécution symbolique fini.\\
 On va directement étudier un exemple pour mieux comprendre de quoi est formé un arbre d’exécution symbolique.\\
 
 \begin{center}
@@ -906,7 +906,7 @@ Sur l’exemple on a l’exécution symbolique qui nous dit que la variable a va
 
 Le point 1 (alpha) sur l’arbre d’exécution symbolique représente la condition " if (a) ": elle signifie que si alpha est évalué à true, on prend la branche de gauche. Sinon on prend la branche de droite.\\
 
-Le point 2 (beta < 5) représente la condition " if (b<5) ": si l’on prend le chemin de gauche c’est que l’évaluation de la condition est vraie et fausse pour le chemin de droite.\\
+Le point 2 (beta < 5) représente la condition " if (b<5) ": si l’on prend le chemin de gauche c’est que l’évaluation de la condition est vraie et donc fausse pour le chemin de droite.\\
 
 Le point 3 (not alpha et gamma) représente la condition " if (!a ET c) " et comme pour les précédents, le chemin de gauche est l’évaluation à true et false pour le chemin de droite.\\
 
@@ -1037,10 +1037,10 @@ AutoRefactor est actuellement disponible mais n'utilise pas encore les graphes d
 \section{UCDetector}
 
 UCDetector est un plugin Eclipse qui permet de détecter du code java inutilisé uniquement s'il s'agit de code de type "public"\cite{ref21}.
-Il permet donc de trouver des classes, méthodes ou bien des champs qui ne sont utilisés nul part.\\
-UCDetector est capable réduire la visibilité du code en proposant de changer la visibilité des méthodes ou autre à "protected", "default" ou bien "private" selon les différents cas.\\
-Il est aussi possible de détecter si un champs ou une méthode peut être déclarer en "final".\\
-En revanche il existe des cas ou UCDetector peut se tromper(il ne s'agit que de suggestion)\cite{ref21} dans l'indication de code mort si le code est utilisé par :\\
+Il permet donc de trouver des classes, méthodes ou bien des champs qui ne sont utilisés nulle part.\\
+UCDetector est capable de réduire la visibilité du code en proposant de changer la visibilité des méthodes ou autre à "protected", "default" ou bien "private" selon les différents cas.\\
+Il est aussi possible de détecter si un champ ou une méthode peut être déclaré en "final".\\
+En revanche il existe des cas où UCDetector peut se tromper(il ne s'agit que de suggestion)\cite{ref21} dans l'indication de code mort si le code est utilisé par :\\
 - l'API Reflection\cite{ref21}.\\
 - des Frameworks tels que Spring, Hibernate\cite{ref21}\\
 - un autre code qui utilise notre API\\
@@ -1052,7 +1052,7 @@ En revanche il existe des cas ou UCDetector peut se tromper(il ne s'agit que de 
 \section{AutoRefactor}
 \subsection{Présentation du projet}
 Le projet AutoRefactor a été lancé par Jean-Noël Rouvignac. Il a décidé de se lancer dans ce projet car il était fatigué de "devoir prendre trop de temps pour appliquer les mêmes nettoyages de code encore et encore". L'objectif de ce projet est de faciliter la maintenance, moderniser le code, rendre le code plus léger et compact ainsi qu'augmenter les performances des programmes. Rouvignac a commencé à travailler sur les expressions rationnelles pour retravailler toute la base du code, mais les faux positifs étaient trop nombreux.\cite{ref7} Il a ensuite créé un greffon Eclipse (AutoRefactor) qui utilise  l'API des Java Development Tools (Eclipse JDT) qui est l'API qu'Eclipse utilise pour faire du refactoring.\\
-Une première release du produit est sortie le 22 mars 2015 et plus récemment la version 1.2 est sortie (30 juin 2018).\\
+Une première release du produit est sortie le 22 mars 2015 et plus récemment est sortie la version 1.2 (30 juin 2018).\\
 
 \subsection{Fonctionnement du programme}
 Je vais maintenant vous présenter un algorithme simplifié du fonctionnement d'AutoRefactor\cite{ref7}.
@@ -1076,10 +1076,10 @@ Actuellement, tous les refactorings implémentés font du filtrage par motif et 
 \newpage
 
 \subsection{Fonctionnalités}
-Il existe beaucoup de fonctionnalités de refactoring dans AutoRefactor; je vais vous en présenter quelques unes.\\
+Il existe beaucoup de fonctionnalités de refactoring dans AutoRefactor; en voici quelques unes.\\
 
 \paragraph{Remplacement de boucle par une seule méthode :}
-AutoRefactor peut détécter des boucles inutiles liées à l'ajout ou à la suppression d'éléments dans des objets de type "List", "Map", "Collection".\\
+AutoRefactor peut détecter des boucles inutiles liées à l'ajout ou à la suppression d'éléments dans des objets de type "List", "Map", "Collection".\\
 
 \begin{center}
 \includegraphics[scale=0.7]{Image/SupBoucle.png}\\
@@ -1122,12 +1122,12 @@ Il aimerait développer une fonctionnalité d'extraction automatique de méthode
 
 \section{Bilan}
 Aujourd'hui, il n'existe aucun outil existant permettant de faire du refactoring à l'aide des graphes de flots de contrôle.\\
-On retrouve énormément d'outils permettant soit de générer des graphes de flots de contrôle afin de pouvoir mieux visualiser le fonctionnement de son programme.\\
-On trouve aussi des plugins ou bien des projets qui permette de faire du refactoring notamment AutoRefactor qui est le seul logiciel de refactoring existant avec l'ambition d'utiliser les graphes de flots de contrôle dans le refactoring.\\ 
+On retrouve énormément d'outils permettant de générer des graphes de flots de contrôle afin de pouvoir mieux visualiser le fonctionnement de son programme.\\
+On trouve aussi des plugins ou bien des projets qui permettent de faire du refactoring notamment AutoRefactor qui est le seul logiciel de refactoring existant avec l'ambition d'utiliser les graphes de flots de contrôle dans le refactoring.\\ 
 
 \chapter{Conclusion}
-Nous avons pu constater que tous nos programmes peuvent rapidement être infestés de codes mal structurés ou de choses indésirables.\\
-On a pu voir qu'il existe beaucoup de manières de faire du refactoring pour augmenter la lisibilité du code, réduire sa taille en supprimant les doublons ou tout simplement augmenter la qualité du code.\\
+Nous avons pu constater que tous nos programmes peuvent rapidement être infestés de codes mal structurés ou d'éléments indésirables.\\
+On a pu voir qu'il existe de nombreuses manières de faire du refactoring pour augmenter la lisibilité du code, réduire sa taille en supprimant les doublons ou tout simplement augmenter la qualité du code.\\
 Puis nous avons vu des outils permettant de faire du refactoring.\\
 Il y a les IDE tel que IntelliJ ou bien Eclipse qui proposent des possibilités de refactoring basique.\\
 Ensuite nous avons regardé AutoRefactor un outil en cours de développement qui utilise actuellement le filtrage par motif pour effectuer du refactoring et qui par la suite aimerait utiliser les graphes de flots de contrôle.\\
